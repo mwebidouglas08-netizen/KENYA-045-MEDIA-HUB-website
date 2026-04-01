@@ -6,12 +6,3 @@ cmds = ["npm install --production"]
 
 [phases.build]
 cmds = ["mkdir -p public && [ -f public/index.html ] || echo '<html><body><h1>Kenya045 Media Hub</h1></body></html>' > public/index.html"]
-
-[phases.start]
-cmd = "node server.js"
-
-[healthcheck]
-path = "/api/health"
-intervalSeconds = 10
-timeoutSeconds = 5
-startPeriodSeconds = 30
