@@ -4,5 +4,4 @@ nixPkgs = ["nodejs_20"]
 [phases.install]
 cmds = ["npm install --production"]
 
-[start]
-cmd = 'node server.js'
+ start = "node server.js"
