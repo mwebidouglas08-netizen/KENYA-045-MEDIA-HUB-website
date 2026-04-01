@@ -5,4 +5,4 @@ nixPkgs = ["nodejs_20"]
 cmds = ["npm install --production"]
 
 [start]
-cmd = "node src/server.js"
+cmd = 'node server.js'
