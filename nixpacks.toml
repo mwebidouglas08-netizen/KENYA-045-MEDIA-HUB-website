@@ -6,3 +6,6 @@ cmds = ["npm install --production"]
 
 [phases.build]
 cmds = ["mkdir -p public && cp index.html public/index.html 2>/dev/null || true"]
+
+[phases.start]
+cmd = "node server.js"
