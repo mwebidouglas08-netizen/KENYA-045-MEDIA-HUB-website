@@ -131,12 +131,19 @@ app.get('/api/inquiries', (req, res) => {
 app.use(express.static(path.join(__dirname, 'public'), {
  maxAge: '1d',
  etag: true,
- index: false,
+ index: true,
 }));
 // Serve frontend for all other routes (SPA fallback)
 app.get('*', (_req, res) => {
- res.sendFile(path.join(__dirname, 'public', 'index.html'));
+ const indexPath = path.join(__dirname, 'public', 'index.html');
+ res.sendFile(indexPath, (err) => {
+  if (err) {
+   console.error('Error serving index.html:', err.message);
+   res.status(404).json({ error: 'Page not found' });
+  }
+ });
 });
+
 // ── ERROR HANDLER ─────────────────────────────────────────────────────────
 app.use((err, _req, res, _next) => {
  console.error('Server error:', err.message);
