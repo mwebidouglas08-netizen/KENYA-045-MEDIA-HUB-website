@@ -5,4 +5,17 @@ nixPkgs = ["nodejs_20"]
 cmds = ["npm install --production"]
 
 [phases.build]
-cmds = ["mkdir -p public && [ -f public/index.html ] || echo '<html><body><h1>Kenya045 Media Hub</h1></body></html>' > public/index.html"]
+cmds = ["mkdir -p public && [ ! -f public/index.html ] && cp index.html public/index.html || true"]
+```
+
+---
+
+**`.gitignore`** — add `public/server.js` to prevent that stray file deploying:
+```
+node_modules/
+.env
+.env.local
+*.log
+.DS_Store
+Thumbs.db
+public/server.js
