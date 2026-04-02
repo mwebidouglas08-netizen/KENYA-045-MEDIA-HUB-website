@@ -13,8 +13,9 @@
   --font:'Outfit',sans-serif;--r:8px;
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html,body{height:100%;background:var(--black);color:var(--white);font-family:var(--font);font-size:14px;line-height:1.6;}
+html,body{height:100%;background:var(--black);color:var(--white);font-family:var(--font);font-size:14px;line-height:1.6;cursor:default;}
 a{color:var(--gold);text-decoration:none;}
+button,input,select,textarea{cursor:pointer;}
 
 /* ── LOGIN ── */
 #loginScreen{display:flex;align-items:center;justify-content:center;min-height:100vh;padding:2rem;}
@@ -24,8 +25,10 @@ a{color:var(--gold);text-decoration:none;}
 .login-sub{color:var(--muted);font-size:12px;letter-spacing:1px;margin-bottom:2rem;}
 .login-input{width:100%;background:var(--black);border:1px solid var(--border2);color:var(--white);padding:12px 14px;border-radius:6px;font-size:14px;outline:none;margin-bottom:12px;font-family:var(--font);}
 .login-input:focus{border-color:var(--gold);}
-.login-btn{width:100%;background:var(--gold);color:var(--black);border:none;padding:13px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;transition:background 0.2s;}
+.login-btn{width:100%;background:var(--gold);color:var(--black);border:none;padding:13px;border-radius:6px;font-size:14px;font-weight:700;cursor:pointer;letter-spacing:0.5px;transition:background 0.2s;touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
 .login-btn:hover{background:var(--gold2);}
+.login-btn:active{background:var(--gold2);transform:scale(0.98);}
+.login-btn:disabled{opacity:0.7;cursor:not-allowed;}
 .login-error{color:#e74c3c;font-size:13px;margin-top:10px;min-height:20px;}
 
 /* ── LAYOUT ── */
@@ -175,10 +178,11 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   <div class="login-box">
     <div class="login-logo">KENYA<span>045</span></div>
     <div class="login-sub">ADMIN COMMAND CENTRE</div>
-    <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="username"/>
-    <input class="login-input" type="password" id="loginPass" placeholder="Password" autocomplete="current-password"
-           onkeydown="if(event.key==='Enter')doLogin()"/>
-    <button class="login-btn" onclick="doLogin()">Sign In</button>
+    <form id="loginForm" onsubmit="handleLoginSubmit(event)" autocomplete="on">
+      <input class="login-input" type="text" id="loginUser" name="username" placeholder="Username" autocomplete="username" required/>
+      <input class="login-input" type="password" id="loginPass" name="password" placeholder="Password" autocomplete="current-password" required/>
+      <button class="login-btn" type="submit" id="loginBtn">Sign In</button>
+    </form>
     <div class="login-error" id="loginError"></div>
   </div>
 </div>
@@ -257,24 +261,42 @@ let bookingsPage = 1, inquiriesPage = 1, logsPage = 1;
 let bookingsSearch = '', bookingsStatus = '', inquiriesSearch = '', inquiriesStatus = '';
 
 // ─── AUTH ──────────────────────────────────────────────────────────────────
+function handleLoginSubmit(e) {
+  e.preventDefault();
+  doLogin();
+}
+
 async function doLogin() {
-  const user = document.getElementById('loginUser').value.trim();
-  const pass = document.getElementById('loginPass').value;
+  const user  = document.getElementById('loginUser').value.trim();
+  const pass  = document.getElementById('loginPass').value;
   const errEl = document.getElementById('loginError');
+  const btn   = document.getElementById('loginBtn');
   errEl.textContent = '';
   if (!user || !pass) { errEl.textContent = 'Please enter username and password.'; return; }
+
+  btn.disabled    = true;
+  btn.textContent = 'Signing in…';
+
   try {
-    const r = await fetch('/api/auth/login', { method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify({ username:user, password:pass }) });
+    const r = await fetch('/api/auth/login', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify({ username: user, password: pass }),
+    });
     const d = await r.json();
     if (d.token) {
       TOKEN = d.token;
       localStorage.setItem('k045_token', TOKEN);
       startApp();
     } else {
-      errEl.textContent = d.error || 'Invalid credentials.';
+      errEl.textContent   = d.error || 'Invalid credentials.';
+      btn.disabled        = false;
+      btn.textContent     = 'Sign In';
     }
-  } catch {
-    errEl.textContent = 'Connection error. Is the server running?';
+  } catch (err) {
+    errEl.textContent = 'Connection error — is the server running?';
+    btn.disabled      = false;
+    btn.textContent   = 'Sign In';
   }
 }
 
