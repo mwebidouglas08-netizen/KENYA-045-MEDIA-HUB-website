@@ -536,10 +536,26 @@ app.get('/api/email/logs', requireAuth, adminLimiter, (req, res) => {
 // ─────────────────────────────────────────────────────────────────────────
 // STATIC FILES + SPA
 // ─────────────────────────────────────────────────────────────────────────
-app.use(express.static(path.join(__dirname, 'public'), { maxAge: '1d', etag: true, index: false }));
+// Serve from public/ if it exists, otherwise root (handles Railway build variations)
+const publicDir = fs.existsSync(path.join(__dirname, 'public', 'index.html'))
+  ? path.join(__dirname, 'public')
+  : __dirname;
+
+app.use(express.static(publicDir, { maxAge: '1d', etag: true, index: false }));
+
+// Also serve admin.html at /admin
+app.get('/admin', (_req, res) => {
+  const adminPath = fs.existsSync(path.join(__dirname, 'public', 'admin.html'))
+    ? path.join(__dirname, 'public', 'admin.html')
+    : path.join(__dirname, 'admin.html');
+  res.sendFile(adminPath);
+});
 
 app.get('*', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'public', 'index.html'));
+  const indexPath = fs.existsSync(path.join(__dirname, 'public', 'index.html'))
+    ? path.join(__dirname, 'public', 'index.html')
+    : path.join(__dirname, 'index.html');
+  res.sendFile(indexPath);
 });
 
 // ── ERROR HANDLER ─────────────────────────────────────────────────────────
