@@ -178,11 +178,9 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   <div class="login-box">
     <div class="login-logo">KENYA<span>045</span></div>
     <div class="login-sub">ADMIN COMMAND CENTRE</div>
-    <div id="loginForm">
-      <input class="login-input" type="text" id="loginUser" name="username" placeholder="Username" autocomplete="username" required/>
-      <input class="login-input" type="password" id="loginPass" name="password" placeholder="Password" autocomplete="current-password" required/>
-      <button class="login-btn" type="button" id="loginBtn" style="-webkit-tap-highlight-color:rgba(201,146,42,0.3);touch-action:manipulation;">Sign In</button>
-    </div>
+    <input class="login-input" type="text" id="loginUser" placeholder="Username" autocomplete="username"/>
+    <input class="login-input" type="password" id="loginPass" placeholder="Password" autocomplete="current-password"/>
+    <button class="login-btn" id="loginBtn" onclick="doLogin()">Sign In</button>
     <div class="login-error" id="loginError"></div>
   </div>
 </div>
@@ -261,24 +259,29 @@ let bookingsPage = 1, inquiriesPage = 1, logsPage = 1;
 let bookingsSearch = '', bookingsStatus = '', inquiriesSearch = '', inquiriesStatus = '';
 
 // ─── AUTH ──────────────────────────────────────────────────────────────────
-function handleLoginSubmit(e) {
-  e.preventDefault();
-  doLogin();
-}
+var _loggingIn = false; // prevent double-fire
 
 async function doLogin() {
-  var user  = (document.getElementById('loginUser').value||'').trim();
-  var pass  = document.getElementById('loginPass').value||'';
+  if (_loggingIn) return;
+  var user  = (document.getElementById('loginUser').value || '').trim();
+  var pass  = document.getElementById('loginPass').value || '';
   var errEl = document.getElementById('loginError');
   var btn   = document.getElementById('loginBtn');
-  errEl.textContent = '';
-  errEl.style.color = '#e74c3c';
-  if (!user || !pass) { errEl.textContent = 'Please enter username and password.'; return; }
 
+  // Clear previous error
+  errEl.style.color   = '#e74c3c';
+  errEl.textContent   = '';
+
+  if (!user || !pass) {
+    errEl.textContent = 'Please enter username and password.';
+    return;
+  }
+
+  _loggingIn      = true;
   btn.disabled    = true;
   btn.textContent = 'Signing in...';
-  errEl.textContent = 'Contacting server...';
-  errEl.style.color = '#c9922a';
+  errEl.style.color   = '#c9922a';
+  errEl.textContent   = 'Connecting...';
 
   try {
     var r = await fetch('/api/auth/login', {
@@ -286,24 +289,25 @@ async function doLogin() {
       headers: { 'Content-Type': 'application/json' },
       body   : JSON.stringify({ username: user, password: pass }),
     });
-    errEl.textContent = 'Server responded: HTTP ' + r.status;
     var d = await r.json();
     if (d.token) {
-      errEl.textContent = '';
       TOKEN = d.token;
       localStorage.setItem('k045_token', TOKEN);
+      errEl.textContent = '';
       startApp();
     } else {
-      errEl.style.color  = '#e74c3c';
-      errEl.textContent  = d.error || 'Invalid credentials.';
-      btn.disabled       = false;
-      btn.textContent    = 'Sign In';
+      errEl.style.color = '#e74c3c';
+      errEl.textContent = d.error || 'Wrong username or password.';
+      btn.disabled      = false;
+      btn.textContent   = 'Sign In';
+      _loggingIn        = false;
     }
   } catch (err) {
     errEl.style.color = '#e74c3c';
-    errEl.textContent = 'Error: ' + err.message;
+    errEl.textContent = 'Cannot reach server. Is it deployed?';
     btn.disabled      = false;
     btn.textContent   = 'Sign In';
+    _loggingIn        = false;
   }
 }
 
@@ -728,18 +732,12 @@ function timeAgo(iso) {
 }
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────
-document.addEventListener('DOMContentLoaded', function () {
-  var btn = document.getElementById('loginBtn');
-  if (btn) {
-    btn.addEventListener('click', function(e){ e.preventDefault(); doLogin(); });
-    btn.addEventListener('touchend', function(e){ e.preventDefault(); doLogin(); });
-  }
-  var passField = document.getElementById('loginPass');
-  if (passField) {
-    passField.addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
-  }
-  init();
-});
+// Wire Enter key on password field
+document.getElementById('loginPass').onkeydown = function(e) {
+  if (e.key === 'Enter') doLogin();
+};
+// Run init
+init();
 </script>
 </body>
 </html>
