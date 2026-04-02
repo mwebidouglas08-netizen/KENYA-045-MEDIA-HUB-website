@@ -4,726 +4,266 @@
 <meta charset="UTF-8"/>
 <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
 <meta name="description" content="KENYA045 MEDIA HUB — Professional Photography, Videography & Drone Services across all 47 counties in Kenya"/>
-<meta name="keywords" content="photography Kenya, videography Kenya, drone services Kenya, wedding photography, event photography"/>
 <title>KENYA045 MEDIA HUB — Photography · Videography · Drone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ══════════════════════════════════════════════════
-   DESIGN SYSTEM — cinematic dark luxury
-══════════════════════════════════════════════════ */
+/* ══ DESIGN SYSTEM ══ */
 :root{
-  --black:   #080808;
-  --deep:    #0f0f0f;
-  --surface: #161616;
-  --card:    #1c1c1c;
-  --border:  rgba(255,255,255,0.08);
-  --border2: rgba(255,255,255,0.14);
-  --gold:    #c9922a;
-  --gold2:   #e8b455;
-  --goldlt:  #f5d08a;
-  --white:   #f5f0e8;
-  --muted:   rgba(245,240,232,0.5);
-  --faint:   rgba(245,240,232,0.25);
-  --red:     #c0392b;
-  --green:   #27ae60;
-  --font-h:  'Playfair Display', Georgia, serif;
-  --font-b:  'Outfit', sans-serif;
-  --r:       10px;
-  --transition: 0.35s cubic-bezier(0.4,0,0.2,1);
+  --black:#080808;--deep:#0f0f0f;--surface:#161616;--card:#1c1c1c;
+  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
+  --gold:#c9922a;--gold2:#e8b455;--goldlt:#f5d08a;
+  --white:#f5f0e8;--muted:rgba(245,240,232,0.5);--faint:rgba(245,240,232,0.25);
+  --red:#c0392b;--green:#27ae60;
+  --font-h:'Playfair Display',Georgia,serif;--font-b:'Outfit',sans-serif;
+  --r:10px;--transition:0.35s cubic-bezier(0.4,0,0.2,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
 html{scroll-behavior:smooth;font-size:16px;}
-body{
-  background:var(--black);
-  color:var(--white);
-  font-family:var(--font-b);
-  font-weight:400;
-  line-height:1.7;
-  overflow-x:hidden;
-  cursor:none;
-}
-
-/* ── Custom cursor ── */
-.cursor{
-  position:fixed;width:10px;height:10px;border-radius:50%;
-  background:var(--gold);pointer-events:none;z-index:9999;
-  transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s,background 0.2s;
-  mix-blend-mode:difference;
-}
-.cursor-ring{
-  position:fixed;width:36px;height:36px;border-radius:50%;
-  border:1px solid var(--gold);pointer-events:none;z-index:9998;
-  transform:translate(-50%,-50%);transition:transform 0.12s,width 0.25s,height 0.25s,opacity 0.2s;
-  opacity:0.6;
-}
-body:hover .cursor{opacity:1;}
-
-/* ── Grain overlay ── */
-body::before{
-  content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.04;
-  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-}
-
-/* ══════════════════════════════════════════════════
-   NAVIGATION
-══════════════════════════════════════════════════ */
-nav{
-  position:fixed;top:0;left:0;right:0;z-index:500;
-  display:flex;align-items:center;justify-content:space-between;
-  padding:0 3rem;height:72px;
-  transition:background var(--transition),backdrop-filter var(--transition),border-color var(--transition);
-  border-bottom:1px solid transparent;
-}
-nav.scrolled{
-  background:rgba(8,8,8,0.92);
-  backdrop-filter:blur(20px);
-  border-bottom-color:var(--border);
-}
-.nav-logo{
-  font-family:var(--font-h);font-size:1.2rem;font-weight:700;
-  color:var(--white);text-decoration:none;letter-spacing:0.04em;
-  display:flex;align-items:center;gap:10px;
-}
-.nav-logo-mark{
-  width:36px;height:36px;border-radius:6px;
-  background:var(--gold);
-  display:flex;align-items:center;justify-content:center;
-  font-size:16px;color:var(--black);font-weight:900;
-}
+body{background:var(--black);color:var(--white);font-family:var(--font-b);font-weight:400;line-height:1.7;overflow-x:hidden;cursor:none;}
+.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s;mix-blend-mode:difference;}
+.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.12s,width 0.25s,height 0.25s,opacity 0.2s;opacity:0.6;}
+body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:72px;transition:background var(--transition),backdrop-filter var(--transition),border-color var(--transition);border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom-color:var(--border);}
+.nav-logo{font-family:var(--font-h);font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:0.04em;display:flex;align-items:center;gap:10px;}
+.nav-logo-mark{width:36px;height:36px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--black);font-weight:900;}
 .nav-logo span{color:var(--gold);}
 .nav-links{display:flex;align-items:center;gap:2.5rem;}
-.nav-links a{
-  font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;
-  letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;
-  position:relative;
-}
-.nav-links a::after{
-  content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;
-  background:var(--gold);transition:width 0.3s;
-}
+.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
 .nav-links a:hover{color:var(--white);}
 .nav-links a:hover::after{width:100%;}
-.nav-cta{
-  background:var(--gold);color:var(--black);border:none;
-  padding:9px 22px;border-radius:4px;font-family:var(--font-b);
-  font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:none;
-  transition:background 0.2s,transform 0.15s;text-transform:uppercase;
-  text-decoration:none;display:inline-block;
-}
+.nav-cta{background:var(--gold);color:var(--black);border:none;padding:9px 22px;border-radius:4px;font-family:var(--font-b);font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:none;transition:background 0.2s,transform 0.15s;text-transform:uppercase;text-decoration:none;display:inline-block;}
 .nav-cta:hover{background:var(--gold2);transform:translateY(-1px);}
 .hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
 .hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:all 0.3s;}
-.mobile-nav{
-  display:none;position:fixed;inset:0;z-index:490;
-  background:rgba(8,8,8,0.98);backdrop-filter:blur(30px);
-  flex-direction:column;align-items:center;justify-content:center;gap:2rem;
-}
+.mobile-nav{display:none;position:fixed;inset:0;z-index:490;background:rgba(8,8,8,0.98);backdrop-filter:blur(30px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
 .mobile-nav.open{display:flex;}
-.mobile-nav a{font-family:var(--font-h);font-size:2rem;color:var(--white);text-decoration:none;letter-spacing:0.04em;}
+.mobile-nav a{font-family:var(--font-h);font-size:2rem;color:var(--white);text-decoration:none;}
 .mobile-nav a:hover{color:var(--gold);}
-
-/* ══════════════════════════════════════════════════
-   HERO
-══════════════════════════════════════════════════ */
-.hero{
-  min-height:100vh;position:relative;
-  display:flex;flex-direction:column;justify-content:center;
-  padding:0 3rem;overflow:hidden;
-}
-.hero-bg{
-  position:absolute;inset:0;z-index:0;
-  background:
-    radial-gradient(ellipse 80% 60% at 70% 50%, rgba(201,146,42,0.08) 0%, transparent 60%),
-    radial-gradient(ellipse 60% 80% at 20% 80%, rgba(201,146,42,0.05) 0%, transparent 50%),
-    linear-gradient(160deg, #080808 0%, #0d0d0a 50%, #0a0a08 100%);
-}
-/* Animated aperture rings */
-.hero-aperture{
-  position:absolute;right:-10%;top:50%;transform:translateY(-50%);
-  width:700px;height:700px;opacity:0.06;pointer-events:none;
-}
-.hero-aperture circle{
-  fill:none;stroke:var(--gold);
-  transform-origin:center;
-  animation:spin 25s linear infinite;
-}
+/* HERO */
+.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 3rem;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,146,42,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 20% 80%,rgba(201,146,42,0.05) 0%,transparent 50%),linear-gradient(160deg,#080808 0%,#0d0d0a 50%,#0a0a08 100%);}
+.hero-aperture{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:700px;height:700px;opacity:0.06;pointer-events:none;}
+.hero-aperture circle{fill:none;stroke:var(--gold);transform-origin:center;animation:spin 25s linear infinite;}
 .hero-aperture circle:nth-child(2){animation-direction:reverse;animation-duration:18s;}
 .hero-aperture circle:nth-child(3){animation-duration:35s;}
 @keyframes spin{to{transform:rotate(360deg);}}
-
 .hero-content{position:relative;z-index:2;max-width:780px;}
-.hero-eyebrow{
-  font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1.5rem;
-  display:flex;align-items:center;gap:12px;
-  animation:fadeUp 0.8s ease both;
-}
+.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px;animation:fadeUp 0.8s ease both;}
 .hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
-.hero h1{
-  font-family:var(--font-h);
-  font-size:clamp(3rem,7vw,6.5rem);
-  font-weight:900;line-height:0.95;
-  letter-spacing:-0.01em;
-  margin-bottom:1.8rem;
-  animation:fadeUp 0.9s 0.1s ease both;
-}
+.hero h1{font-family:var(--font-h);font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.01em;margin-bottom:1.8rem;animation:fadeUp 0.9s 0.1s ease both;}
 .hero h1 em{color:var(--gold);font-style:italic;}
 .hero h1 .line2{display:block;color:var(--muted);font-weight:400;font-size:0.7em;}
-.hero-sub{
-  font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.7;
-  margin-bottom:2.5rem;font-weight:300;
-  animation:fadeUp 1s 0.2s ease both;
-}
-.hero-actions{
-  display:flex;gap:14px;flex-wrap:wrap;
-  animation:fadeUp 1s 0.3s ease both;
-}
-.btn-gold{
-  background:var(--gold);color:var(--black);border:none;
-  padding:14px 32px;border-radius:4px;
-  font-family:var(--font-b);font-size:14px;font-weight:600;
-  letter-spacing:0.08em;text-transform:uppercase;cursor:none;
-  transition:all 0.2s;text-decoration:none;display:inline-block;
-}
+.hero-sub{font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:2.5rem;font-weight:300;animation:fadeUp 1s 0.2s ease both;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 1s 0.3s ease both;}
+.btn-gold{background:var(--gold);color:var(--black);border:none;padding:14px 32px;border-radius:4px;font-family:var(--font-b);font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
 .btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,146,42,0.3);}
-.btn-outline{
-  background:none;color:var(--white);
-  border:1px solid var(--border2);
-  padding:14px 32px;border-radius:4px;
-  font-family:var(--font-b);font-size:14px;font-weight:500;
-  letter-spacing:0.08em;text-transform:uppercase;cursor:none;
-  transition:all 0.2s;text-decoration:none;display:inline-block;
-}
+.btn-outline{background:none;color:var(--white);border:1px solid var(--border2);padding:14px 32px;border-radius:4px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
 .btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-
-/* Stats strip in hero */
-.hero-stats{
-  position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:2;
-  display:flex;gap:3rem;flex-wrap:wrap;
-  animation:fadeUp 1s 0.5s ease both;
-  border-top:1px solid var(--border);
-  padding-top:2rem;
-}
-.hero-stat{}
-.hero-stat-num{
-  font-family:var(--font-h);font-size:2.2rem;font-weight:700;color:var(--gold);
-  display:block;line-height:1;
-}
+.hero-stats{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:2;display:flex;gap:3rem;flex-wrap:wrap;animation:fadeUp 1s 0.5s ease both;border-top:1px solid var(--border);padding-top:2rem;}
+.hero-stat-num{font-family:var(--font-h);font-size:2.2rem;font-weight:700;color:var(--gold);display:block;line-height:1;}
 .hero-stat-label{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.15em;margin-top:4px;}
-
-/* Scroll indicator */
-.scroll-hint{
-  position:absolute;right:3rem;bottom:3.5rem;z-index:2;
-  display:flex;flex-direction:column;align-items:center;gap:8px;
-  font-size:10px;letter-spacing:0.2em;color:var(--faint);text-transform:uppercase;
-}
-.scroll-line{
-  width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gold));
-  animation:scrollPulse 2s ease-in-out infinite;
-}
+.scroll-hint{position:absolute;right:3rem;bottom:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:0.2em;color:var(--faint);text-transform:uppercase;}
+.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease-in-out infinite;}
 @keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
-
 @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-
-/* ══════════════════════════════════════════════════
-   SECTION HELPERS
-══════════════════════════════════════════════════ */
+/* SECTIONS */
 section{padding:7rem 3rem;position:relative;}
-.section-eyebrow{
-  font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;
-  color:var(--gold);margin-bottom:1rem;
-  display:flex;align-items:center;gap:10px;
-}
+.section-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
 .section-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
-.section-title{
-  font-family:var(--font-h);
-  font-size:clamp(2rem,4vw,3.2rem);
-  font-weight:900;line-height:1.1;letter-spacing:-0.01em;
-  margin-bottom:1rem;
-}
+.section-title{font-family:var(--font-h);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-0.01em;margin-bottom:1rem;}
 .section-title em{color:var(--gold);font-style:italic;}
 .section-sub{color:var(--muted);max-width:560px;font-size:0.95rem;margin-bottom:3rem;line-height:1.75;}
 .container{max-width:1300px;margin:0 auto;}
 .divider{width:100%;height:1px;background:var(--border);margin:0;}
-
-/* Reveal animation */
 .reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
 .reveal.visible{opacity:1;transform:translateY(0);}
 .reveal-delay-1{transition-delay:0.1s;}
 .reveal-delay-2{transition-delay:0.2s;}
 .reveal-delay-3{transition-delay:0.3s;}
-.reveal-delay-4{transition-delay:0.4s;}
-
-/* ══════════════════════════════════════════════════
-   SERVICES
-══════════════════════════════════════════════════ */
+/* SERVICES */
 #services{background:var(--deep);}
-.services-grid{
-  display:grid;grid-template-columns:repeat(3,1fr);
-  gap:1px;background:var(--border);
-  border:1px solid var(--border);
-  border-radius:var(--r);overflow:hidden;
-}
-.service-card{
-  background:var(--surface);
-  padding:3rem 2.5rem;
-  transition:background var(--transition);
-  position:relative;overflow:hidden;
-}
-.service-card::before{
-  content:'';position:absolute;top:0;left:0;right:0;height:2px;
-  background:var(--gold);transform:scaleX(0);transform-origin:left;
-  transition:transform var(--transition);
-}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.service-card{background:var(--surface);padding:3rem 2.5rem;transition:background var(--transition);position:relative;overflow:hidden;}
+.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform var(--transition);}
 .service-card:hover{background:var(--card);}
 .service-card:hover::before{transform:scaleX(1);}
-.service-icon{
-  width:60px;height:60px;border-radius:12px;
-  background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.2);
-  display:flex;align-items:center;justify-content:center;
-  font-size:26px;margin-bottom:1.8rem;
-  transition:background var(--transition);
-}
-.service-card:hover .service-icon{background:rgba(201,146,42,0.18);}
-.service-title{
-  font-family:var(--font-h);font-size:1.5rem;font-weight:700;
-  margin-bottom:1rem;letter-spacing:-0.01em;
-}
+.service-icon{width:60px;height:60px;border-radius:12px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.2);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:1.8rem;}
+.service-title{font-family:var(--font-h);font-size:1.5rem;font-weight:700;margin-bottom:1rem;}
 .service-desc{color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.5rem;}
 .service-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.service-features li{
-  font-size:12px;color:var(--faint);display:flex;align-items:center;gap:8px;
-  text-transform:uppercase;letter-spacing:0.08em;
-}
-.service-features li::before{
-  content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;
-}
-.service-cta{
-  display:inline-flex;align-items:center;gap:8px;
-  margin-top:2rem;font-size:12px;color:var(--gold);
-  text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;
-  font-weight:600;transition:gap 0.2s;cursor:none;
-}
+.service-features li{font-size:12px;color:var(--faint);display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:0.08em;}
+.service-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.service-cta{display:inline-flex;align-items:center;gap:8px;margin-top:2rem;font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;transition:gap 0.2s;cursor:none;}
 .service-cta:hover{gap:14px;}
-
-/* ══════════════════════════════════════════════════
-   WHY CHOOSE US
-══════════════════════════════════════════════════ */
+/* WHY */
 #why{background:var(--black);}
 .why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.why-visual{position:relative;}
 .why-img-stack{position:relative;height:520px;}
-.why-img-main{
-  position:absolute;top:0;left:0;right:60px;bottom:60px;
-  background:linear-gradient(135deg,#1a1a14 0%,#222218 100%);
-  border-radius:var(--r);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;
-}
-.why-img-accent{
-  position:absolute;bottom:0;right:0;width:220px;height:200px;
-  background:linear-gradient(135deg,#191908 0%,#201e0a 100%);
-  border-radius:var(--r);border:1px solid rgba(201,146,42,0.2);
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;z-index:2;
-}
-/* Camera SVG art inside the panels */
+.why-img-main{position:absolute;top:0;left:0;right:60px;bottom:60px;background:linear-gradient(135deg,#1a1a14 0%,#222218 100%);border-radius:var(--r);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;}
+.why-img-accent{position:absolute;bottom:0;right:0;width:220px;height:200px;background:linear-gradient(135deg,#191908 0%,#201e0a 100%);border-radius:var(--r);border:1px solid rgba(201,146,42,0.2);display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2;}
 .camera-art{opacity:0.15;width:200px;height:200px;}
 .camera-art-sm{opacity:0.2;width:80px;height:80px;}
-
-.why-badge{
-  position:absolute;top:20px;right:50px;z-index:3;
-  background:var(--gold);color:var(--black);
-  padding:10px 18px;border-radius:6px;
-  font-family:var(--font-h);font-size:0.9rem;font-weight:700;
-  box-shadow:0 8px 32px rgba(201,146,42,0.4);
-}
+.why-badge{position:absolute;top:20px;right:50px;z-index:3;background:var(--gold);color:var(--black);padding:10px 18px;border-radius:6px;font-family:var(--font-h);font-size:0.9rem;font-weight:700;}
 .why-points{display:flex;flex-direction:column;gap:2rem;}
 .why-point{display:flex;gap:1.2rem;align-items:flex-start;}
-.why-point-num{
-  font-family:var(--font-h);font-size:2rem;font-weight:900;
-  color:rgba(201,146,42,0.2);line-height:1;flex-shrink:0;width:40px;
-}
+.why-point-num{font-family:var(--font-h);font-size:2rem;font-weight:900;color:rgba(201,146,42,0.2);line-height:1;flex-shrink:0;width:40px;}
 .why-point-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;margin-bottom:4px;}
 .why-point-desc{color:var(--muted);font-size:0.88rem;line-height:1.7;}
-
-/* ══════════════════════════════════════════════════
-   PROCESS
-══════════════════════════════════════════════════ */
+/* PROCESS */
 #process{background:var(--deep);}
-.process-steps{
-  display:grid;grid-template-columns:repeat(4,1fr);gap:0;
-  position:relative;
-}
-.process-steps::before{
-  content:'';position:absolute;top:36px;left:0;right:0;height:1px;
-  background:linear-gradient(to right,transparent,var(--border),var(--border),transparent);
-  z-index:0;
-}
-.process-step{
-  padding:0 2rem;text-align:center;position:relative;z-index:1;
-}
-.process-num{
-  width:72px;height:72px;border-radius:50%;margin:0 auto 1.5rem;
-  background:var(--surface);border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--gold);
-  position:relative;z-index:1;transition:all var(--transition);
-}
-.process-step:hover .process-num{
-  background:var(--gold);color:var(--black);
-  box-shadow:0 0 0 8px rgba(201,146,42,0.1);
-}
+.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.process-steps::before{content:'';position:absolute;top:36px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border),transparent);z-index:0;}
+.process-step{padding:0 2rem;text-align:center;position:relative;z-index:1;}
+.process-num{width:72px;height:72px;border-radius:50%;margin:0 auto 1.5rem;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--gold);position:relative;z-index:1;transition:all var(--transition);}
+.process-step:hover .process-num{background:var(--gold);color:var(--black);}
 .process-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;margin-bottom:8px;}
 .process-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;}
-
-/* ══════════════════════════════════════════════════
-   PORTFOLIO SHOWCASE
-══════════════════════════════════════════════════ */
+/* PORTFOLIO */
 #portfolio{background:var(--black);}
 .portfolio-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem;}
-.pf-btn{
-  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  padding:7px 18px;border-radius:99px;border:1px solid var(--border);
-  background:none;color:var(--muted);cursor:none;transition:all 0.2s;
-}
-.pf-btn.active,.pf-btn:hover{
-  background:var(--gold);color:var(--black);border-color:var(--gold);
-}
-.portfolio-grid{
-  display:grid;
-  grid-template-columns:repeat(12,1fr);
-  grid-template-rows:repeat(2,220px);
-  gap:6px;
-}
-.pf-item{
-  border-radius:8px;overflow:hidden;position:relative;cursor:none;
-  background:var(--surface);
-  transition:transform 0.3s;
-}
+.pf-btn{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;border-radius:99px;border:1px solid var(--border);background:none;color:var(--muted);cursor:none;transition:all 0.2s;}
+.pf-btn.active,.pf-btn:hover{background:var(--gold);color:var(--black);border-color:var(--gold);}
+.portfolio-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(2,220px);gap:6px;}
+.pf-item{border-radius:8px;overflow:hidden;position:relative;cursor:none;background:var(--surface);transition:transform 0.3s;}
 .pf-item:hover{transform:scale(1.01);z-index:2;}
 .pf-item:nth-child(1){grid-column:1/6;grid-row:1/2;}
 .pf-item:nth-child(2){grid-column:6/9;grid-row:1/2;}
 .pf-item:nth-child(3){grid-column:9/13;grid-row:1/3;}
 .pf-item:nth-child(4){grid-column:1/4;grid-row:2/3;}
 .pf-item:nth-child(5){grid-column:4/9;grid-row:2/3;}
-.pf-inner{
-  width:100%;height:100%;
-  display:flex;align-items:center;justify-content:center;
-  overflow:hidden;position:relative;
-}
-.pf-bg{
-  position:absolute;inset:0;
-  transition:transform 0.5s;
-}
+.pf-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
+.pf-bg{position:absolute;inset:0;transition:transform 0.5s;}
 .pf-item:hover .pf-bg{transform:scale(1.06);}
-.pf-overlay{
-  position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.8),transparent 50%);
-  opacity:0;transition:opacity 0.3s;display:flex;flex-direction:column;
-  justify-content:flex-end;padding:1.2rem;
-}
+.pf-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.8),transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;}
 .pf-item:hover .pf-overlay{opacity:1;}
-.pf-tag{
-  font-size:10px;letter-spacing:0.12em;text-transform:uppercase;
-  color:var(--gold);font-weight:600;margin-bottom:4px;
-}
+.pf-tag{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px;}
 .pf-label{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--white);}
-
-/* Portfolio colour placeholders simulating photos */
 .pf-item:nth-child(1) .pf-bg{background:linear-gradient(135deg,#1a120a,#2a1c0e,#1e1608);}
 .pf-item:nth-child(2) .pf-bg{background:linear-gradient(135deg,#0a1018,#0e1822,#0c1420);}
 .pf-item:nth-child(3) .pf-bg{background:linear-gradient(135deg,#12100a,#1e1c10,#181608);}
 .pf-item:nth-child(4) .pf-bg{background:linear-gradient(135deg,#100c18,#18101e,#14101a);}
 .pf-item:nth-child(5) .pf-bg{background:linear-gradient(135deg,#0a1208,#101a0c,#0e1608);}
-
-/* ══════════════════════════════════════════════════
-   COUNTIES COVERAGE
-══════════════════════════════════════════════════ */
+/* COVERAGE */
 #coverage{background:var(--deep);text-align:center;}
-.coverage-num{
-  font-family:var(--font-h);font-size:clamp(5rem,15vw,12rem);
-  font-weight:900;color:transparent;line-height:1;
-  -webkit-text-stroke:2px rgba(201,146,42,0.3);
-  margin-bottom:-1rem;position:relative;z-index:0;
-}
-.coverage-heading{position:relative;z-index:1;}
-.counties-marquee{
-  width:100%;overflow:hidden;position:relative;margin-top:3rem;
-}
-.counties-marquee::before,.counties-marquee::after{
-  content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;
-}
+.coverage-num{font-family:var(--font-h);font-size:clamp(5rem,15vw,12rem);font-weight:900;color:transparent;line-height:1;-webkit-text-stroke:2px rgba(201,146,42,0.3);margin-bottom:-1rem;}
+.counties-marquee{width:100%;overflow:hidden;position:relative;margin-top:3rem;}
+.counties-marquee::before,.counties-marquee::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
 .counties-marquee::before{left:0;background:linear-gradient(to right,var(--deep),transparent);}
 .counties-marquee::after{right:0;background:linear-gradient(to left,var(--deep),transparent);}
-.counties-track{
-  display:flex;gap:12px;width:max-content;
-  animation:marquee 30s linear infinite;
-}
+.counties-track{display:flex;gap:12px;width:max-content;animation:marquee 30s linear infinite;}
 .counties-track2{animation-direction:reverse;animation-duration:25s;margin-top:10px;}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.county-pill{
-  padding:8px 18px;border-radius:99px;
-  border:1px solid var(--border);background:var(--surface);
-  font-size:12px;font-weight:500;letter-spacing:0.06em;white-space:nowrap;
-  color:var(--muted);
-}
-
-/* ══════════════════════════════════════════════════
-   TESTIMONIALS
-══════════════════════════════════════════════════ */
+.county-pill{padding:8px 18px;border-radius:99px;border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:500;letter-spacing:0.06em;white-space:nowrap;color:var(--muted);}
+/* TESTIMONIALS */
 #testimonials{background:var(--black);}
 .testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.testimonial-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r);padding:2rem;
-  transition:border-color var(--transition),transform var(--transition);
-}
+.testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:border-color var(--transition),transform var(--transition);}
 .testimonial-card:hover{border-color:rgba(201,146,42,0.3);transform:translateY(-4px);}
 .testimonial-stars{display:flex;gap:4px;margin-bottom:1rem;}
 .star{color:var(--gold);font-size:14px;}
-.testimonial-quote{
-  font-family:var(--font-h);font-size:1rem;font-style:italic;
-  line-height:1.65;color:var(--white);margin-bottom:1.5rem;
-}
+.testimonial-quote{font-family:var(--font-h);font-size:1rem;font-style:italic;line-height:1.65;color:var(--white);margin-bottom:1.5rem;}
 .testimonial-author{display:flex;align-items:center;gap:12px;}
-.author-avatar{
-  width:42px;height:42px;border-radius:50%;
-  background:linear-gradient(135deg,var(--gold),#8a6010);
-  display:flex;align-items:center;justify-content:center;
-  font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);
-  flex-shrink:0;
-}
+.author-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8a6010);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);flex-shrink:0;}
 .author-name{font-weight:600;font-size:13px;}
 .author-role{font-size:11px;color:var(--muted);}
-
-/* ══════════════════════════════════════════════════
-   BOOKING FORM
-══════════════════════════════════════════════════ */
-#booking{background:var(--deep);}
-.booking-wrap{
-  display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;
-}
-.booking-info{}
-.booking-contact-card{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r);padding:2rem;margin-top:2.5rem;
-}
-.contact-item{
-  display:flex;align-items:flex-start;gap:14px;
-  padding:14px 0;border-bottom:1px solid var(--border);
-}
-.contact-item:last-child{border-bottom:none;}
-.contact-icon{
-  width:38px;height:38px;border-radius:8px;
-  background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.15);
-  display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;
-}
-.contact-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;}
-.contact-value{font-size:14px;font-weight:500;color:var(--white);margin-top:2px;}
-.contact-value a{color:var(--white);text-decoration:none;}
-.contact-value a:hover{color:var(--gold);}
-
-/* Booking form */
-.booking-form{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r);padding:3rem;
-}
-.form-title{font-family:var(--font-h);font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;}
-.form-sub{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-group{display:flex;flex-direction:column;gap:6px;}
-.form-group.full{grid-column:1/-1;}
-.form-label{
-  font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;
-  color:var(--muted);
-}
-.form-input,.form-select,.form-textarea{
-  background:var(--black);border:1px solid var(--border);
-  color:var(--white);padding:12px 14px;border-radius:6px;
-  font-family:var(--font-b);font-size:14px;outline:none;
-  transition:border-color 0.2s,box-shadow 0.2s;
-  -webkit-appearance:none;
-}
-.form-input:focus,.form-select:focus,.form-textarea:focus{
-  border-color:var(--gold);
-  box-shadow:0 0 0 3px rgba(201,146,42,0.1);
-}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,240,232,0.2);}
-.form-select{
-  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9922a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");
-  background-repeat:no-repeat;background-position:right 12px center;
-  padding-right:36px;cursor:none;
-}
-.form-select option{background:var(--surface);}
-.form-textarea{resize:vertical;min-height:110px;line-height:1.6;}
-.form-submit{
-  width:100%;padding:14px;margin-top:8px;
-  background:var(--gold);color:var(--black);border:none;border-radius:6px;
-  font-family:var(--font-b);font-size:15px;font-weight:700;
-  letter-spacing:0.06em;text-transform:uppercase;cursor:none;
-  transition:all 0.2s;
-}
-.form-submit:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,146,42,0.3);}
-.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
-.form-success{
-  display:none;text-align:center;padding:3rem;
-}
-.form-success.show{display:block;}
-.success-icon{font-size:3rem;margin-bottom:1rem;}
-.success-title{font-family:var(--font-h);font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem;}
-.success-sub{color:var(--muted);font-size:0.9rem;}
-
-/* ══════════════════════════════════════════════════
-   INQUIRY SECTION
-══════════════════════════════════════════════════ */
-#inquiry{background:var(--black);}
-.inquiry-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-.faq-list{display:flex;flex-direction:column;gap:12px;}
-.faq-item{
-  border:1px solid var(--border);border-radius:8px;overflow:hidden;
-}
-.faq-q{
-  padding:16px 20px;display:flex;align-items:center;justify-content:space-between;
-  cursor:none;font-weight:500;font-size:15px;
-  transition:color 0.2s;
-}
-.faq-q:hover{color:var(--gold);}
-.faq-icon{
-  width:24px;height:24px;border-radius:50%;
-  border:1px solid var(--border);display:flex;align-items:center;justify-content:center;
-  font-size:16px;flex-shrink:0;transition:all 0.3s;color:var(--muted);
-}
-.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--gold);color:var(--gold);}
-.faq-a{
-  max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s;
-  color:var(--muted);font-size:0.9rem;line-height:1.75;
-  padding:0 20px;
-}
-.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px;}
-
-/* Inquiry form */
-.inquiry-form{
-  background:var(--surface);border:1px solid var(--border);
-  border-radius:var(--r);padding:2.5rem;
-}
-.inquiry-form .form-submit{margin-top:4px;}
-.inq-success{
-  display:none;padding:2rem;text-align:center;
-}
-.inq-success.show{display:block;}
-
-/* ══════════════════════════════════════════════════
-   PACKAGES / PRICING TEASE
-══════════════════════════════════════════════════ */
+/* PACKAGES */
 #packages{background:var(--deep);}
 .packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.package-card{
-  border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;
-  background:var(--surface);
-  transition:border-color var(--transition),transform var(--transition);
-  position:relative;
-}
+.package-card{border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;background:var(--surface);transition:border-color var(--transition),transform var(--transition);position:relative;}
 .package-card.featured{border-color:rgba(201,146,42,0.4);background:var(--card);}
 .package-card:hover{transform:translateY(-6px);}
-.package-badge{
-  position:absolute;top:-14px;left:50%;transform:translateX(-50%);
-  background:var(--gold);color:var(--black);
-  font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;
-  padding:5px 16px;border-radius:99px;
-}
+.package-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:99px;}
 .package-name{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin-bottom:4px;}
 .package-price{font-family:var(--font-h);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
 .package-price span{font-size:1rem;color:var(--muted);font-weight:400;}
 .package-desc{color:var(--muted);font-size:0.85rem;margin:12px 0 1.5rem;}
 .package-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;}
-.package-features li{
-  font-size:13px;display:flex;align-items:center;gap:10px;
-}
-.package-features li::before{
-  content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;
-}
-.package-cta{
-  width:100%;padding:12px;border-radius:6px;
-  font-family:var(--font-b);font-size:13px;font-weight:600;
-  letter-spacing:0.06em;text-transform:uppercase;cursor:none;
-  transition:all 0.2s;border:1px solid var(--gold);
-  background:transparent;color:var(--gold);
-}
+.package-features li{font-size:13px;display:flex;align-items:center;gap:10px;}
+.package-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.package-cta{width:100%;padding:12px;border-radius:6px;font-family:var(--font-b);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:none;transition:all 0.2s;border:1px solid var(--gold);background:transparent;color:var(--gold);}
 .package-card.featured .package-cta{background:var(--gold);color:var(--black);}
 .package-cta:hover{background:var(--gold);color:var(--black);}
-
-/* ══════════════════════════════════════════════════
-   FOOTER
-══════════════════════════════════════════════════ */
-footer{
-  background:var(--black);border-top:1px solid var(--border);
-  padding:4rem 3rem 2rem;
-}
-.footer-grid{
-  display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;
-  gap:3rem;max-width:1300px;margin:0 auto 3rem;
-}
+/* BOOKING */
+#booking{background:var(--deep);}
+.booking-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;}
+.booking-contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-top:2.5rem;}
+.contact-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
+.contact-item:last-child{border-bottom:none;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.contact-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;}
+.contact-value{font-size:14px;font-weight:500;color:var(--white);margin-top:2px;}
+.contact-value a{color:var(--white);text-decoration:none;}
+.contact-value a:hover{color:var(--gold);}
+.booking-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:3rem;}
+.form-title{font-family:var(--font-h);font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;}
+.form-sub{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+.form-group{display:flex;flex-direction:column;gap:6px;}
+.form-group.full{grid-column:1/-1;}
+.form-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
+.form-input,.form-select,.form-textarea{background:var(--black);border:1px solid var(--border);color:var(--white);padding:12px 14px;border-radius:6px;font-family:var(--font-b);font-size:14px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;-webkit-appearance:none;}
+.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,146,42,0.1);}
+.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,240,232,0.2);}
+.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9922a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;cursor:none;}
+.form-select option{background:var(--surface);}
+.form-textarea{resize:vertical;min-height:110px;line-height:1.6;}
+.form-submit{width:100%;padding:14px;margin-top:8px;background:var(--gold);color:var(--black);border:none;border-radius:6px;font-family:var(--font-b);font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:none;transition:all 0.2s;}
+.form-submit:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,146,42,0.3);}
+.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.form-success{display:none;text-align:center;padding:3rem;}
+.form-success.show{display:block;}
+.success-icon{font-size:3rem;margin-bottom:1rem;}
+.success-title{font-family:var(--font-h);font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem;}
+.success-sub{color:var(--muted);font-size:0.9rem;}
+.form-error{color:#e74c3c;font-size:13px;margin-top:8px;min-height:18px;grid-column:1/-1;}
+/* INQUIRY */
+#inquiry{background:var(--black);}
+.inquiry-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
+.faq-list{display:flex;flex-direction:column;gap:12px;}
+.faq-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;}
+.faq-q{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:none;font-weight:500;font-size:15px;transition:color 0.2s;}
+.faq-q:hover{color:var(--gold);}
+.faq-icon{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:all 0.3s;color:var(--muted);}
+.faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--gold);color:var(--gold);}
+.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s;color:var(--muted);font-size:0.9rem;line-height:1.75;padding:0 20px;}
+.faq-item.open .faq-a{max-height:200px;padding:0 20px 16px;}
+.inquiry-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;}
+.inq-success{display:none;padding:2rem;text-align:center;}
+.inq-success.show{display:block;}
+/* FOOTER */
+footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3rem 2rem;}
+.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;max-width:1300px;margin:0 auto 3rem;}
 .footer-brand{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin-bottom:1rem;}
 .footer-brand span{color:var(--gold);}
 .footer-tagline{color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:1.5rem;}
 .social-links{display:flex;gap:10px;}
-.social-btn{
-  width:36px;height:36px;border-radius:8px;
-  border:1px solid var(--border);
-  display:flex;align-items:center;justify-content:center;
-  font-size:15px;color:var(--muted);text-decoration:none;
-  transition:all 0.2s;cursor:none;
-}
+.social-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);text-decoration:none;transition:all 0.2s;cursor:none;}
 .social-btn:hover{border-color:var(--gold);color:var(--gold);}
 .footer-heading{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
 .footer-links a{font-size:13px;color:rgba(245,240,232,0.45);text-decoration:none;transition:color 0.2s;}
 .footer-links a:hover{color:var(--gold);}
-.footer-bottom{
-  max-width:1300px;margin:0 auto;
-  border-top:1px solid var(--border);padding-top:2rem;
-  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;
-}
+.footer-bottom{max-width:1300px;margin:0 auto;border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .footer-copy{font-size:12px;color:var(--faint);}
 .footer-legal{display:flex;gap:1.5rem;}
 .footer-legal a{font-size:12px;color:var(--faint);text-decoration:none;}
-
-/* ══════════════════════════════════════════════════
-   FLOATING BOOK BTN
-══════════════════════════════════════════════════ */
-.float-btn{
-  position:fixed;bottom:2rem;right:2rem;z-index:400;
-  background:var(--gold);color:var(--black);border:none;
-  padding:14px 24px;border-radius:50px;
-  font-family:var(--font-b);font-size:13px;font-weight:700;
-  letter-spacing:0.06em;text-transform:uppercase;cursor:none;
-  box-shadow:0 8px 32px rgba(201,146,42,0.4);
-  transition:all 0.2s;display:flex;align-items:center;gap:8px;
-  text-decoration:none;
-  animation:floatIn 0.5s 1s ease both;
-}
+/* FLOAT BTN */
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--gold);color:var(--black);border:none;padding:14px 24px;border-radius:50px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:none;box-shadow:0 8px 32px rgba(201,146,42,0.4);transition:all 0.2s;display:flex;align-items:center;gap:8px;text-decoration:none;animation:floatIn 0.5s 1s ease both;}
 @keyframes floatIn{from{opacity:0;transform:translateY(20px)}}
-.float-btn:hover{background:var(--gold2);transform:translateY(-3px);box-shadow:0 12px 40px rgba(201,146,42,0.5);}
+.float-btn:hover{background:var(--gold2);transform:translateY(-3px);}
 .float-dot{width:8px;height:8px;border-radius:50%;background:var(--black);animation:pulse 1.5s ease-in-out infinite;}
 @keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-
-/* ══════════════════════════════════════════════════
-   TOAST
-══════════════════════════════════════════════════ */
+/* TOAST */
 .toast-wrap{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:800;}
-.toast{
-  background:var(--surface);border:1px solid var(--border);
-  color:var(--white);padding:14px 24px;border-radius:8px;
-  font-size:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);
-  animation:toastIn 0.3s ease;border-left:3px solid var(--gold);
-  white-space:nowrap;
-}
+.toast{background:var(--surface);border:1px solid var(--border);color:var(--white);padding:14px 24px;border-radius:8px;font-size:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:toastIn 0.3s ease;border-left:3px solid var(--gold);white-space:nowrap;}
+.toast.success{border-left-color:var(--green);}
+.toast.error{border-left-color:var(--red);}
 @keyframes toastIn{from{opacity:0;transform:translateY(10px)}}
-
-/* ══════════════════════════════════════════════════
-   RESPONSIVE
-══════════════════════════════════════════════════ */
+/* RESPONSIVE */
 @media(max-width:1024px){
   .services-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;gap:3rem;}
@@ -735,10 +275,7 @@ footer{
   .packages-grid{grid-template-columns:1fr;}
   .testimonials-grid{grid-template-columns:1fr;}
   .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
-  .portfolio-grid{
-    grid-template-columns:1fr 1fr;
-    grid-template-rows:repeat(3,180px);
-  }
+  .portfolio-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px);}
   .pf-item:nth-child(1){grid-column:1/2;grid-row:1/2;}
   .pf-item:nth-child(2){grid-column:2/3;grid-row:1/2;}
   .pf-item:nth-child(3){grid-column:1/3;grid-row:2/3;}
@@ -762,39 +299,18 @@ footer{
 </style>
 </head>
 <body>
-
-<!-- Custom cursor -->
 <div class="cursor" id="cursor"></div>
 <div class="cursor-ring" id="cursorRing"></div>
-
-<!-- Floating book button -->
-<a class="float-btn" href="#booking">
-  <div class="float-dot"></div>
-  <span>Book a Session</span>
-</a>
-
-<!-- ══════════════════════════════════════════════
-     NAVIGATION
-══════════════════════════════════════════════ -->
+<a class="float-btn" href="#booking"><div class="float-dot"></div><span>Book a Session</span></a>
 <nav id="navbar">
-  <a class="nav-logo" href="#">
-    <div class="nav-logo-mark">K</div>
-    KENYA<span>045</span>
-  </a>
+  <a class="nav-logo" href="#"><div class="nav-logo-mark">K</div>KENYA<span>045</span></a>
   <div class="nav-links">
-    <a href="#services">Services</a>
-    <a href="#portfolio">Portfolio</a>
-    <a href="#packages">Packages</a>
-    <a href="#inquiry">FAQ</a>
-    <a href="#booking">Contact</a>
+    <a href="#services">Services</a><a href="#portfolio">Portfolio</a>
+    <a href="#packages">Packages</a><a href="#inquiry">FAQ</a><a href="#booking">Contact</a>
   </div>
   <a class="nav-cta" href="#booking">Book Now</a>
-  <button class="hamburger" id="hamburger" aria-label="Menu">
-    <span></span><span></span><span></span>
-  </button>
+  <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
-
-<!-- Mobile nav -->
 <div class="mobile-nav" id="mobileNav">
   <a href="#services" onclick="closeMobileNav()">Services</a>
   <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
@@ -802,10 +318,7 @@ footer{
   <a href="#inquiry" onclick="closeMobileNav()">FAQ</a>
   <a href="#booking" onclick="closeMobileNav()">Book Now</a>
 </div>
-
-<!-- ══════════════════════════════════════════════
-     HERO
-══════════════════════════════════════════════ -->
+<!-- HERO -->
 <section class="hero" id="home">
   <div class="hero-bg"></div>
   <svg class="hero-aperture" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
@@ -820,190 +333,63 @@ footer{
   </svg>
   <div class="hero-content">
     <div class="hero-eyebrow">Professional Media Services · Kenya</div>
-    <h1>
-      We Frame<br>
-      <em>Your Story</em>
-      <span class="line2">In Every Pixel</span>
-    </h1>
-    <p class="hero-sub">
-      Award-winning photography, cinematic videography and precision drone services
-      across all 47 counties in Kenya. Every moment deserves to be immortal.
-    </p>
+    <h1>We Frame<br><em>Your Story</em><span class="line2">In Every Pixel</span></h1>
+    <p class="hero-sub">Award-winning photography, cinematic videography and precision drone services across all 47 counties in Kenya. Every moment deserves to be immortal.</p>
     <div class="hero-actions">
       <a class="btn-gold" href="#booking">Book a Session</a>
       <a class="btn-outline" href="#services">Our Services</a>
     </div>
   </div>
   <div class="hero-stats">
-    <div class="hero-stat">
-      <span class="hero-stat-num" data-count="47">0</span>
-      <span class="hero-stat-label">Counties Covered</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num" data-count="500">0</span>
-      <span class="hero-stat-label">Events Captured</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num" data-count="8">0</span>
-      <span class="hero-stat-label">Years Experience</span>
-    </div>
-    <div class="hero-stat">
-      <span class="hero-stat-num" data-count="350">0</span>
-      <span class="hero-stat-label">Happy Clients</span>
-    </div>
+    <div class="hero-stat"><span class="hero-stat-num" data-count="47">0</span><span class="hero-stat-label">Counties Covered</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" data-count="500">0</span><span class="hero-stat-label">Events Captured</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" data-count="8">0</span><span class="hero-stat-label">Years Experience</span></div>
+    <div class="hero-stat"><span class="hero-stat-num" data-count="350">0</span><span class="hero-stat-label">Happy Clients</span></div>
   </div>
-  <div class="scroll-hint">
-    <span>Scroll</span>
-    <div class="scroll-line"></div>
-  </div>
+  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     SERVICES
-══════════════════════════════════════════════ -->
+<!-- SERVICES -->
 <section id="services">
   <div class="container">
     <div class="section-eyebrow reveal">What We Do</div>
     <h2 class="section-title reveal">Professional <em>Services</em><br>Tailored for You</h2>
     <p class="section-sub reveal">From intimate portraits to sweeping aerial landscapes — we bring technical mastery and artistic vision to every project.</p>
     <div class="services-grid reveal">
-
-      <div class="service-card">
-        <div class="service-icon">📷</div>
-        <h3 class="service-title">Photography</h3>
-        <p class="service-desc">
-          Stunning stills that freeze the moments that matter. Our photographers blend technical precision with a natural eye for light, emotion and composition to deliver images that last a lifetime.
-        </p>
-        <ul class="service-features">
-          <li>Wedding & Engagement Sessions</li>
-          <li>Corporate & Brand Photography</li>
-          <li>Portrait & Fashion Shoots</li>
-          <li>Event & Conference Coverage</li>
-          <li>Product & Commercial Photography</li>
-          <li>Real Estate & Architecture</li>
-        </ul>
-        <a class="service-cta" href="#booking">Book Photography →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🎬</div>
-        <h3 class="service-title">Videography</h3>
-        <p class="service-desc">
-          Cinematic storytelling that moves people. We craft compelling video content — from emotional wedding films to high-impact brand commercials — using professional cinema-grade equipment.
-        </p>
-        <ul class="service-features">
-          <li>Wedding & Love Story Films</li>
-          <li>Corporate & Brand Videos</li>
-          <li>Music Videos & Short Films</li>
-          <li>Event Highlight Reels</li>
-          <li>Documentary Production</li>
-          <li>Social Media Content Creation</li>
-        </ul>
-        <a class="service-cta" href="#booking">Book Videography →</a>
-      </div>
-
-      <div class="service-card">
-        <div class="service-icon">🚁</div>
-        <h3 class="service-title">Drone Services</h3>
-        <p class="service-desc">
-          Breathtaking aerial perspectives that ground-level cameras cannot capture. Our licensed drone pilots deliver stunning overhead footage and photography that gives your project a cinematic edge.
-        </p>
-        <ul class="service-features">
-          <li>Aerial Photography & 4K Video</li>
-          <li>Real Estate Aerial Surveys</li>
-          <li>Event Aerial Coverage</li>
-          <li>Land & Infrastructure Mapping</li>
-          <li>Agricultural Surveys</li>
-          <li>Cinematic Drone Sequences</li>
-        </ul>
-        <a class="service-cta" href="#booking">Book Drone →</a>
-      </div>
-
+      <div class="service-card"><div class="service-icon">📷</div><h3 class="service-title">Photography</h3><p class="service-desc">Stunning stills that freeze the moments that matter. Our photographers blend technical precision with a natural eye for light, emotion and composition.</p><ul class="service-features"><li>Wedding & Engagement Sessions</li><li>Corporate & Brand Photography</li><li>Portrait & Fashion Shoots</li><li>Event & Conference Coverage</li><li>Product & Commercial Photography</li><li>Real Estate & Architecture</li></ul><a class="service-cta" href="#booking">Book Photography →</a></div>
+      <div class="service-card"><div class="service-icon">🎬</div><h3 class="service-title">Videography</h3><p class="service-desc">Cinematic storytelling that moves people. We craft compelling video content from emotional wedding films to high-impact brand commercials.</p><ul class="service-features"><li>Wedding & Love Story Films</li><li>Corporate & Brand Videos</li><li>Music Videos & Short Films</li><li>Event Highlight Reels</li><li>Documentary Production</li><li>Social Media Content Creation</li></ul><a class="service-cta" href="#booking">Book Videography →</a></div>
+      <div class="service-card"><div class="service-icon">🚁</div><h3 class="service-title">Drone Services</h3><p class="service-desc">Breathtaking aerial perspectives that ground-level cameras cannot capture. Our licensed drone pilots deliver stunning overhead footage.</p><ul class="service-features"><li>Aerial Photography & 4K Video</li><li>Real Estate Aerial Surveys</li><li>Event Aerial Coverage</li><li>Land & Infrastructure Mapping</li><li>Agricultural Surveys</li><li>Cinematic Drone Sequences</li></ul><a class="service-cta" href="#booking">Book Drone →</a></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     WHY CHOOSE US
-══════════════════════════════════════════════ -->
+<!-- WHY -->
 <section id="why">
   <div class="container">
     <div class="why-grid">
       <div>
         <div class="section-eyebrow reveal">Why Kenya045</div>
         <h2 class="section-title reveal">The Difference Is<br><em>In The Details</em></h2>
-        <p class="section-sub reveal">We don't just take pictures — we create visual legacies. Here's why clients across Kenya choose us.</p>
+        <p class="section-sub reveal">We don't just take pictures — we create visual legacies.</p>
         <div class="why-points">
-          <div class="why-point reveal">
-            <span class="why-point-num">01</span>
-            <div>
-              <div class="why-point-title">Nationwide Reach</div>
-              <p class="why-point-desc">We operate in all 47 counties across Kenya. From Mombasa to Mandera, from Nairobi to Kisumu — we travel to you, so you never miss a moment.</p>
-            </div>
-          </div>
-          <div class="why-point reveal reveal-delay-1">
-            <span class="why-point-num">02</span>
-            <div>
-              <div class="why-point-title">Cinema-Grade Equipment</div>
-              <p class="why-point-desc">We invest in the latest Sony, Canon and DJI professional systems. Every project receives 4K footage, RAW image capture and colour-graded deliverables.</p>
-            </div>
-          </div>
-          <div class="why-point reveal reveal-delay-2">
-            <span class="why-point-num">03</span>
-            <div>
-              <div class="why-point-title">Fast Turnaround</div>
-              <p class="why-point-desc">Edited photos delivered within 72 hours. Wedding films within 2 weeks. We know you're eager to relive those moments — so we move fast without sacrificing quality.</p>
-            </div>
-          </div>
-          <div class="why-point reveal reveal-delay-3">
-            <span class="why-point-num">04</span>
-            <div>
-              <div class="why-point-title">Licensed & Insured</div>
-              <p class="why-point-desc">Our drone pilots are KCAA-licensed. We carry full public liability insurance. Book with total confidence — your event is in professional, responsible hands.</p>
-            </div>
-          </div>
+          <div class="why-point reveal"><span class="why-point-num">01</span><div><div class="why-point-title">Nationwide Reach</div><p class="why-point-desc">We operate in all 47 counties across Kenya. From Mombasa to Mandera — we travel to you.</p></div></div>
+          <div class="why-point reveal reveal-delay-1"><span class="why-point-num">02</span><div><div class="why-point-title">Cinema-Grade Equipment</div><p class="why-point-desc">Sony, Canon and DJI professional systems. Every project receives 4K footage and RAW image capture.</p></div></div>
+          <div class="why-point reveal reveal-delay-2"><span class="why-point-num">03</span><div><div class="why-point-title">Fast Turnaround</div><p class="why-point-desc">Edited photos within 72 hours. Wedding films within 2 weeks. Fast without sacrificing quality.</p></div></div>
+          <div class="why-point reveal reveal-delay-3"><span class="why-point-num">04</span><div><div class="why-point-title">Licensed & Insured</div><p class="why-point-desc">KCAA-licensed drone pilots. Full public liability insurance on every shoot.</p></div></div>
         </div>
       </div>
       <div class="why-visual reveal">
         <div class="why-img-stack">
-          <div class="why-img-main">
-            <svg class="camera-art" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <rect x="20" y="60" width="160" height="110" rx="10" stroke="#c9922a" stroke-width="1.5"/>
-              <rect x="80" y="40" width="40" height="25" rx="5" stroke="#c9922a" stroke-width="1.5"/>
-              <circle cx="100" cy="120" r="35" stroke="#c9922a" stroke-width="1.5"/>
-              <circle cx="100" cy="120" r="22" stroke="#c9922a" stroke-width="1"/>
-              <circle cx="100" cy="120" r="8" fill="#c9922a" opacity="0.5"/>
-              <rect x="30" y="75" width="20" height="12" rx="3" stroke="#c9922a" stroke-width="1"/>
-              <circle cx="155" cy="75" r="6" stroke="#c9922a" stroke-width="1"/>
-            </svg>
-          </div>
-          <div class="why-img-accent">
-            <svg class="camera-art-sm" viewBox="0 0 80 80" fill="none" xmlns="http://www.w3.org/2000/svg">
-              <path d="M40 10 L70 25 L70 55 L40 70 L10 55 L10 25 Z" stroke="#c9922a" stroke-width="1"/>
-              <circle cx="40" cy="40" r="15" stroke="#c9922a" stroke-width="1"/>
-              <circle cx="40" cy="40" r="6" fill="#c9922a" opacity="0.4"/>
-              <line x1="40" y1="10" x2="40" y2="25" stroke="#c9922a" stroke-width="0.8"/>
-              <line x1="40" y1="55" x2="40" y2="70" stroke="#c9922a" stroke-width="0.8"/>
-              <line x1="10" y1="40" x2="25" y2="40" stroke="#c9922a" stroke-width="0.8"/>
-              <line x1="55" y1="40" x2="70" y2="40" stroke="#c9922a" stroke-width="0.8"/>
-            </svg>
-          </div>
+          <div class="why-img-main"><svg class="camera-art" viewBox="0 0 200 200" fill="none"><rect x="20" y="60" width="160" height="110" rx="10" stroke="#c9922a" stroke-width="1.5"/><rect x="80" y="40" width="40" height="25" rx="5" stroke="#c9922a" stroke-width="1.5"/><circle cx="100" cy="120" r="35" stroke="#c9922a" stroke-width="1.5"/><circle cx="100" cy="120" r="22" stroke="#c9922a" stroke-width="1"/><circle cx="100" cy="120" r="8" fill="#c9922a" opacity="0.5"/><rect x="30" y="75" width="20" height="12" rx="3" stroke="#c9922a" stroke-width="1"/><circle cx="155" cy="75" r="6" stroke="#c9922a" stroke-width="1"/></svg></div>
+          <div class="why-img-accent"><svg class="camera-art-sm" viewBox="0 0 80 80" fill="none"><path d="M40 10 L70 25 L70 55 L40 70 L10 55 L10 25 Z" stroke="#c9922a" stroke-width="1"/><circle cx="40" cy="40" r="15" stroke="#c9922a" stroke-width="1"/><circle cx="40" cy="40" r="6" fill="#c9922a" opacity="0.4"/></svg></div>
           <div class="why-badge">8+ Years</div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     PROCESS
-══════════════════════════════════════════════ -->
+<!-- PROCESS -->
 <section id="process">
   <div class="container">
     <div style="text-align:center;margin-bottom:4rem;">
@@ -1011,35 +397,15 @@ footer{
       <h2 class="section-title reveal">From Booking to<br><em>Beautiful Memories</em></h2>
     </div>
     <div class="process-steps">
-      <div class="process-step reveal">
-        <div class="process-num">01</div>
-        <h4 class="process-title">Book Online</h4>
-        <p class="process-desc">Fill in the booking form with your event details. Takes less than 3 minutes. We'll confirm within 24 hours.</p>
-      </div>
-      <div class="process-step reveal reveal-delay-1">
-        <div class="process-num">02</div>
-        <h4 class="process-title">Consultation</h4>
-        <p class="process-desc">We schedule a free call to understand your vision, style preferences and any specific shots you need.</p>
-      </div>
-      <div class="process-step reveal reveal-delay-2">
-        <div class="process-num">03</div>
-        <h4 class="process-title">We Show Up</h4>
-        <p class="process-desc">Our team arrives on time, fully equipped. We blend into your event and capture every authentic moment.</p>
-      </div>
-      <div class="process-step reveal reveal-delay-3">
-        <div class="process-num">04</div>
-        <h4 class="process-title">Receive Your Files</h4>
-        <p class="process-desc">Professionally edited photos and videos delivered via private gallery link. Yours forever, in high resolution.</p>
-      </div>
+      <div class="process-step reveal"><div class="process-num">01</div><h4 class="process-title">Book Online</h4><p class="process-desc">Fill in the booking form. Takes less than 3 minutes. We confirm within 24 hours.</p></div>
+      <div class="process-step reveal reveal-delay-1"><div class="process-num">02</div><h4 class="process-title">Consultation</h4><p class="process-desc">Free call to understand your vision, style preferences and specific shots you need.</p></div>
+      <div class="process-step reveal reveal-delay-2"><div class="process-num">03</div><h4 class="process-title">We Show Up</h4><p class="process-desc">Our team arrives on time, fully equipped. We capture every authentic moment.</p></div>
+      <div class="process-step reveal reveal-delay-3"><div class="process-num">04</div><h4 class="process-title">Receive Files</h4><p class="process-desc">Professionally edited photos and videos delivered via private gallery link.</p></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     PORTFOLIO
-══════════════════════════════════════════════ -->
+<!-- PORTFOLIO -->
 <section id="portfolio">
   <div class="container">
     <div class="section-eyebrow reveal">Our Work</div>
@@ -1052,341 +418,95 @@ footer{
       <button class="pf-btn" onclick="filterPortfolio(this,'portrait')">Portraits</button>
     </div>
     <div class="portfolio-grid reveal">
-      <div class="pf-item" data-cat="wedding">
-        <div class="pf-inner">
-          <div class="pf-bg">
-            <svg width="100%" height="100%" viewBox="0 0 400 220" preserveAspectRatio="xMidYMid slice">
-              <defs><radialGradient id="g1" cx="60%" cy="40%"><stop offset="0%" stop-color="#c9922a" stop-opacity="0.3"/><stop offset="100%" stop-color="#1a120a" stop-opacity="1"/></radialGradient></defs>
-              <rect width="400" height="220" fill="url(#g1)"/>
-              <circle cx="240" cy="90" r="60" fill="none" stroke="#c9922a" stroke-width="0.5" opacity="0.4"/>
-              <circle cx="240" cy="90" r="40" fill="none" stroke="#c9922a" stroke-width="0.3" opacity="0.3"/>
-              <text x="200" y="180" font-family="Georgia" font-size="80" fill="#c9922a" opacity="0.06">♥</text>
-            </svg>
-          </div>
-          <div class="pf-overlay">
-            <div class="pf-tag">Wedding</div>
-            <div class="pf-label">Nairobi Ceremony</div>
-          </div>
-        </div>
-      </div>
-      <div class="pf-item" data-cat="corporate">
-        <div class="pf-inner">
-          <div class="pf-bg">
-            <svg width="100%" height="100%" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice">
-              <defs><radialGradient id="g2" cx="30%" cy="60%"><stop offset="0%" stop-color="#3a7bd5" stop-opacity="0.25"/><stop offset="100%" stop-color="#0a1018" stop-opacity="1"/></radialGradient></defs>
-              <rect width="300" height="220" fill="url(#g2)"/>
-              <rect x="60" y="40" width="180" height="140" rx="4" fill="none" stroke="#3a7bd5" stroke-width="0.5" opacity="0.3"/>
-              <line x1="90" y1="80" x2="210" y2="80" stroke="#3a7bd5" stroke-width="0.5" opacity="0.4"/>
-              <line x1="90" y1="100" x2="180" y2="100" stroke="#3a7bd5" stroke-width="0.5" opacity="0.3"/>
-              <line x1="90" y1="120" x2="200" y2="120" stroke="#3a7bd5" stroke-width="0.5" opacity="0.3"/>
-            </svg>
-          </div>
-          <div class="pf-overlay">
-            <div class="pf-tag">Corporate</div>
-            <div class="pf-label">Brand Campaign</div>
-          </div>
-        </div>
-      </div>
-      <div class="pf-item" data-cat="aerial">
-        <div class="pf-inner">
-          <div class="pf-bg">
-            <svg width="100%" height="100%" viewBox="0 0 300 440" preserveAspectRatio="xMidYMid slice">
-              <defs><radialGradient id="g3" cx="50%" cy="30%"><stop offset="0%" stop-color="#2a8c4a" stop-opacity="0.3"/><stop offset="100%" stop-color="#12100a" stop-opacity="1"/></radialGradient></defs>
-              <rect width="300" height="440" fill="url(#g3)"/>
-              <path d="M150 50 L200 100 L150 80 L100 100 Z" fill="#2a8c4a" opacity="0.15"/>
-              <path d="M120 130 L180 130 L180 160 L120 160 Z" fill="none" stroke="#2a8c4a" stroke-width="0.5" opacity="0.3"/>
-              <circle cx="150" cy="200" r="80" fill="none" stroke="#2a8c4a" stroke-width="0.4" opacity="0.2" stroke-dasharray="4 8"/>
-            </svg>
-          </div>
-          <div class="pf-overlay">
-            <div class="pf-tag">Aerial / Drone</div>
-            <div class="pf-label">Aerial Landscape</div>
-          </div>
-        </div>
-      </div>
-      <div class="pf-item" data-cat="portrait">
-        <div class="pf-inner">
-          <div class="pf-bg">
-            <svg width="100%" height="100%" viewBox="0 0 300 220" preserveAspectRatio="xMidYMid slice">
-              <defs><radialGradient id="g4" cx="50%" cy="40%"><stop offset="0%" stop-color="#8b5cf6" stop-opacity="0.25"/><stop offset="100%" stop-color="#100c18" stop-opacity="1"/></radialGradient></defs>
-              <rect width="300" height="220" fill="url(#g4)"/>
-              <ellipse cx="150" cy="90" rx="40" ry="50" fill="none" stroke="#8b5cf6" stroke-width="0.5" opacity="0.4"/>
-              <ellipse cx="150" cy="170" rx="70" ry="30" fill="none" stroke="#8b5cf6" stroke-width="0.5" opacity="0.3"/>
-            </svg>
-          </div>
-          <div class="pf-overlay">
-            <div class="pf-tag">Portrait</div>
-            <div class="pf-label">Studio Portrait</div>
-          </div>
-        </div>
-      </div>
-      <div class="pf-item" data-cat="wedding">
-        <div class="pf-inner">
-          <div class="pf-bg">
-            <svg width="100%" height="100%" viewBox="0 0 500 220" preserveAspectRatio="xMidYMid slice">
-              <defs><radialGradient id="g5" cx="50%" cy="50%"><stop offset="0%" stop-color="#c9922a" stop-opacity="0.2"/><stop offset="100%" stop-color="#0e1608" stop-opacity="1"/></radialGradient></defs>
-              <rect width="500" height="220" fill="url(#g5)"/>
-              <path d="M50 180 Q150 80 250 140 Q350 200 450 60" fill="none" stroke="#c9922a" stroke-width="0.6" opacity="0.4"/>
-              <circle cx="250" cy="110" r="50" fill="none" stroke="#c9922a" stroke-width="0.4" opacity="0.3" stroke-dasharray="3 6"/>
-            </svg>
-          </div>
-          <div class="pf-overlay">
-            <div class="pf-tag">Event</div>
-            <div class="pf-label">Mombasa Celebration</div>
-          </div>
-        </div>
-      </div>
+      <div class="pf-item" data-cat="wedding"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Wedding</div><div class="pf-label">Nairobi Ceremony</div></div></div></div>
+      <div class="pf-item" data-cat="corporate"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Corporate</div><div class="pf-label">Brand Campaign</div></div></div></div>
+      <div class="pf-item" data-cat="aerial"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Aerial / Drone</div><div class="pf-label">Aerial Landscape</div></div></div></div>
+      <div class="pf-item" data-cat="portrait"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Portrait</div><div class="pf-label">Studio Portrait</div></div></div></div>
+      <div class="pf-item" data-cat="wedding"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Event</div><div class="pf-label">Mombasa Celebration</div></div></div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     COVERAGE
-══════════════════════════════════════════════ -->
+<!-- COVERAGE -->
 <section id="coverage">
   <div class="container">
     <div class="coverage-num reveal">47</div>
-    <div class="coverage-heading">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Nationwide Coverage</div>
-      <h2 class="section-title reveal">We Serve Every<br><em>County in Kenya</em></h2>
-      <p class="section-sub reveal" style="margin:0 auto 3rem;text-align:center;">Whether you're in the coastal lowlands of Mombasa, the highlands of Nyeri or the arid north of Turkana — we travel to your event.</p>
-    </div>
+    <div class="section-eyebrow reveal" style="justify-content:center;">Nationwide Coverage</div>
+    <h2 class="section-title reveal" style="text-align:center;">We Serve Every<br><em>County in Kenya</em></h2>
+    <p class="section-sub reveal" style="margin:0 auto 3rem;text-align:center;">Whether you're in coastal Mombasa, the highlands of Nyeri or the north of Turkana — we travel to your event.</p>
   </div>
-  <div class="counties-marquee">
-    <div class="counties-track" id="marquee1"></div>
-  </div>
-  <div class="counties-marquee" style="margin-top:10px">
-    <div class="counties-track counties-track2" id="marquee2"></div>
-  </div>
+  <div class="counties-marquee"><div class="counties-track" id="marquee1"></div></div>
+  <div class="counties-marquee" style="margin-top:10px"><div class="counties-track counties-track2" id="marquee2"></div></div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     PACKAGES
-══════════════════════════════════════════════ -->
+<!-- PACKAGES -->
 <section id="packages">
   <div class="container">
     <div style="text-align:center;margin-bottom:4rem;">
       <div class="section-eyebrow reveal" style="justify-content:center;">Pricing</div>
       <h2 class="section-title reveal">Clear Packages,<br><em>No Hidden Costs</em></h2>
-      <p class="section-sub reveal" style="margin:0 auto 0;text-align:center;">Custom quotes available. Contact us for bespoke event packages.</p>
+      <p class="section-sub reveal" style="margin:0 auto;text-align:center;">Custom quotes available. Contact us for bespoke event packages.</p>
     </div>
     <div class="packages-grid">
-      <div class="package-card reveal">
-        <div class="package-name">Starter</div>
-        <div class="package-price">Contact <span>for quote</span></div>
-        <p class="package-desc">Perfect for intimate events and short sessions</p>
-        <ul class="package-features">
-          <li>2-hour shooting session</li>
-          <li>50+ edited photos</li>
-          <li>Online gallery delivery</li>
-          <li>1 photographer</li>
-          <li>72-hour turnaround</li>
-        </ul>
-        <button class="package-cta" onclick="scrollToBooking('Starter')">Get a Quote</button>
-      </div>
-      <div class="package-card featured reveal reveal-delay-1">
-        <div class="package-badge">Most Popular</div>
-        <div class="package-name">Professional</div>
-        <div class="package-price">Contact <span>for quote</span></div>
-        <p class="package-desc">Ideal for weddings, corporate events & full-day coverage</p>
-        <ul class="package-features">
-          <li>Full-day coverage (8 hrs)</li>
-          <li>300+ edited photos</li>
-          <li>Highlight video film</li>
-          <li>2 photographers + videographer</li>
-          <li>Drone aerial footage</li>
-          <li>USB keepsake delivery</li>
-        </ul>
-        <button class="package-cta" onclick="scrollToBooking('Professional')">Get a Quote</button>
-      </div>
-      <div class="package-card reveal reveal-delay-2">
-        <div class="package-name">Premium</div>
-        <div class="package-price">Contact <span>for quote</span></div>
-        <p class="package-desc">Full cinematic production for large events & campaigns</p>
-        <ul class="package-features">
-          <li>Multi-day coverage</li>
-          <li>Unlimited edited photos</li>
-          <li>Full cinematic film (10-20 min)</li>
-          <li>Full crew deployment</li>
-          <li>Drone + ground footage</li>
-          <li>Same-day preview reel</li>
-        </ul>
-        <button class="package-cta" onclick="scrollToBooking('Premium')">Get a Quote</button>
-      </div>
+      <div class="package-card reveal"><div class="package-name">Starter</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Perfect for intimate events and short sessions</p><ul class="package-features"><li>2-hour shooting session</li><li>50+ edited photos</li><li>Online gallery delivery</li><li>1 photographer</li><li>72-hour turnaround</li></ul><button class="package-cta" onclick="scrollToBooking('Starter')">Get a Quote</button></div>
+      <div class="package-card featured reveal reveal-delay-1"><div class="package-badge">Most Popular</div><div class="package-name">Professional</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Ideal for weddings, corporate events & full-day coverage</p><ul class="package-features"><li>Full-day coverage (8 hrs)</li><li>300+ edited photos</li><li>Highlight video film</li><li>2 photographers + videographer</li><li>Drone aerial footage</li><li>USB keepsake delivery</li></ul><button class="package-cta" onclick="scrollToBooking('Professional')">Get a Quote</button></div>
+      <div class="package-card reveal reveal-delay-2"><div class="package-name">Premium</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Full cinematic production for large events & campaigns</p><ul class="package-features"><li>Multi-day coverage</li><li>Unlimited edited photos</li><li>Full cinematic film (10-20 min)</li><li>Full crew deployment</li><li>Drone + ground footage</li><li>Same-day preview reel</li></ul><button class="package-cta" onclick="scrollToBooking('Premium')">Get a Quote</button></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     TESTIMONIALS
-══════════════════════════════════════════════ -->
+<!-- TESTIMONIALS -->
 <section id="testimonials">
   <div class="container">
     <div class="section-eyebrow reveal">Client Love</div>
     <h2 class="section-title reveal">What Our Clients<br><em>Say About Us</em></h2>
     <div class="testimonials-grid">
-      <div class="testimonial-card reveal">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">"Kenya045 captured our wedding in Nairobi so beautifully. Every candid moment, every tear, every laugh — perfectly preserved. The drone footage of our outdoor ceremony was absolutely breathtaking."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">AW</div>
-          <div>
-            <div class="author-name">Amina & David Wanjiru</div>
-            <div class="author-role">Wedding Clients · Nairobi</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-1">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">"We hired Kenya045 for our company product launch in Mombasa. The team was incredibly professional, the photos were delivered within 48 hours and exceeded all our expectations. Will hire again."</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">JM</div>
-          <div>
-            <div class="author-name">James Mwangi</div>
-            <div class="author-role">Marketing Director · Mombasa</div>
-          </div>
-        </div>
-      </div>
-      <div class="testimonial-card reveal reveal-delay-2">
-        <div class="testimonial-stars">
-          <span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span>
-        </div>
-        <p class="testimonial-quote">"The aerial drone footage of our farm in Nakuru gave us a completely new perspective for our agricultural report. Fast, professional and the quality was simply outstanding. Highly recommended!"</p>
-        <div class="testimonial-author">
-          <div class="author-avatar">FK</div>
-          <div>
-            <div class="author-name">Faith Kipchoge</div>
-            <div class="author-role">Farm Owner · Nakuru</div>
-          </div>
-        </div>
-      </div>
+      <div class="testimonial-card reveal"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"Kenya045 captured our wedding in Nairobi so beautifully. Every candid moment perfectly preserved. The drone footage of our outdoor ceremony was breathtaking."</p><div class="testimonial-author"><div class="author-avatar">AW</div><div><div class="author-name">Amina & David Wanjiru</div><div class="author-role">Wedding Clients · Nairobi</div></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"Hired Kenya045 for our product launch in Mombasa. Incredibly professional, photos delivered within 48 hours and exceeded all expectations. Will hire again."</p><div class="testimonial-author"><div class="author-avatar">JM</div><div><div class="author-name">James Mwangi</div><div class="author-role">Marketing Director · Mombasa</div></div></div></div>
+      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"The aerial drone footage of our farm in Nakuru gave us a completely new perspective. Fast, professional and outstanding quality. Highly recommended!"</p><div class="testimonial-author"><div class="author-avatar">FK</div><div><div class="author-name">Faith Kipchoge</div><div class="author-role">Farm Owner · Nakuru</div></div></div></div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     BOOKING FORM
-══════════════════════════════════════════════ -->
+<!-- BOOKING -->
 <section id="booking">
   <div class="container">
     <div class="booking-wrap">
-      <!-- Left info -->
       <div>
         <div class="section-eyebrow reveal">Let's Work Together</div>
         <h2 class="section-title reveal">Book Your<br><em>Session Today</em></h2>
-        <p class="section-sub reveal">Ready to create something unforgettable? Fill in the form and we'll get back to you within 24 hours to confirm your booking and discuss your vision.</p>
+        <p class="section-sub reveal">Fill in the form and we'll get back to you within 24 hours to confirm your booking.</p>
         <div class="booking-contact-card reveal">
-          <div class="contact-item">
-            <div class="contact-icon">📞</div>
-            <div>
-              <div class="contact-label">Phone / WhatsApp</div>
-              <div class="contact-value"><a href="tel:+254748144066">0748 144 066</a></div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">✉️</div>
-            <div>
-              <div class="contact-label">Email Address</div>
-              <div class="contact-value"><a href="mailto:kenya045mediahub@gmail.com">kenya045mediahub@gmail.com</a></div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">📍</div>
-            <div>
-              <div class="contact-label">Coverage Area</div>
-              <div class="contact-value">All 47 Counties, Kenya</div>
-            </div>
-          </div>
-          <div class="contact-item">
-            <div class="contact-icon">🕐</div>
-            <div>
-              <div class="contact-label">Response Time</div>
-              <div class="contact-value">Within 24 hours</div>
-            </div>
-          </div>
+          <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value"><a href="tel:+254748144066">0748 144 066</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email Address</div><div class="contact-value"><a href="mailto:kenya045mediahub@gmail.com">kenya045mediahub@gmail.com</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Coverage Area</div><div class="contact-value">All 47 Counties, Kenya</div></div></div>
+          <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Response Time</div><div class="contact-value">Within 24 hours</div></div></div>
         </div>
       </div>
-      <!-- Right form -->
       <div>
         <div class="booking-form">
           <div id="bookingFormContent">
             <div class="form-title">Session Booking Form</div>
-            <p class="form-sub">Fill in your details below and we'll confirm availability for your event.</p>
+            <p class="form-sub">Fill in your details and we'll confirm availability for your event.</p>
             <form id="bookingForm" onsubmit="submitBooking(event)">
               <div class="form-grid">
-                <div class="form-group full">
-                  <label class="form-label" for="fullName">Full Name *</label>
-                  <input class="form-input" type="text" id="fullName" name="fullName" placeholder="Your full name" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="email">Email Address *</label>
-                  <input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="phone">Phone Number *</label>
-                  <input class="form-input" type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="eventDate">Event Date *</label>
-                  <input class="form-input" type="date" id="eventDate" name="eventDate" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label" for="eventType">Event Type *</label>
+                <div class="form-group full"><label class="form-label" for="fullName">Full Name *</label><input class="form-input" type="text" id="fullName" name="fullName" placeholder="Your full name" required/></div>
+                <div class="form-group"><label class="form-label" for="email">Email Address *</label><input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required/></div>
+                <div class="form-group"><label class="form-label" for="phone">Phone Number *</label><input class="form-input" type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required/></div>
+                <div class="form-group"><label class="form-label" for="eventDate">Event Date *</label><input class="form-input" type="date" id="eventDate" name="eventDate" required/></div>
+                <div class="form-group"><label class="form-label" for="eventType">Event Type *</label>
                   <select class="form-select" id="eventType" name="eventType" required>
                     <option value="" disabled selected>Select event type</option>
-                    <optgroup label="Photography">
-                      <option>Wedding Photography</option>
-                      <option>Engagement / Pre-wedding</option>
-                      <option>Corporate Photography</option>
-                      <option>Portrait Session</option>
-                      <option>Product Photography</option>
-                      <option>Real Estate Photography</option>
-                    </optgroup>
-                    <optgroup label="Videography">
-                      <option>Wedding Videography</option>
-                      <option>Corporate Video</option>
-                      <option>Music Video</option>
-                      <option>Event Highlight Film</option>
-                      <option>Documentary</option>
-                    </optgroup>
-                    <optgroup label="Drone">
-                      <option>Aerial Photography</option>
-                      <option>Aerial Video</option>
-                      <option>Property Survey</option>
-                      <option>Agricultural Survey</option>
-                    </optgroup>
-                    <optgroup label="Combined">
-                      <option>Photo + Video Package</option>
-                      <option>Full Production (Photo + Video + Drone)</option>
-                    </optgroup>
+                    <optgroup label="Photography"><option>Wedding Photography</option><option>Engagement / Pre-wedding</option><option>Corporate Photography</option><option>Portrait Session</option><option>Product Photography</option><option>Real Estate Photography</option></optgroup>
+                    <optgroup label="Videography"><option>Wedding Videography</option><option>Corporate Video</option><option>Music Video</option><option>Event Highlight Film</option><option>Documentary</option></optgroup>
+                    <optgroup label="Drone"><option>Aerial Photography</option><option>Aerial Video</option><option>Property Survey</option><option>Agricultural Survey</option></optgroup>
+                    <optgroup label="Combined"><option>Photo + Video Package</option><option>Full Production (Photo + Video + Drone)</option></optgroup>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label class="form-label" for="county">County *</label>
-                  <select class="form-select" id="county" name="county" required>
-                    <option value="" disabled selected>Select county</option>
-                  </select>
-                </div>
-                <div class="form-group full">
-                  <label class="form-label" for="venue">Event Venue / Location *</label>
-                  <input class="form-input" type="text" id="venue" name="venue" placeholder="Hotel name, estate, town or specific location" required/>
-                </div>
-                <div class="form-group full">
-                  <label class="form-label" for="additional">Additional Information</label>
-                  <textarea class="form-textarea" id="additional" name="additional" placeholder="Tell us more — number of guests, specific shots you want, special requirements, budget range, or anything else we should know…"></textarea>
-                </div>
+                <div class="form-group"><label class="form-label" for="county">County *</label><select class="form-select" id="county" name="county" required><option value="" disabled selected>Select county</option></select></div>
+                <div class="form-group full"><label class="form-label" for="venue">Event Venue / Location *</label><input class="form-input" type="text" id="venue" name="venue" placeholder="Hotel name, estate, town or specific location" required/></div>
+                <div class="form-group full"><label class="form-label" for="additional">Additional Information</label><textarea class="form-textarea" id="additional" name="additional" placeholder="Number of guests, specific shots, budget range, special requirements…"></textarea></div>
+                <div class="form-error" id="bookingError"></div>
               </div>
               <button class="form-submit" type="submit" id="bookingSubmit">Send Booking Request</button>
             </form>
@@ -1394,72 +514,30 @@ footer{
           <div class="form-success" id="bookingSuccess">
             <div class="success-icon">🎉</div>
             <div class="success-title">Booking Request Sent!</div>
-            <p class="success-sub">Thank you! We've received your booking request and will contact you within 24 hours to confirm availability and discuss your event in detail.<br><br>For urgent enquiries call us on <strong style="color:var(--gold)">0748 144 066</strong></p>
+            <p class="success-sub">Thank you! We've received your booking and will contact you within 24 hours.<br><br>For urgent enquiries call <strong style="color:var(--gold)">0748 144 066</strong></p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     INQUIRY / FAQ
-══════════════════════════════════════════════ -->
+<!-- INQUIRY / FAQ -->
 <section id="inquiry">
   <div class="container">
     <div class="inquiry-wrap">
-      <!-- FAQ -->
       <div>
         <div class="section-eyebrow reveal">Got Questions?</div>
         <h2 class="section-title reveal">Frequently Asked<br><em>Questions</em></h2>
         <div class="faq-list reveal">
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>Do you travel to all counties in Kenya?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">Yes — we cover all 47 counties across Kenya. Travel and accommodation costs for distant locations may apply and will be quoted upfront with full transparency. No hidden charges.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>How far in advance should I book?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">For weddings, we recommend booking 3–6 months in advance as dates fill quickly. For corporate events and smaller sessions, 2–4 weeks notice is usually sufficient. Last-minute bookings are accommodated where possible.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>How long before I receive my photos/videos?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">Edited photos are delivered within 72 hours for most events. Wedding photos within 1 week. Highlight video films take 1–2 weeks. Full wedding films take 3–4 weeks. A preview gallery is usually shared within 48 hours.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>Are your drone pilots licensed?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">Yes. All our drone operators hold valid KCAA (Kenya Civil Aviation Authority) Remote Pilot Licences. We comply with all Kenyan drone regulations and carry public liability insurance for every shoot.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>What payment methods do you accept?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">We accept M-Pesa, bank transfer and cash. A deposit of 30% is required to secure your booking date, with the balance due on the day of the event or upon delivery of files.</div>
-          </div>
-          <div class="faq-item">
-            <div class="faq-q" onclick="toggleFaq(this)">
-              <span>Can I get both photos and video in one package?</span>
-              <div class="faq-icon">+</div>
-            </div>
-            <div class="faq-a">Absolutely. Our combined packages are our most popular — a single team handles both photography and videography seamlessly so your event coverage is cohesive and cost-effective.</div>
-          </div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Do you travel to all counties in Kenya?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes — we cover all 47 counties. Travel costs for distant locations are quoted upfront with full transparency.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How far in advance should I book?</span><div class="faq-icon">+</div></div><div class="faq-a">For weddings, 3–6 months in advance. For corporate events, 2–4 weeks is usually sufficient. Last-minute bookings accommodated where possible.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How long before I receive my photos/videos?</span><div class="faq-icon">+</div></div><div class="faq-a">Edited photos within 72 hours for most events. Wedding photos within 1 week. Highlight films 1–2 weeks. Full wedding films 3–4 weeks.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Are your drone pilots licensed?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes. All operators hold valid KCAA Remote Pilot Licences and we carry full public liability insurance.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What payment methods do you accept?</span><div class="faq-icon">+</div></div><div class="faq-a">M-Pesa, bank transfer and cash. 30% deposit required to secure your date, balance due on event day.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I get both photos and video in one package?</span><div class="faq-icon">+</div></div><div class="faq-a">Absolutely. Our combined packages are most popular — a single team handles both seamlessly.</div></div>
         </div>
       </div>
-      <!-- Inquiry form -->
       <div>
         <div class="section-eyebrow reveal">Reach Out</div>
         <h2 class="section-title reveal">Send Us an<br><em>Enquiry</em></h2>
@@ -1467,34 +545,17 @@ footer{
           <div id="inquiryFormContent">
             <form id="inquiryForm" onsubmit="submitInquiry(event)">
               <div style="display:flex;flex-direction:column;gap:14px;">
-                <div class="form-group">
-                  <label class="form-label">Your Name *</label>
-                  <input class="form-input" type="text" name="inqName" placeholder="Full name" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Email *</label>
-                  <input class="form-input" type="email" name="inqEmail" placeholder="your@email.com" required/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Phone Number</label>
-                  <input class="form-input" type="tel" name="inqPhone" placeholder="07XX XXX XXX"/>
-                </div>
-                <div class="form-group">
-                  <label class="form-label">Subject *</label>
+                <div class="form-group"><label class="form-label">Your Name *</label><input class="form-input" type="text" name="inqName" placeholder="Full name" required/></div>
+                <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" name="inqEmail" placeholder="your@email.com" required/></div>
+                <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" name="inqPhone" placeholder="07XX XXX XXX"/></div>
+                <div class="form-group"><label class="form-label">Subject *</label>
                   <select class="form-select" name="inqSubject" required>
                     <option value="" disabled selected>What's your enquiry about?</option>
-                    <option>Pricing & Packages</option>
-                    <option>Availability Check</option>
-                    <option>Custom Project</option>
-                    <option>Partnership / Collaboration</option>
-                    <option>Technical Question</option>
-                    <option>General Enquiry</option>
+                    <option>Pricing & Packages</option><option>Availability Check</option><option>Custom Project</option><option>Partnership / Collaboration</option><option>Technical Question</option><option>General Enquiry</option>
                   </select>
                 </div>
-                <div class="form-group">
-                  <label class="form-label">Message *</label>
-                  <textarea class="form-textarea" name="inqMessage" placeholder="Tell us what you'd like to know or discuss…" required></textarea>
-                </div>
+                <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" name="inqMessage" placeholder="Tell us what you'd like to know…" required></textarea></div>
+                <div id="inquiryError" style="color:#e74c3c;font-size:13px;min-height:16px;"></div>
                 <button class="form-submit" type="submit">Send Enquiry</button>
               </div>
             </form>
@@ -1502,283 +563,173 @@ footer{
           <div class="inq-success" id="inquirySuccess">
             <div class="success-icon">✅</div>
             <div class="success-title" style="font-family:var(--font-h);font-size:1.5rem;color:var(--gold);margin-bottom:8px;">Message Received!</div>
-            <p style="color:var(--muted);font-size:0.9rem;">Thanks for reaching out. We'll reply to your enquiry within 24 hours via email or phone.</p>
+            <p style="color:var(--muted);font-size:0.9rem;">Thanks for reaching out. We'll reply within 24 hours.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
-
 <div class="divider"></div>
-
-<!-- ══════════════════════════════════════════════
-     FOOTER
-══════════════════════════════════════════════ -->
+<!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div>
-      <div class="footer-brand">KENYA<span>045</span> MEDIA HUB</div>
-      <p class="footer-tagline">Professional photography, videography and drone services across all 47 counties in Kenya. We frame your story — beautifully, authentically, forever.</p>
-      <div class="social-links">
-        <a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener" title="Instagram">📸</a>
-        <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook">👥</a>
-        <a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube">🎬</a>
-        <a class="social-btn" href="https://wa.me/254748144066" target="_blank" rel="noopener" title="WhatsApp">💬</a>
-        <a class="social-btn" href="https://tiktok.com" target="_blank" rel="noopener" title="TikTok">🎵</a>
-      </div>
-    </div>
-    <div>
-      <div class="footer-heading">Services</div>
-      <ul class="footer-links">
-        <li><a href="#services">Photography</a></li>
-        <li><a href="#services">Videography</a></li>
-        <li><a href="#services">Drone Services</a></li>
-        <li><a href="#packages">Packages</a></li>
-        <li><a href="#booking">Book a Session</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-heading">Events We Cover</div>
-      <ul class="footer-links">
-        <li><a href="#booking">Weddings</a></li>
-        <li><a href="#booking">Corporate Events</a></li>
-        <li><a href="#booking">Portraits</a></li>
-        <li><a href="#booking">Music Videos</a></li>
-        <li><a href="#booking">Real Estate</a></li>
-      </ul>
-    </div>
-    <div>
-      <div class="footer-heading">Contact</div>
-      <ul class="footer-links">
-        <li><a href="tel:+254748144066">📞 0748 144 066</a></li>
-        <li><a href="mailto:kenya045mediahub@gmail.com">✉️ kenya045mediahub@gmail.com</a></li>
-        <li><a href="https://wa.me/254748144066">💬 WhatsApp Us</a></li>
-        <li><a href="#coverage">📍 All 47 Counties</a></li>
-      </ul>
-    </div>
+    <div><div class="footer-brand">KENYA<span>045</span> MEDIA HUB</div><p class="footer-tagline">Professional photography, videography and drone services across all 47 counties in Kenya.</p><div class="social-links"><a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener">📸</a><a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener">👥</a><a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener">🎬</a><a class="social-btn" href="https://wa.me/254748144066" target="_blank" rel="noopener">💬</a><a class="social-btn" href="https://tiktok.com" target="_blank" rel="noopener">🎵</a></div></div>
+    <div><div class="footer-heading">Services</div><ul class="footer-links"><li><a href="#services">Photography</a></li><li><a href="#services">Videography</a></li><li><a href="#services">Drone Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#booking">Book a Session</a></li></ul></div>
+    <div><div class="footer-heading">Events We Cover</div><ul class="footer-links"><li><a href="#booking">Weddings</a></li><li><a href="#booking">Corporate Events</a></li><li><a href="#booking">Portraits</a></li><li><a href="#booking">Music Videos</a></li><li><a href="#booking">Real Estate</a></li></ul></div>
+    <div><div class="footer-heading">Contact</div><ul class="footer-links"><li><a href="tel:+254748144066">📞 0748 144 066</a></li><li><a href="mailto:kenya045mediahub@gmail.com">✉️ kenya045mediahub@gmail.com</a></li><li><a href="https://wa.me/254748144066">💬 WhatsApp Us</a></li><li><a href="#coverage">📍 All 47 Counties</a></li></ul></div>
   </div>
-  <div class="footer-bottom">
-    <span class="footer-copy">© 2025 Kenya045 Media Hub. All rights reserved.</span>
-    <div class="footer-legal">
-      <a href="#">Privacy Policy</a>
-      <a href="#">Terms of Service</a>
-    </div>
-  </div>
+  <div class="footer-bottom"><span class="footer-copy">© 2025 Kenya045 Media Hub. All rights reserved.</span><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
 </footer>
-
-<!-- Toast container -->
 <div class="toast-wrap" id="toastWrap"></div>
-
 <script>
-// ── CURSOR ────────────────────────────────────────────────────────────────
-const cur = document.getElementById('cursor');
-const ring = document.getElementById('cursorRing');
+// ── CURSOR
+const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
 let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{
-  mx=e.clientX;my=e.clientY;
-  cur.style.left=mx+'px';cur.style.top=my+'px';
-});
-function animateRing(){
-  rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;
-  ring.style.left=rx+'px';ring.style.top=ry+'px';
-  requestAnimationFrame(animateRing);
-}
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
 animateRing();
-document.querySelectorAll('a,button,select,input,textarea,[class*="cursor"]').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{
-    cur.style.width='20px';cur.style.height='20px';
-    ring.style.width='54px';ring.style.height='54px';ring.style.opacity='0.3';
-  });
-  el.addEventListener('mouseleave',()=>{
-    cur.style.width='10px';cur.style.height='10px';
-    ring.style.width='36px';ring.style.height='36px';ring.style.opacity='0.6';
-  });
+document.querySelectorAll('a,button,select,input,textarea').forEach(el=>{
+  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='54px';ring.style.height='54px';ring.style.opacity='0.3';});
+  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='0.6';});
 });
-
-// ── NAV SCROLL ────────────────────────────────────────────────────────────
-const navbar = document.getElementById('navbar');
-window.addEventListener('scroll',()=>{
-  navbar.classList.toggle('scrolled',window.scrollY>60);
-},{ passive:true });
-
-// ── HAMBURGER ─────────────────────────────────────────────────────────────
-const hamburger = document.getElementById('hamburger');
-const mobileNav = document.getElementById('mobileNav');
+// ── NAV
+const navbar=document.getElementById('navbar');
+window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+// ── HAMBURGER
+const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
 hamburger.addEventListener('click',()=>{
   mobileNav.classList.toggle('open');
-  const spans = hamburger.querySelectorAll('span');
-  if(mobileNav.classList.contains('open')){
-    spans[0].style.transform='rotate(45deg) translate(4px,5px)';
-    spans[1].style.opacity='0';
-    spans[2].style.transform='rotate(-45deg) translate(4px,-5px)';
-  } else {
-    spans.forEach(s=>{s.style.transform='';s.style.opacity='';});
-  }
+  const spans=hamburger.querySelectorAll('span');
+  if(mobileNav.classList.contains('open')){spans[0].style.transform='rotate(45deg) translate(4px,5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(4px,-5px)';}
+  else{spans.forEach(s=>{s.style.transform='';s.style.opacity='';});}
 });
-function closeMobileNav(){
-  mobileNav.classList.remove('open');
-  hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});
-}
-
-// ── SCROLL REVEAL ─────────────────────────────────────────────────────────
-const observer = new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}
-  });
-},{threshold:0.12});
+function closeMobileNav(){mobileNav.classList.remove('open');hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
+// ── REVEAL
+const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.12});
 document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-// ── COUNTER ANIMATION ─────────────────────────────────────────────────────
-function animateCount(el,target,suffix=''){
+// ── COUNTERS
+function animateCount(el,target){
   const duration=2000,start=performance.now();
-  const step=ts=>{
-    const progress=Math.min((ts-start)/duration,1);
-    const ease=1-Math.pow(1-progress,3);
-    el.textContent=Math.round(ease*target)+(target===47?'':'+');
-    if(progress<1)requestAnimationFrame(step);
-  };
+  const step=ts=>{const p=Math.min((ts-start)/duration,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*target)+(target===47?'':'+');if(p<1)requestAnimationFrame(step);};
   requestAnimationFrame(step);
 }
-const counterObs=new IntersectionObserver(entries=>{
-  entries.forEach(e=>{
-    if(e.isIntersecting){
-      animateCount(e.target,parseInt(e.target.dataset.count));
-      counterObs.unobserve(e.target);
-    }
-  });
-},{threshold:0.5});
+const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target,parseInt(e.target.dataset.count));counterObs.unobserve(e.target);}});},{threshold:0.5});
 document.querySelectorAll('[data-count]').forEach(el=>counterObs.observe(el));
-
-// ── COUNTIES DATA ─────────────────────────────────────────────────────────
-const COUNTIES = [
-  'Mombasa','Kwale','Kilifi','Tana River','Lamu','Taita Taveta','Garissa',
-  'Wajir','Mandera','Marsabit','Isiolo','Meru','Tharaka Nithi','Embu',
-  'Kitui','Machakos','Makueni','Nyandarua','Nyeri','Kirinyaga',
-  'Murang\'a','Kiambu','Turkana','West Pokot','Samburu','Trans Nzoia',
-  'Uasin Gishu','Elgeyo Marakwet','Nandi','Baringo','Laikipia','Nakuru',
-  'Narok','Kajiado','Kericho','Bomet','Kakamega','Vihiga','Bungoma',
-  'Busia','Siaya','Kisumu','Homa Bay','Migori','Kisii','Nyamira','Nairobi'
-];
-
-// Populate county select
-const countySelect = document.getElementById('county');
-COUNTIES.forEach(c=>{
-  const o=document.createElement('option');
-  o.textContent=c;countySelect.appendChild(o);
-});
-
-// Marquee
-function buildMarquee(id,counties){
-  const el=document.getElementById(id);
-  const doubled=[...counties,...counties].map(c=>`<span class="county-pill">${c}</span>`).join('');
-  el.innerHTML=doubled;
-}
-buildMarquee('marquee1',COUNTIES);
-buildMarquee('marquee2',[...COUNTIES].reverse());
-
-// ── PORTFOLIO FILTER ──────────────────────────────────────────────────────
+// ── COUNTIES
+const COUNTIES=['Mombasa','Kwale','Kilifi','Tana River','Lamu','Taita Taveta','Garissa','Wajir','Mandera','Marsabit','Isiolo','Meru','Tharaka Nithi','Embu','Kitui','Machakos','Makueni','Nyandarua','Nyeri','Kirinyaga',"Murang'a",'Kiambu','Turkana','West Pokot','Samburu','Trans Nzoia','Uasin Gishu','Elgeyo Marakwet','Nandi','Baringo','Laikipia','Nakuru','Narok','Kajiado','Kericho','Bomet','Kakamega','Vihiga','Bungoma','Busia','Siaya','Kisumu','Homa Bay','Migori','Kisii','Nyamira','Nairobi'];
+const countySelect=document.getElementById('county');
+COUNTIES.forEach(c=>{const o=document.createElement('option');o.textContent=c;countySelect.appendChild(o);});
+function buildMarquee(id,counties){const el=document.getElementById(id);el.innerHTML=[...counties,...counties].map(c=>`<span class="county-pill">${c}</span>`).join('');}
+buildMarquee('marquee1',COUNTIES);buildMarquee('marquee2',[...COUNTIES].reverse());
+document.querySelectorAll('.counties-track').forEach(el=>{el.addEventListener('mouseenter',()=>el.style.animationPlayState='paused');el.addEventListener('mouseleave',()=>el.style.animationPlayState='running');});
+// ── PORTFOLIO
 function filterPortfolio(btn,cat){
-  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));
-  btn.classList.add('active');
-  document.querySelectorAll('.pf-item').forEach(item=>{
-    const match = cat==='all' || item.dataset.cat===cat;
-    item.style.opacity = match?'1':'0.2';
-    item.style.transform = match?'':'scale(0.95)';
-  });
+  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
+  document.querySelectorAll('.pf-item').forEach(item=>{const match=cat==='all'||item.dataset.cat===cat;item.style.opacity=match?'1':'0.2';item.style.transform=match?'':'scale(0.95)';});
 }
-
-// ── FAQ ───────────────────────────────────────────────────────────────────
-function toggleFaq(btn){
-  const item=btn.closest('.faq-item');
-  const isOpen=item.classList.contains('open');
-  document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));
-  if(!isOpen)item.classList.add('open');
-}
-
-// ── BOOKING FORM ──────────────────────────────────────────────────────────
-// Set min date to today
-document.getElementById('eventDate').min = new Date().toISOString().split('T')[0];
-
-async function submitBooking(e){
-  e.preventDefault();
-  const btn=document.getElementById('bookingSubmit');
-  const form=document.getElementById('bookingForm');
-  btn.disabled=true;btn.textContent='Sending…';
-  const data={
-    fullName:form.fullName.value,email:form.email.value,
-    phone:form.phone.value,eventDate:form.eventDate.value,
-    eventType:form.eventType.value,county:form.county.value,
-    venue:form.venue.value,additional:form.additional?form.additional.value:'',
-  };
-  try{
-    const r=await fetch('/api/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const d=await r.json();
-    if(r.ok&&d.success){
-      document.getElementById('bookingFormContent').style.display='none';
-      document.getElementById('bookingSuccess').classList.add('show');
-      toast("Booking sent! We'll contact you within 24 hours.",'success');
-    } else {
-      btn.disabled=false;btn.textContent='Send Booking Request';
-      toast(d.error||'Something went wrong. Please try again.');
-    }
-  } catch(err){
-    btn.disabled=false;btn.textContent='Send Booking Request';
-    toast('Network error — please check your connection and try again.');
-  }
-}
-
+// ── FAQ
+function toggleFaq(btn){const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+// ── MIN DATE
+document.getElementById('eventDate').min=new Date().toISOString().split('T')[0];
+// ── PACKAGES
 function scrollToBooking(pkg){
   document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-  const eventType=document.getElementById('eventType');
-  if(pkg==='Premium') eventType.value='Full Production (Photo + Video + Drone)';
-  if(pkg==='Professional') eventType.value='Photo + Video Package';
+  const et=document.getElementById('eventType');
+  if(pkg==='Premium')et.value='Full Production (Photo + Video + Drone)';
+  if(pkg==='Professional')et.value='Photo + Video Package';
+}
+// ── TOAST
+function toast(msg,type='info'){
+  const tw=document.getElementById('toastWrap');const t=document.createElement('div');
+  t.className='toast'+(type==='success'?' success':type==='error'?' error':'');t.textContent=msg;
+  tw.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.4s';},3500);setTimeout(()=>t.remove(),4000);
 }
 
-// ── INQUIRY FORM ──────────────────────────────────────────────────────────
-async function submitInquiry(e){
+// ══ BOOKING FORM — REAL API CALL ══════════════════════════════════════════
+async function submitBooking(e) {
   e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  const form=e.target;
-  btn.disabled=true;btn.textContent='Sending…';
-  const data={
-    inqName:form.inqName.value,inqEmail:form.inqEmail.value,
-    inqPhone:form.inqPhone?form.inqPhone.value:'',
-    inqSubject:form.inqSubject.value,inqMessage:form.inqMessage.value,
+  const btn    = document.getElementById('bookingSubmit');
+  const form   = document.getElementById('bookingForm');
+  const errEl  = document.getElementById('bookingError');
+  errEl.textContent = '';
+  btn.disabled = true;
+  btn.textContent = 'Sending…';
+
+  const data = {
+    fullName  : form.fullName.value,
+    email     : form.email.value,
+    phone     : form.phone.value,
+    eventDate : form.eventDate.value,
+    eventType : form.eventType.value,
+    county    : form.county.value,
+    venue     : form.venue.value,
+    additional: form.additional ? form.additional.value : '',
   };
-  try{
-    const r=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const d=await r.json();
-    if(r.ok&&d.success){
-      document.getElementById('inquiryFormContent').style.display='none';
-      document.getElementById('inquirySuccess').classList.add('show');
-      toast("Enquiry sent! We'll reply within 24 hours.",'success');
+
+  try {
+    const r = await fetch('/api/booking', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify(data),
+    });
+    const d = await r.json();
+    if (r.ok && d.success) {
+      document.getElementById('bookingFormContent').style.display = 'none';
+      document.getElementById('bookingSuccess').classList.add('show');
+      toast("Booking sent! We'll contact you within 24 hours.", 'success');
     } else {
-      btn.disabled=false;btn.textContent='Send Enquiry';
-      toast(d.error||'Something went wrong. Please try again.');
+      btn.disabled    = false;
+      btn.textContent = 'Send Booking Request';
+      errEl.textContent = d.error || 'Something went wrong. Please try again.';
     }
-  } catch(err){
-    btn.disabled=false;btn.textContent='Send Enquiry';
-    toast('Network error — please check your connection and try again.');
+  } catch (err) {
+    btn.disabled    = false;
+    btn.textContent = 'Send Booking Request';
+    errEl.textContent = 'Network error — please check your connection and try again.';
   }
 }
 
-// ── TOAST ─────────────────────────────────────────────────────────────────
-function toast(msg,type='info'){
-  const tw=document.getElementById('toastWrap');
-  const t=document.createElement('div');
-  t.className='toast';t.textContent=msg;
-  tw.appendChild(t);
-  setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.4s';},3500);
-  setTimeout(()=>t.remove(),4000);
-}
+// ══ INQUIRY FORM — REAL API CALL ══════════════════════════════════════════
+async function submitInquiry(e) {
+  e.preventDefault();
+  const btn   = e.target.querySelector('button[type=submit]');
+  const form  = e.target;
+  const errEl = document.getElementById('inquiryError');
+  if (errEl) errEl.textContent = '';
+  btn.disabled    = true;
+  btn.textContent = 'Sending…';
 
-// ── MISC ──────────────────────────────────────────────────────────────────
-// Pause marquee on hover
-document.querySelectorAll('.counties-track').forEach(el=>{
-  el.addEventListener('mouseenter',()=>el.style.animationPlayState='paused');
-  el.addEventListener('mouseleave',()=>el.style.animationPlayState='running');
-});
+  const data = {
+    inqName   : form.inqName.value,
+    inqEmail  : form.inqEmail.value,
+    inqPhone  : form.inqPhone ? form.inqPhone.value : '',
+    inqSubject: form.inqSubject.value,
+    inqMessage: form.inqMessage.value,
+  };
+
+  try {
+    const r = await fetch('/api/inquiry', {
+      method : 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body   : JSON.stringify(data),
+    });
+    const d = await r.json();
+    if (r.ok && d.success) {
+      document.getElementById('inquiryFormContent').style.display = 'none';
+      document.getElementById('inquirySuccess').classList.add('show');
+      toast("Enquiry sent! We'll reply within 24 hours.", 'success');
+    } else {
+      btn.disabled    = false;
+      btn.textContent = 'Send Enquiry';
+      if (errEl) errEl.textContent = d.error || 'Something went wrong. Please try again.';
+    }
+  } catch (err) {
+    btn.disabled    = false;
+    btn.textContent = 'Send Enquiry';
+    if (errEl) errEl.textContent = 'Network error — please check your connection.';
+  }
+}
 </script>
 </body>
 </html>
