@@ -1,0 +1,15 @@
+[phases.setup]
+nixPkgs = ["nodejs_20"]
+
+[phases.install]
+cmds = ["npm install --production"]
+
+[phases.build]
+cmds = [
+  "mkdir -p public",
+  "test -f public/index.html && cp public/index.html index.html || echo 'index.html already in root'",
+  "test -f public/admin.html && cp public/admin.html admin.html || echo 'admin.html already in root'"
+]
+
+[start]
+cmd = "node server.js"
