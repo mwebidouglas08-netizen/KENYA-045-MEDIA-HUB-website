@@ -7,8 +7,7 @@ cmds = ["npm install --production"]
 [phases.build]
 cmds = [
   "mkdir -p public",
-  "test -f public/index.html && cp public/index.html index.html || echo 'index.html already in root'",
-  "test -f public/admin.html && cp public/admin.html admin.html || echo 'admin.html already in root'"
+  "[ -f index.html ] && cp index.html public/index.html || true"
 ]
 
 [start]
