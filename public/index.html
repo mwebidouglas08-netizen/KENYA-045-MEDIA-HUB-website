@@ -646,17 +646,17 @@ function toast(msg,type='info'){
   tw.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.4s';},3500);setTimeout(()=>t.remove(),4000);
 }
 
-// ══ BOOKING FORM — REAL API CALL ══════════════════════════════════════════
-async function submitBooking(e) {
+// ══ BOOKING FORM — XHR (works on all browsers/devices) ═══════════════════
+function submitBooking(e) {
   e.preventDefault();
-  const btn    = document.getElementById('bookingSubmit');
-  const form   = document.getElementById('bookingForm');
-  const errEl  = document.getElementById('bookingError');
+  var btn   = document.getElementById('bookingSubmit');
+  var form  = document.getElementById('bookingForm');
+  var errEl = document.getElementById('bookingError');
   errEl.textContent = '';
-  btn.disabled = true;
-  btn.textContent = 'Sending…';
+  btn.disabled    = true;
+  btn.textContent = 'Sending...';
 
-  const data = {
+  var data = {
     fullName  : form.fullName.value,
     email     : form.email.value,
     phone     : form.phone.value,
@@ -667,40 +667,56 @@ async function submitBooking(e) {
     additional: form.additional ? form.additional.value : '',
   };
 
-  try {
-    const r = await fetch('/api/booking', {
-      method : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body   : JSON.stringify(data),
-    });
-    const d = await r.json();
-    if (r.ok && d.success) {
-      document.getElementById('bookingFormContent').style.display = 'none';
-      document.getElementById('bookingSuccess').classList.add('show');
-      toast("Booking sent! We'll contact you within 24 hours.", 'success');
-    } else {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/booking', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.timeout = 15000;
+
+  xhr.onload = function() {
+    try {
+      var d = JSON.parse(xhr.responseText);
+      if (xhr.status >= 200 && xhr.status < 300 && d.success) {
+        document.getElementById('bookingFormContent').style.display = 'none';
+        document.getElementById('bookingSuccess').classList.add('show');
+        toast("Booking sent! We\'ll contact you within 24 hours.", 'success');
+      } else {
+        btn.disabled    = false;
+        btn.textContent = 'Send Booking Request';
+        errEl.textContent = d.error || 'Something went wrong. Please try again.';
+      }
+    } catch(ex) {
       btn.disabled    = false;
       btn.textContent = 'Send Booking Request';
-      errEl.textContent = d.error || 'Something went wrong. Please try again.';
+      errEl.textContent = 'Server error (HTTP ' + xhr.status + '). Please try again.';
     }
-  } catch (err) {
+  };
+
+  xhr.onerror = function() {
     btn.disabled    = false;
     btn.textContent = 'Send Booking Request';
-    errEl.textContent = 'Network error — please check your connection and try again.';
-  }
+    errEl.textContent = 'Network error — please check your connection.';
+  };
+
+  xhr.ontimeout = function() {
+    btn.disabled    = false;
+    btn.textContent = 'Send Booking Request';
+    errEl.textContent = 'Request timed out. Please try again.';
+  };
+
+  xhr.send(JSON.stringify(data));
 }
 
-// ══ INQUIRY FORM — REAL API CALL ══════════════════════════════════════════
-async function submitInquiry(e) {
+// ══ INQUIRY FORM — XHR (works on all browsers/devices) ═══════════════════
+function submitInquiry(e) {
   e.preventDefault();
-  const btn   = e.target.querySelector('button[type=submit]');
-  const form  = e.target;
-  const errEl = document.getElementById('inquiryError');
+  var btn   = e.target.querySelector('button[type=submit]');
+  var form  = e.target;
+  var errEl = document.getElementById('inquiryError');
   if (errEl) errEl.textContent = '';
   btn.disabled    = true;
-  btn.textContent = 'Sending…';
+  btn.textContent = 'Sending...';
 
-  const data = {
+  var data = {
     inqName   : form.inqName.value,
     inqEmail  : form.inqEmail.value,
     inqPhone  : form.inqPhone ? form.inqPhone.value : '',
@@ -708,82 +724,44 @@ async function submitInquiry(e) {
     inqMessage: form.inqMessage.value,
   };
 
-  try {
-    const r = await fetch('/api/inquiry', {
-      method : 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body   : JSON.stringify(data),
-    });
-    const d = await r.json();
-    if (r.ok && d.success) {
-      document.getElementById('inquiryFormContent').style.display = 'none';
-      document.getElementById('inquirySuccess').classList.add('show');
-      toast("Enquiry sent! We'll reply within 24 hours.", 'success');
-    } else {
+  var xhr = new XMLHttpRequest();
+  xhr.open('POST', '/api/inquiry', true);
+  xhr.setRequestHeader('Content-Type', 'application/json');
+  xhr.timeout = 15000;
+
+  xhr.onload = function() {
+    try {
+      var d = JSON.parse(xhr.responseText);
+      if (xhr.status >= 200 && xhr.status < 300 && d.success) {
+        document.getElementById('inquiryFormContent').style.display = 'none';
+        document.getElementById('inquirySuccess').classList.add('show');
+        toast("Enquiry sent! We\'ll reply within 24 hours.", 'success');
+      } else {
+        btn.disabled    = false;
+        btn.textContent = 'Send Enquiry';
+        if (errEl) errEl.textContent = d.error || 'Something went wrong. Please try again.';
+      }
+    } catch(ex) {
       btn.disabled    = false;
       btn.textContent = 'Send Enquiry';
-      if (errEl) errEl.textContent = d.error || 'Something went wrong. Please try again.';
+      if (errEl) errEl.textContent = 'Server error (HTTP ' + xhr.status + '). Please try again.';
     }
-  } catch (err) {
+  };
+
+  xhr.onerror = function() {
     btn.disabled    = false;
     btn.textContent = 'Send Enquiry';
     if (errEl) errEl.textContent = 'Network error — please check your connection.';
-  }
-}
-  async function submitBooking(e){
-  e.preventDefault();
-  const btn=document.getElementById('bookingSubmit');
-  const form=document.getElementById('bookingForm');
-  btn.disabled=true;btn.textContent='Sending…';
-  const data={
-    fullName:form.fullName.value,email:form.email.value,
-    phone:form.phone.value,eventDate:form.eventDate.value,
-    eventType:form.eventType.value,county:form.county.value,
-    venue:form.venue.value,additional:form.additional?form.additional.value:'',
   };
-  try{
-    const r=await fetch('/api/booking',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const d=await r.json();
-    if(r.ok&&d.success){
-      document.getElementById('bookingFormContent').style.display='none';
-      document.getElementById('bookingSuccess').classList.add('show');
-      toast("Booking sent! We'll contact you within 24 hours.",'success');
-    } else {
-      btn.disabled=false;btn.textContent='Send Booking Request';
-      toast(d.error||'Something went wrong. Please try again.');
-    }
-  } catch(err){
-    btn.disabled=false;btn.textContent='Send Booking Request';
-    toast('Network error — please check your connection and try again.');
-  }
-}
-  async function submitInquiry(e){
-  e.preventDefault();
-  const btn=e.target.querySelector('button[type=submit]');
-  const form=e.target;
-  btn.disabled=true;btn.textContent='Sending…';
-  const data={
-    inqName:form.inqName.value,inqEmail:form.inqEmail.value,
-    inqPhone:form.inqPhone?form.inqPhone.value:'',
-    inqSubject:form.inqSubject.value,inqMessage:form.inqMessage.value,
+
+  xhr.ontimeout = function() {
+    btn.disabled    = false;
+    btn.textContent = 'Send Enquiry';
+    if (errEl) errEl.textContent = 'Request timed out. Please try again.';
   };
-  try{
-    const r=await fetch('/api/inquiry',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)});
-    const d=await r.json();
-    if(r.ok&&d.success){
-      document.getElementById('inquiryFormContent').style.display='none';
-      document.getElementById('inquirySuccess').classList.add('show');
-      toast("Enquiry sent! We'll reply within 24 hours.",'success');
-    } else {
-      btn.disabled=false;btn.textContent='Send Enquiry';
-      toast(d.error||'Something went wrong. Please try again.');
-    }
-  } catch(err){
-    btn.disabled=false;btn.textContent='Send Enquiry';
-    toast('Network error — please check your connection and try again.');
-  }
+
+  xhr.send(JSON.stringify(data));
 }
 </script>
-  <script src="/booking_fix.js"></script>
 </body>
 </html>
