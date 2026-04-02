@@ -178,11 +178,11 @@ tr:hover td{background:rgba(255,255,255,0.02);}
   <div class="login-box">
     <div class="login-logo">KENYA<span>045</span></div>
     <div class="login-sub">ADMIN COMMAND CENTRE</div>
-    <form id="loginForm" onsubmit="handleLoginSubmit(event)" autocomplete="on">
+    <div id="loginForm">
       <input class="login-input" type="text" id="loginUser" name="username" placeholder="Username" autocomplete="username" required/>
       <input class="login-input" type="password" id="loginPass" name="password" placeholder="Password" autocomplete="current-password" required/>
-      <button class="login-btn" type="submit" id="loginBtn">Sign In</button>
-    </form>
+      <button class="login-btn" type="button" id="loginBtn" style="-webkit-tap-highlight-color:rgba(201,146,42,0.3);touch-action:manipulation;">Sign In</button>
+    </div>
     <div class="login-error" id="loginError"></div>
   </div>
 </div>
@@ -267,34 +267,41 @@ function handleLoginSubmit(e) {
 }
 
 async function doLogin() {
-  const user  = document.getElementById('loginUser').value.trim();
-  const pass  = document.getElementById('loginPass').value;
-  const errEl = document.getElementById('loginError');
-  const btn   = document.getElementById('loginBtn');
+  var user  = (document.getElementById('loginUser').value||'').trim();
+  var pass  = document.getElementById('loginPass').value||'';
+  var errEl = document.getElementById('loginError');
+  var btn   = document.getElementById('loginBtn');
   errEl.textContent = '';
+  errEl.style.color = '#e74c3c';
   if (!user || !pass) { errEl.textContent = 'Please enter username and password.'; return; }
 
   btn.disabled    = true;
-  btn.textContent = 'Signing in…';
+  btn.textContent = 'Signing in...';
+  errEl.textContent = 'Contacting server...';
+  errEl.style.color = '#c9922a';
 
   try {
-    const r = await fetch('/api/auth/login', {
+    var r = await fetch('/api/auth/login', {
       method : 'POST',
       headers: { 'Content-Type': 'application/json' },
       body   : JSON.stringify({ username: user, password: pass }),
     });
-    const d = await r.json();
+    errEl.textContent = 'Server responded: HTTP ' + r.status;
+    var d = await r.json();
     if (d.token) {
+      errEl.textContent = '';
       TOKEN = d.token;
       localStorage.setItem('k045_token', TOKEN);
       startApp();
     } else {
-      errEl.textContent   = d.error || 'Invalid credentials.';
-      btn.disabled        = false;
-      btn.textContent     = 'Sign In';
+      errEl.style.color  = '#e74c3c';
+      errEl.textContent  = d.error || 'Invalid credentials.';
+      btn.disabled       = false;
+      btn.textContent    = 'Sign In';
     }
   } catch (err) {
-    errEl.textContent = 'Connection error — is the server running?';
+    errEl.style.color = '#e74c3c';
+    errEl.textContent = 'Error: ' + err.message;
     btn.disabled      = false;
     btn.textContent   = 'Sign In';
   }
@@ -721,7 +728,18 @@ function timeAgo(iso) {
 }
 
 // ─── BOOT ─────────────────────────────────────────────────────────────────
-init();
+document.addEventListener('DOMContentLoaded', function () {
+  var btn = document.getElementById('loginBtn');
+  if (btn) {
+    btn.addEventListener('click', function(e){ e.preventDefault(); doLogin(); });
+    btn.addEventListener('touchend', function(e){ e.preventDefault(); doLogin(); });
+  }
+  var passField = document.getElementById('loginPass');
+  if (passField) {
+    passField.addEventListener('keydown', function(e){ if(e.key==='Enter') doLogin(); });
+  }
+  init();
+});
 </script>
 </body>
 </html>
