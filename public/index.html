@@ -6,496 +6,770 @@
 <meta name="description" content="KENYA045 MEDIA HUB — Professional Photography, Videography & Drone Services across all 47 counties in Kenya"/>
 <title>KENYA045 MEDIA HUB — Photography · Videography · Drone</title>
 <link rel="preconnect" href="https://fonts.googleapis.com"/>
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400;1,600&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet"/>
 <style>
-/* ══ DESIGN SYSTEM ══ */
 :root{
-  --black:#080808;--deep:#0f0f0f;--surface:#161616;--card:#1c1c1c;
-  --border:rgba(255,255,255,0.08);--border2:rgba(255,255,255,0.14);
-  --gold:#c9922a;--gold2:#e8b455;--goldlt:#f5d08a;
-  --white:#f5f0e8;--muted:rgba(245,240,232,0.5);--faint:rgba(245,240,232,0.25);
+  --black:#060606;--deep:#0a0a0a;--surface:#111;--card:#181818;
+  --border:rgba(255,255,255,0.07);--border2:rgba(255,255,255,0.13);
+  --gold:#c8922a;--gold2:#e6b44e;--goldlt:#f0cc80;
+  --white:#f2ede4;--muted:rgba(242,237,228,0.55);--faint:rgba(242,237,228,0.22);
   --red:#c0392b;--green:#27ae60;
-  --font-h:'Playfair Display',Georgia,serif;--font-b:'Outfit',sans-serif;
-  --r:10px;--transition:0.35s cubic-bezier(0.4,0,0.2,1);
+  --font-h:'Cormorant Garamond',Georgia,serif;
+  --font-b:'DM Sans',sans-serif;
+  --r:8px;--ease:cubic-bezier(0.4,0,0.2,1);
 }
 *,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
-html{scroll-behavior:smooth;font-size:16px;}
-body{background:var(--black);color:var(--white);font-family:var(--font-b);font-weight:400;line-height:1.7;overflow-x:hidden;cursor:none;}
-.cursor{position:fixed;width:10px;height:10px;border-radius:50%;background:var(--gold);pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform 0.1s,width 0.2s,height 0.2s;mix-blend-mode:difference;}
-.cursor-ring{position:fixed;width:36px;height:36px;border-radius:50%;border:1px solid var(--gold);pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform 0.12s,width 0.25s,height 0.25s,opacity 0.2s;opacity:0.6;}
-body::before{content:'';position:fixed;inset:0;pointer-events:none;z-index:1000;opacity:0.04;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");}
-/* NAV */
-nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 3rem;height:72px;transition:background var(--transition),backdrop-filter var(--transition),border-color var(--transition);border-bottom:1px solid transparent;}
-nav.scrolled{background:rgba(8,8,8,0.92);backdrop-filter:blur(20px);border-bottom-color:var(--border);}
-.nav-logo{font-family:var(--font-h);font-size:1.2rem;font-weight:700;color:var(--white);text-decoration:none;letter-spacing:0.04em;display:flex;align-items:center;gap:10px;}
-.nav-logo-mark{width:36px;height:36px;border-radius:6px;background:var(--gold);display:flex;align-items:center;justify-content:center;font-size:16px;color:var(--black);font-weight:900;}
-.nav-logo span{color:var(--gold);}
-.nav-links{display:flex;align-items:center;gap:2.5rem;}
-.nav-links a{font-size:13px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;transition:color 0.2s;position:relative;}
-.nav-links a::after{content:'';position:absolute;bottom:-4px;left:0;width:0;height:1px;background:var(--gold);transition:width 0.3s;}
+html{scroll-behavior:smooth;}
+body{background:var(--black);color:var(--white);font-family:var(--font-b);overflow-x:hidden;cursor:none;}
+img{display:block;width:100%;height:100%;object-fit:cover;}
+
+/* ── CURSOR ─────────────────────────────────────────────────────────── */
+.cur{position:fixed;width:8px;height:8px;background:var(--gold);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:width .2s,height .2s,background .2s;mix-blend-mode:difference;}
+.cur-ring{position:fixed;width:32px;height:32px;border:1px solid var(--gold);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);opacity:.5;transition:width .3s var(--ease),height .3s var(--ease),opacity .2s;}
+body:has(a:hover) .cur,body:has(button:hover) .cur{width:18px;height:18px;}
+body:has(a:hover) .cur-ring,body:has(button:hover) .cur-ring{width:50px;height:50px;opacity:.25;}
+
+/* ── NAV ─────────────────────────────────────────────────────────────── */
+nav{position:fixed;top:0;left:0;right:0;z-index:500;display:flex;align-items:center;justify-content:space-between;padding:0 4rem;height:76px;transition:background .4s,border-color .4s;border-bottom:1px solid transparent;}
+nav.scrolled{background:rgba(6,6,6,0.94);backdrop-filter:blur(24px);-webkit-backdrop-filter:blur(24px);border-bottom-color:var(--border);}
+.nav-logo{display:flex;align-items:center;gap:12px;text-decoration:none;}
+.nav-logo-mark{width:38px;height:38px;background:var(--gold);border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:18px;font-weight:700;color:#000;}
+.nav-logo-text{font-family:var(--font-h);font-size:1.15rem;font-weight:600;color:var(--white);letter-spacing:.08em;}
+.nav-logo-text span{color:var(--gold);}
+.nav-links{display:flex;gap:2.5rem;}
+.nav-links a{font-size:12px;font-weight:500;color:var(--muted);text-decoration:none;letter-spacing:.12em;text-transform:uppercase;transition:color .2s;position:relative;}
+.nav-links a::after{content:'';position:absolute;bottom:-3px;left:0;width:0;height:1px;background:var(--gold);transition:width .3s;}
 .nav-links a:hover{color:var(--white);}
 .nav-links a:hover::after{width:100%;}
-.nav-cta{background:var(--gold);color:var(--black);border:none;padding:9px 22px;border-radius:4px;font-family:var(--font-b);font-size:13px;font-weight:600;letter-spacing:0.06em;cursor:none;transition:background 0.2s,transform 0.15s;text-transform:uppercase;text-decoration:none;display:inline-block;}
-.nav-cta:hover{background:var(--gold2);transform:translateY(-1px);}
-.hamburger{display:none;flex-direction:column;gap:5px;cursor:none;background:none;border:none;padding:4px;}
-.hamburger span{display:block;width:24px;height:1.5px;background:var(--white);transition:all 0.3s;}
-.mobile-nav{display:none;position:fixed;inset:0;z-index:490;background:rgba(8,8,8,0.98);backdrop-filter:blur(30px);flex-direction:column;align-items:center;justify-content:center;gap:2rem;}
-.mobile-nav.open{display:flex;}
-.mobile-nav a{font-family:var(--font-h);font-size:2rem;color:var(--white);text-decoration:none;}
-.mobile-nav a:hover{color:var(--gold);}
-/* HERO */
-.hero{min-height:100vh;position:relative;display:flex;flex-direction:column;justify-content:center;padding:0 3rem;overflow:hidden;}
-.hero-bg{position:absolute;inset:0;z-index:0;background:radial-gradient(ellipse 80% 60% at 70% 50%,rgba(201,146,42,0.08) 0%,transparent 60%),radial-gradient(ellipse 60% 80% at 20% 80%,rgba(201,146,42,0.05) 0%,transparent 50%),linear-gradient(160deg,#080808 0%,#0d0d0a 50%,#0a0a08 100%);}
-.hero-aperture{position:absolute;right:-10%;top:50%;transform:translateY(-50%);width:700px;height:700px;opacity:0.06;pointer-events:none;}
-.hero-aperture circle{fill:none;stroke:var(--gold);transform-origin:center;animation:spin 25s linear infinite;}
-.hero-aperture circle:nth-child(2){animation-direction:reverse;animation-duration:18s;}
-.hero-aperture circle:nth-child(3){animation-duration:35s;}
-@keyframes spin{to{transform:rotate(360deg);}}
-.hero-content{position:relative;z-index:2;max-width:780px;}
-.hero-eyebrow{font-size:11px;font-weight:500;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.5rem;display:flex;align-items:center;gap:12px;animation:fadeUp 0.8s ease both;}
-.hero-eyebrow::before{content:'';display:block;width:40px;height:1px;background:var(--gold);}
-.hero h1{font-family:var(--font-h);font-size:clamp(3rem,7vw,6.5rem);font-weight:900;line-height:0.95;letter-spacing:-0.01em;margin-bottom:1.8rem;animation:fadeUp 0.9s 0.1s ease both;}
-.hero h1 em{color:var(--gold);font-style:italic;}
-.hero h1 .line2{display:block;color:var(--muted);font-weight:400;font-size:0.7em;}
-.hero-sub{font-size:1.05rem;color:var(--muted);max-width:520px;line-height:1.7;margin-bottom:2.5rem;font-weight:300;animation:fadeUp 1s 0.2s ease both;}
-.hero-actions{display:flex;gap:14px;flex-wrap:wrap;animation:fadeUp 1s 0.3s ease both;}
-.btn-gold{background:var(--gold);color:var(--black);border:none;padding:14px 32px;border-radius:4px;font-family:var(--font-b);font-size:14px;font-weight:600;letter-spacing:0.08em;text-transform:uppercase;cursor:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
-.btn-gold:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,146,42,0.3);}
-.btn-outline{background:none;color:var(--white);border:1px solid var(--border2);padding:14px 32px;border-radius:4px;font-family:var(--font-b);font-size:14px;font-weight:500;letter-spacing:0.08em;text-transform:uppercase;cursor:none;transition:all 0.2s;text-decoration:none;display:inline-block;}
-.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
-.hero-stats{position:absolute;bottom:3rem;left:3rem;right:3rem;z-index:2;display:flex;gap:3rem;flex-wrap:wrap;animation:fadeUp 1s 0.5s ease both;border-top:1px solid var(--border);padding-top:2rem;}
-.hero-stat-num{font-family:var(--font-h);font-size:2.2rem;font-weight:700;color:var(--gold);display:block;line-height:1;}
-.hero-stat-label{font-size:11px;color:var(--faint);text-transform:uppercase;letter-spacing:0.15em;margin-top:4px;}
-.scroll-hint{position:absolute;right:3rem;bottom:3.5rem;z-index:2;display:flex;flex-direction:column;align-items:center;gap:8px;font-size:10px;letter-spacing:0.2em;color:var(--faint);text-transform:uppercase;}
-.scroll-line{width:1px;height:50px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease-in-out infinite;}
-@keyframes scrollPulse{0%,100%{opacity:0.3}50%{opacity:1}}
-@keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
-/* SECTIONS */
-section{padding:7rem 3rem;position:relative;}
-.section-eyebrow{font-size:10px;font-weight:600;letter-spacing:0.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1rem;display:flex;align-items:center;gap:10px;}
-.section-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
-.section-title{font-family:var(--font-h);font-size:clamp(2rem,4vw,3.2rem);font-weight:900;line-height:1.1;letter-spacing:-0.01em;margin-bottom:1rem;}
-.section-title em{color:var(--gold);font-style:italic;}
-.section-sub{color:var(--muted);max-width:560px;font-size:0.95rem;margin-bottom:3rem;line-height:1.75;}
-.container{max-width:1300px;margin:0 auto;}
-.divider{width:100%;height:1px;background:var(--border);margin:0;}
-.reveal{opacity:0;transform:translateY(30px);transition:opacity 0.7s ease,transform 0.7s ease;}
-.reveal.visible{opacity:1;transform:translateY(0);}
-.reveal-delay-1{transition-delay:0.1s;}
-.reveal-delay-2{transition-delay:0.2s;}
-.reveal-delay-3{transition-delay:0.3s;}
-/* SERVICES */
-#services{background:var(--deep);}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
-.service-card{background:var(--surface);padding:3rem 2.5rem;transition:background var(--transition);position:relative;overflow:hidden;}
-.service-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform var(--transition);}
-.service-card:hover{background:var(--card);}
-.service-card:hover::before{transform:scaleX(1);}
-.service-icon{width:60px;height:60px;border-radius:12px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.2);display:flex;align-items:center;justify-content:center;font-size:26px;margin-bottom:1.8rem;}
-.service-title{font-family:var(--font-h);font-size:1.5rem;font-weight:700;margin-bottom:1rem;}
-.service-desc{color:var(--muted);font-size:0.9rem;line-height:1.75;margin-bottom:1.5rem;}
-.service-features{list-style:none;display:flex;flex-direction:column;gap:8px;}
-.service-features li{font-size:12px;color:var(--faint);display:flex;align-items:center;gap:8px;text-transform:uppercase;letter-spacing:0.08em;}
-.service-features li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
-.service-cta{display:inline-flex;align-items:center;gap:8px;margin-top:2rem;font-size:12px;color:var(--gold);text-decoration:none;letter-spacing:0.1em;text-transform:uppercase;font-weight:600;transition:gap 0.2s;cursor:none;}
-.service-cta:hover{gap:14px;}
-/* WHY */
-#why{background:var(--black);}
-.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
-.why-img-stack{position:relative;height:520px;}
-.why-img-main{position:absolute;top:0;left:0;right:60px;bottom:60px;background:linear-gradient(135deg,#1a1a14 0%,#222218 100%);border-radius:var(--r);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;overflow:hidden;}
-.why-img-accent{position:absolute;bottom:0;right:0;width:220px;height:200px;background:linear-gradient(135deg,#191908 0%,#201e0a 100%);border-radius:var(--r);border:1px solid rgba(201,146,42,0.2);display:flex;align-items:center;justify-content:center;overflow:hidden;z-index:2;}
-.camera-art{opacity:0.15;width:200px;height:200px;}
-.camera-art-sm{opacity:0.2;width:80px;height:80px;}
-.why-badge{position:absolute;top:20px;right:50px;z-index:3;background:var(--gold);color:var(--black);padding:10px 18px;border-radius:6px;font-family:var(--font-h);font-size:0.9rem;font-weight:700;}
-.why-points{display:flex;flex-direction:column;gap:2rem;}
-.why-point{display:flex;gap:1.2rem;align-items:flex-start;}
-.why-point-num{font-family:var(--font-h);font-size:2rem;font-weight:900;color:rgba(201,146,42,0.2);line-height:1;flex-shrink:0;width:40px;}
-.why-point-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;margin-bottom:4px;}
-.why-point-desc{color:var(--muted);font-size:0.88rem;line-height:1.7;}
-/* PROCESS */
-#process{background:var(--deep);}
-.process-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
-.process-steps::before{content:'';position:absolute;top:36px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--border),var(--border),transparent);z-index:0;}
-.process-step{padding:0 2rem;text-align:center;position:relative;z-index:1;}
-.process-num{width:72px;height:72px;border-radius:50%;margin:0 auto 1.5rem;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1.4rem;font-weight:700;color:var(--gold);position:relative;z-index:1;transition:all var(--transition);}
-.process-step:hover .process-num{background:var(--gold);color:var(--black);}
-.process-title{font-family:var(--font-h);font-size:1.1rem;font-weight:700;margin-bottom:8px;}
-.process-desc{font-size:0.85rem;color:var(--muted);line-height:1.65;}
-/* PORTFOLIO */
-#portfolio{background:var(--black);}
-.portfolio-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:2.5rem;}
-.pf-btn{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;padding:7px 18px;border-radius:99px;border:1px solid var(--border);background:none;color:var(--muted);cursor:none;transition:all 0.2s;}
-.pf-btn.active,.pf-btn:hover{background:var(--gold);color:var(--black);border-color:var(--gold);}
-.portfolio-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-template-rows:repeat(2,220px);gap:6px;}
-.pf-item{border-radius:8px;overflow:hidden;position:relative;cursor:none;background:var(--surface);transition:transform 0.3s;}
-.pf-item:hover{transform:scale(1.01);z-index:2;}
-.pf-item:nth-child(1){grid-column:1/6;grid-row:1/2;}
+.nav-book{background:var(--gold);color:#000;padding:9px 24px;border-radius:4px;font-size:12px;font-weight:600;text-decoration:none;letter-spacing:.08em;text-transform:uppercase;transition:background .2s,transform .15s;white-space:nowrap;}
+.nav-book:hover{background:var(--gold2);transform:translateY(-1px);}
+.hamburger{display:none;flex-direction:column;gap:5px;background:none;border:none;cursor:pointer;padding:6px;}
+.hamburger span{display:block;width:22px;height:1.5px;background:var(--white);transition:all .3s;}
+.mob-nav{display:none;position:fixed;inset:0;z-index:490;background:rgba(6,6,6,.97);backdrop-filter:blur(30px);flex-direction:column;align-items:center;justify-content:center;gap:2.5rem;}
+.mob-nav.open{display:flex;}
+.mob-nav a{font-family:var(--font-h);font-size:2.2rem;color:var(--white);text-decoration:none;letter-spacing:.04em;}
+.mob-nav a:hover{color:var(--gold);}
+
+/* ── HERO ────────────────────────────────────────────────────────────── */
+.hero{min-height:100vh;position:relative;display:flex;align-items:flex-end;overflow:hidden;}
+.hero-bg{position:absolute;inset:0;z-index:0;}
+.hero-bg img{object-position:center 30%;}
+.hero-bg::after{content:'';position:absolute;inset:0;background:linear-gradient(to right,rgba(6,6,6,.92) 0%,rgba(6,6,6,.6) 50%,rgba(6,6,6,.2) 100%),linear-gradient(to top,rgba(6,6,6,.95) 0%,transparent 50%);}
+.hero-slides{position:absolute;inset:0;z-index:0;}
+.hero-slide{position:absolute;inset:0;opacity:0;transition:opacity 1.5s ease;}
+.hero-slide.active{opacity:1;}
+.hero-slide img{width:100%;height:100%;object-fit:cover;object-position:center;}
+.hero-slide::after{content:'';position:absolute;inset:0;background:linear-gradient(105deg,rgba(6,6,6,.88) 0%,rgba(6,6,6,.55) 45%,rgba(6,6,6,.15) 100%),linear-gradient(to top,rgba(6,6,6,.9) 0%,transparent 55%);}
+.hero-content{position:relative;z-index:2;padding:0 4rem 6rem;max-width:900px;}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;font-size:10px;font-weight:500;letter-spacing:.28em;text-transform:uppercase;color:var(--gold);margin-bottom:2rem;opacity:0;animation:fadeUp .8s .2s var(--ease) forwards;}
+.hero-eyebrow::before{content:'';width:40px;height:1px;background:var(--gold);}
+.hero-h1{font-family:var(--font-h);font-size:clamp(3.5rem,8vw,7.5rem);font-weight:300;line-height:.92;letter-spacing:-.01em;margin-bottom:2rem;opacity:0;animation:fadeUp .9s .35s var(--ease) forwards;}
+.hero-h1 em{font-style:italic;color:var(--gold);}
+.hero-h1 strong{font-weight:600;display:block;}
+.hero-sub{font-size:1rem;color:var(--muted);max-width:480px;line-height:1.75;margin-bottom:3rem;font-weight:300;opacity:0;animation:fadeUp .9s .5s var(--ease) forwards;}
+.hero-actions{display:flex;gap:14px;flex-wrap:wrap;opacity:0;animation:fadeUp .9s .65s var(--ease) forwards;}
+.btn-primary{background:var(--gold);color:#000;border:none;padding:15px 36px;border-radius:4px;font-family:var(--font-b);font-size:13px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-primary:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 12px 40px rgba(200,146,42,.3);}
+.btn-ghost{background:none;color:var(--white);border:1px solid rgba(242,237,228,.25);padding:15px 36px;border-radius:4px;font-family:var(--font-b);font-size:13px;font-weight:400;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;transition:all .2s;text-decoration:none;display:inline-block;}
+.btn-ghost:hover{border-color:var(--gold);color:var(--gold);}
+.hero-stats{position:absolute;right:4rem;bottom:5rem;z-index:2;display:flex;flex-direction:column;gap:2rem;opacity:0;animation:fadeRight .9s .8s var(--ease) forwards;}
+.hero-stat-num{font-family:var(--font-h);font-size:2.8rem;font-weight:600;color:var(--gold);line-height:1;display:block;}
+.hero-stat-label{font-size:10px;color:var(--faint);text-transform:uppercase;letter-spacing:.15em;margin-top:3px;}
+.hero-indicators{position:absolute;bottom:2.5rem;left:4rem;z-index:2;display:flex;gap:8px;}
+.hero-dot{width:24px;height:2px;background:rgba(242,237,228,.3);cursor:pointer;transition:all .3s;}
+.hero-dot.active{width:48px;background:var(--gold);}
+.scroll-cue{position:absolute;right:4rem;top:50%;z-index:2;transform:translateY(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;font-size:9px;letter-spacing:.2em;color:var(--faint);text-transform:uppercase;writing-mode:vertical-rl;opacity:0;animation:fadeIn 1s 1.2s ease forwards;}
+.scroll-line{width:1px;height:60px;background:linear-gradient(to bottom,transparent,var(--gold));animation:scrollPulse 2s ease-in-out infinite;}
+@keyframes scrollPulse{0%,100%{opacity:.3}50%{opacity:1}}
+@keyframes fadeUp{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+@keyframes fadeRight{from{opacity:0;transform:translateX(20px)}to{opacity:1;transform:translateX(0)}}
+@keyframes fadeIn{from{opacity:0}to{opacity:1}}
+
+/* ── TICKER ──────────────────────────────────────────────────────────── */
+.ticker{background:var(--gold);padding:12px 0;overflow:hidden;position:relative;z-index:3;}
+.ticker-track{display:flex;gap:0;width:max-content;animation:ticker 25s linear infinite;}
+.ticker-item{font-size:11px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:#000;padding:0 3rem;white-space:nowrap;}
+.ticker-dot{color:rgba(0,0,0,.4);margin:0 1rem;}
+@keyframes ticker{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* ── SECTION HELPERS ─────────────────────────────────────────────────── */
+section{padding:8rem 4rem;position:relative;}
+.container{max-width:1400px;margin:0 auto;}
+.s-eye{font-size:10px;font-weight:600;letter-spacing:.25em;text-transform:uppercase;color:var(--gold);margin-bottom:1.2rem;display:flex;align-items:center;gap:12px;}
+.s-eye::before{content:'';display:block;width:28px;height:1px;background:var(--gold);}
+.s-title{font-family:var(--font-h);font-size:clamp(2.2rem,4.5vw,3.8rem);font-weight:300;line-height:1.08;letter-spacing:-.01em;margin-bottom:1.2rem;}
+.s-title em{font-style:italic;color:var(--gold);}
+.s-title strong{font-weight:600;}
+.s-sub{color:var(--muted);max-width:520px;font-size:.95rem;margin-bottom:4rem;line-height:1.8;font-weight:300;}
+.divider{width:100%;height:1px;background:var(--border);}
+.reveal{opacity:0;transform:translateY(32px);transition:opacity .8s var(--ease),transform .8s var(--ease);}
+.reveal.in{opacity:1;transform:translateY(0);}
+.reveal-d1{transition-delay:.1s;}
+.reveal-d2{transition-delay:.2s;}
+.reveal-d3{transition-delay:.3s;}
+.reveal-d4{transition-delay:.4s;}
+
+/* ── SERVICES ────────────────────────────────────────────────────────── */
+#services{background:var(--deep);padding-top:7rem;padding-bottom:7rem;}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;margin-top:4rem;}
+.svc-card{background:var(--surface);position:relative;overflow:hidden;transition:background .4s;}
+.svc-card:hover{background:var(--card);}
+.svc-img{height:260px;position:relative;overflow:hidden;}
+.svc-img img{transition:transform .7s var(--ease);}
+.svc-card:hover .svc-img img{transform:scale(1.06);}
+.svc-img-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.8) 0%,transparent 60%);}
+.svc-body{padding:2.2rem 2rem;}
+.svc-icon{width:48px;height:48px;border-radius:10px;background:rgba(200,146,42,.12);border:1px solid rgba(200,146,42,.2);display:flex;align-items:center;justify-content:center;font-size:22px;margin-bottom:1.4rem;}
+.svc-title{font-family:var(--font-h);font-size:1.6rem;font-weight:400;margin-bottom:.8rem;}
+.svc-desc{color:var(--muted);font-size:.88rem;line-height:1.8;margin-bottom:1.4rem;font-weight:300;}
+.svc-list{list-style:none;display:flex;flex-direction:column;gap:7px;margin-bottom:1.8rem;}
+.svc-list li{font-size:11px;color:var(--faint);display:flex;align-items:center;gap:8px;letter-spacing:.06em;}
+.svc-list li::before{content:'';width:4px;height:4px;border-radius:50%;background:var(--gold);flex-shrink:0;}
+.svc-cta{font-size:11px;color:var(--gold);letter-spacing:.12em;text-transform:uppercase;font-weight:500;text-decoration:none;display:inline-flex;align-items:center;gap:8px;transition:gap .2s;}
+.svc-cta:hover{gap:14px;}
+.svc-bar{position:absolute;top:0;left:0;right:0;height:2px;background:var(--gold);transform:scaleX(0);transform-origin:left;transition:transform .4s var(--ease);}
+.svc-card:hover .svc-bar{transform:scaleX(1);}
+
+/* ── NUMBERS ─────────────────────────────────────────────────────────── */
+.numbers{background:var(--black);padding:5rem 4rem;}
+.numbers-inner{max-width:1400px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--border);border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.num-card{background:var(--surface);padding:3rem 2.5rem;text-align:center;transition:background .3s;}
+.num-card:hover{background:var(--card);}
+.num-val{font-family:var(--font-h);font-size:4rem;font-weight:300;color:var(--gold);line-height:1;display:block;}
+.num-label{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.15em;margin-top:.8rem;}
+
+/* ── PORTFOLIO ───────────────────────────────────────────────────────── */
+#portfolio{background:var(--black);padding:7rem 4rem;}
+.pf-filters{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:3rem;}
+.pf-btn{font-size:11px;font-weight:500;letter-spacing:.1em;text-transform:uppercase;padding:8px 20px;border-radius:99px;border:1px solid var(--border2);background:none;color:var(--muted);cursor:pointer;transition:all .2s;}
+.pf-btn.active,.pf-btn:hover{background:var(--gold);color:#000;border-color:var(--gold);}
+.pf-grid{display:grid;grid-template-columns:repeat(12,1fr);grid-auto-rows:280px;gap:6px;}
+.pf-item{border-radius:6px;overflow:hidden;position:relative;cursor:pointer;background:var(--surface);}
+.pf-item:nth-child(1){grid-column:1/6;grid-row:1/3;}
 .pf-item:nth-child(2){grid-column:6/9;grid-row:1/2;}
-.pf-item:nth-child(3){grid-column:9/13;grid-row:1/3;}
-.pf-item:nth-child(4){grid-column:1/4;grid-row:2/3;}
-.pf-item:nth-child(5){grid-column:4/9;grid-row:2/3;}
-.pf-inner{width:100%;height:100%;display:flex;align-items:center;justify-content:center;overflow:hidden;position:relative;}
-.pf-bg{position:absolute;inset:0;transition:transform 0.5s;}
-.pf-item:hover .pf-bg{transform:scale(1.06);}
-.pf-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(8,8,8,0.8),transparent 50%);opacity:0;transition:opacity 0.3s;display:flex;flex-direction:column;justify-content:flex-end;padding:1.2rem;}
+.pf-item:nth-child(3){grid-column:9/13;grid-row:1/2;}
+.pf-item:nth-child(4){grid-column:6/9;grid-row:2/3;}
+.pf-item:nth-child(5){grid-column:9/13;grid-row:2/3;}
+.pf-img{position:absolute;inset:0;overflow:hidden;}
+.pf-img img{transition:transform .7s var(--ease);}
+.pf-item:hover .pf-img img{transform:scale(1.08);}
+.pf-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(6,6,6,.85) 0%,rgba(6,6,6,.1) 50%,transparent 100%);opacity:0;transition:opacity .4s;}
 .pf-item:hover .pf-overlay{opacity:1;}
-.pf-tag{font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:var(--gold);font-weight:600;margin-bottom:4px;}
-.pf-label{font-family:var(--font-h);font-size:1.1rem;font-weight:700;color:var(--white);}
-.pf-item:nth-child(1) .pf-bg{background:linear-gradient(135deg,#1a120a,#2a1c0e,#1e1608);}
-.pf-item:nth-child(2) .pf-bg{background:linear-gradient(135deg,#0a1018,#0e1822,#0c1420);}
-.pf-item:nth-child(3) .pf-bg{background:linear-gradient(135deg,#12100a,#1e1c10,#181608);}
-.pf-item:nth-child(4) .pf-bg{background:linear-gradient(135deg,#100c18,#18101e,#14101a);}
-.pf-item:nth-child(5) .pf-bg{background:linear-gradient(135deg,#0a1208,#101a0c,#0e1608);}
-/* COVERAGE */
-#coverage{background:var(--deep);text-align:center;}
-.coverage-num{font-family:var(--font-h);font-size:clamp(5rem,15vw,12rem);font-weight:900;color:transparent;line-height:1;-webkit-text-stroke:2px rgba(201,146,42,0.3);margin-bottom:-1rem;}
-.counties-marquee{width:100%;overflow:hidden;position:relative;margin-top:3rem;}
-.counties-marquee::before,.counties-marquee::after{content:'';position:absolute;top:0;bottom:0;width:120px;z-index:2;pointer-events:none;}
-.counties-marquee::before{left:0;background:linear-gradient(to right,var(--deep),transparent);}
-.counties-marquee::after{right:0;background:linear-gradient(to left,var(--deep),transparent);}
-.counties-track{display:flex;gap:12px;width:max-content;animation:marquee 30s linear infinite;}
-.counties-track2{animation-direction:reverse;animation-duration:25s;margin-top:10px;}
+.pf-info{position:absolute;bottom:0;left:0;right:0;padding:1.8rem 1.5rem;transform:translateY(10px);transition:transform .4s var(--ease);opacity:0;}
+.pf-item:hover .pf-info{transform:translateY(0);opacity:1;}
+.pf-cat{font-size:10px;letter-spacing:.15em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:5px;}
+.pf-name{font-family:var(--font-h);font-size:1.3rem;font-weight:400;color:var(--white);}
+.pf-expand{position:absolute;top:1rem;right:1rem;width:36px;height:36px;border-radius:50%;background:rgba(200,146,42,.9);display:flex;align-items:center;justify-content:center;font-size:16px;opacity:0;transform:scale(.8);transition:all .3s;}
+.pf-item:hover .pf-expand{opacity:1;transform:scale(1);}
+
+/* ── WHY ─────────────────────────────────────────────────────────────── */
+#why{background:var(--deep);}
+.why-grid{display:grid;grid-template-columns:1fr 1fr;gap:7rem;align-items:center;}
+.why-visual{position:relative;height:640px;}
+.why-img-main{position:absolute;top:0;left:0;right:80px;bottom:80px;border-radius:var(--r);overflow:hidden;border:1px solid var(--border);}
+.why-img-accent{position:absolute;bottom:0;right:0;width:260px;height:230px;border-radius:var(--r);overflow:hidden;border:1px solid rgba(200,146,42,.25);z-index:2;}
+.why-badge{position:absolute;top:24px;right:64px;z-index:3;background:var(--gold);color:#000;padding:10px 20px;border-radius:6px;font-family:var(--font-h);font-size:1rem;font-weight:600;}
+.why-pts{display:flex;flex-direction:column;gap:2.5rem;}
+.why-pt{display:flex;gap:1.5rem;align-items:flex-start;}
+.why-num{font-family:var(--font-h);font-size:2.2rem;font-weight:300;color:rgba(200,146,42,.2);line-height:1;flex-shrink:0;width:44px;}
+.why-pt-title{font-family:var(--font-h);font-size:1.2rem;font-weight:600;margin-bottom:6px;}
+.why-pt-desc{color:var(--muted);font-size:.88rem;line-height:1.8;font-weight:300;}
+
+/* ── PROCESS ─────────────────────────────────────────────────────────── */
+#process{background:var(--black);}
+.process-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:0;position:relative;}
+.process-grid::before{content:'';position:absolute;top:40px;left:0;right:0;height:1px;background:linear-gradient(to right,transparent,var(--border) 20%,var(--border) 80%,transparent);}
+.process-step{padding:0 2.5rem;text-align:center;position:relative;z-index:1;}
+.process-num{width:80px;height:80px;border-radius:50%;margin:0 auto 2rem;background:var(--surface);border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-size:1.6rem;font-weight:300;color:var(--gold);transition:all .3s;}
+.process-step:hover .process-num{background:var(--gold);color:#000;box-shadow:0 0 0 8px rgba(200,146,42,.1);}
+.process-step-title{font-family:var(--font-h);font-size:1.2rem;font-weight:600;margin-bottom:10px;}
+.process-step-desc{font-size:.85rem;color:var(--muted);line-height:1.7;font-weight:300;}
+
+/* ── TESTIMONIALS ────────────────────────────────────────────────────── */
+#testimonials{background:var(--deep);}
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;transition:border-color .3s,transform .3s;position:relative;overflow:hidden;}
+.testi-card::before{content:open-quote;font-family:var(--font-h);font-size:8rem;color:var(--gold);opacity:.08;position:absolute;top:-1rem;left:1rem;line-height:1;}
+.testi-card:hover{border-color:rgba(200,146,42,.3);transform:translateY(-5px);}
+.testi-stars{display:flex;gap:3px;margin-bottom:1.2rem;}
+.star{color:var(--gold);font-size:13px;}
+.testi-text{font-family:var(--font-h);font-size:1.05rem;font-style:italic;line-height:1.7;color:var(--white);margin-bottom:1.8rem;font-weight:300;position:relative;z-index:1;}
+.testi-author{display:flex;align-items:center;gap:14px;}
+.testi-avatar{width:46px;height:46px;border-radius:50%;overflow:hidden;border:2px solid var(--gold);flex-shrink:0;}
+.testi-avatar img{object-fit:cover;}
+.testi-name{font-weight:600;font-size:13px;}
+.testi-role{font-size:11px;color:var(--muted);}
+
+/* ── COVERAGE ────────────────────────────────────────────────────────── */
+#coverage{background:var(--black);padding:6rem 0;text-align:center;overflow:hidden;}
+.coverage-big{font-family:var(--font-h);font-size:clamp(6rem,18vw,14rem);font-weight:300;color:transparent;-webkit-text-stroke:1px rgba(200,146,42,.2);line-height:1;margin-bottom:-.5rem;position:relative;z-index:0;}
+.coverage-sub{position:relative;z-index:1;padding:0 4rem;}
+.marquee{overflow:hidden;position:relative;margin-top:3rem;}
+.marquee::before,.marquee::after{content:'';position:absolute;top:0;bottom:0;width:100px;z-index:2;}
+.marquee::before{left:0;background:linear-gradient(to right,var(--black),transparent);}
+.marquee::after{right:0;background:linear-gradient(to left,var(--black),transparent);}
+.marquee-track{display:flex;gap:12px;width:max-content;animation:marquee 35s linear infinite;}
+.marquee-track2{animation-direction:reverse;animation-duration:28s;margin-top:10px;}
 @keyframes marquee{from{transform:translateX(0)}to{transform:translateX(-50%)}}
-.county-pill{padding:8px 18px;border-radius:99px;border:1px solid var(--border);background:var(--surface);font-size:12px;font-weight:500;letter-spacing:0.06em;white-space:nowrap;color:var(--muted);}
-/* TESTIMONIALS */
-#testimonials{background:var(--black);}
-.testimonials-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.testimonial-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;transition:border-color var(--transition),transform var(--transition);}
-.testimonial-card:hover{border-color:rgba(201,146,42,0.3);transform:translateY(-4px);}
-.testimonial-stars{display:flex;gap:4px;margin-bottom:1rem;}
-.star{color:var(--gold);font-size:14px;}
-.testimonial-quote{font-family:var(--font-h);font-size:1rem;font-style:italic;line-height:1.65;color:var(--white);margin-bottom:1.5rem;}
-.testimonial-author{display:flex;align-items:center;gap:12px;}
-.author-avatar{width:42px;height:42px;border-radius:50%;background:linear-gradient(135deg,var(--gold),#8a6010);display:flex;align-items:center;justify-content:center;font-family:var(--font-h);font-weight:700;font-size:14px;color:var(--black);flex-shrink:0;}
-.author-name{font-weight:600;font-size:13px;}
-.author-role{font-size:11px;color:var(--muted);}
-/* PACKAGES */
+.county-pill{padding:8px 18px;border-radius:99px;border:1px solid var(--border);background:var(--surface);font-size:12px;color:var(--muted);white-space:nowrap;}
+
+/* ── PACKAGES ────────────────────────────────────────────────────────── */
 #packages{background:var(--deep);}
-.packages-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
-.package-card{border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;background:var(--surface);transition:border-color var(--transition),transform var(--transition);position:relative;}
-.package-card.featured{border-color:rgba(201,146,42,0.4);background:var(--card);}
-.package-card:hover{transform:translateY(-6px);}
-.package-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:var(--black);font-size:11px;font-weight:700;letter-spacing:0.1em;text-transform:uppercase;padding:5px 16px;border-radius:99px;}
-.package-name{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin-bottom:4px;}
-.package-price{font-family:var(--font-h);font-size:2.5rem;font-weight:900;color:var(--gold);line-height:1;}
-.package-price span{font-size:1rem;color:var(--muted);font-weight:400;}
-.package-desc{color:var(--muted);font-size:0.85rem;margin:12px 0 1.5rem;}
-.package-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:2rem;}
-.package-features li{font-size:13px;display:flex;align-items:center;gap:10px;}
-.package-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
-.package-cta{width:100%;padding:12px;border-radius:6px;font-family:var(--font-b);font-size:13px;font-weight:600;letter-spacing:0.06em;text-transform:uppercase;cursor:none;transition:all 0.2s;border:1px solid var(--gold);background:transparent;color:var(--gold);}
-.package-card.featured .package-cta{background:var(--gold);color:var(--black);}
-.package-cta:hover{background:var(--gold);color:var(--black);}
-/* BOOKING */
-#booking{background:var(--deep);}
-.booking-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:5rem;align-items:start;}
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.pkg-card{border:1px solid var(--border);border-radius:var(--r);padding:2.8rem 2.2rem;background:var(--surface);transition:border-color .3s,transform .3s;position:relative;}
+.pkg-card.featured{border-color:rgba(200,146,42,.4);background:var(--card);}
+.pkg-card:hover{transform:translateY(-6px);}
+.pkg-badge{position:absolute;top:-14px;left:50%;transform:translateX(-50%);background:var(--gold);color:#000;font-size:10px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;padding:5px 18px;border-radius:99px;white-space:nowrap;}
+.pkg-name{font-family:var(--font-h);font-size:1.4rem;font-weight:400;margin-bottom:6px;}
+.pkg-price{font-family:var(--font-h);font-size:1.6rem;font-weight:300;color:var(--gold);margin-bottom:.8rem;}
+.pkg-desc{color:var(--muted);font-size:.84rem;margin-bottom:1.8rem;line-height:1.7;font-weight:300;}
+.pkg-features{list-style:none;display:flex;flex-direction:column;gap:10px;margin-bottom:2.2rem;}
+.pkg-features li{font-size:13px;display:flex;align-items:center;gap:10px;}
+.pkg-features li::before{content:'✓';color:var(--gold);font-weight:700;flex-shrink:0;}
+.pkg-cta{width:100%;padding:13px;border-radius:6px;font-family:var(--font-b);font-size:12px;font-weight:600;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;border:1px solid var(--gold);background:transparent;color:var(--gold);}
+.pkg-card.featured .pkg-cta{background:var(--gold);color:#000;}
+.pkg-cta:hover{background:var(--gold);color:#000;}
+
+/* ── BOOKING ─────────────────────────────────────────────────────────── */
+#booking{background:var(--black);}
+.booking-wrap{display:grid;grid-template-columns:1fr 1.6fr;gap:6rem;align-items:start;}
 .booking-contact-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2rem;margin-top:2.5rem;}
 .contact-item{display:flex;align-items:flex-start;gap:14px;padding:14px 0;border-bottom:1px solid var(--border);}
 .contact-item:last-child{border-bottom:none;}
-.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(201,146,42,0.1);border:1px solid rgba(201,146,42,0.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
-.contact-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:0.12em;}
-.contact-value{font-size:14px;font-weight:500;color:var(--white);margin-top:2px;}
+.contact-icon{width:38px;height:38px;border-radius:8px;background:rgba(200,146,42,.1);border:1px solid rgba(200,146,42,.15);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;}
+.contact-label{font-size:10px;color:var(--muted);text-transform:uppercase;letter-spacing:.12em;}
+.contact-value{font-size:14px;font-weight:500;margin-top:2px;}
 .contact-value a{color:var(--white);text-decoration:none;}
 .contact-value a:hover{color:var(--gold);}
-.booking-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:3rem;}
-.form-title{font-family:var(--font-h);font-size:1.6rem;font-weight:700;margin-bottom:0.5rem;}
-.form-sub{color:var(--muted);font-size:0.85rem;margin-bottom:2rem;}
-.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
-.form-group{display:flex;flex-direction:column;gap:6px;}
-.form-group.full{grid-column:1/-1;}
-.form-label{font-size:11px;font-weight:600;letter-spacing:0.1em;text-transform:uppercase;color:var(--muted);}
-.form-input,.form-select,.form-textarea{background:var(--black);border:1px solid var(--border);color:var(--white);padding:12px 14px;border-radius:6px;font-family:var(--font-b);font-size:14px;outline:none;transition:border-color 0.2s,box-shadow 0.2s;-webkit-appearance:none;}
-.form-input:focus,.form-select:focus,.form-textarea:focus{border-color:var(--gold);box-shadow:0 0 0 3px rgba(201,146,42,0.1);}
-.form-input::placeholder,.form-textarea::placeholder{color:rgba(245,240,232,0.2);}
-.form-select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c9922a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;cursor:none;}
-.form-select option{background:var(--surface);}
-.form-textarea{resize:vertical;min-height:110px;line-height:1.6;}
-.form-submit{width:100%;padding:14px;margin-top:8px;background:var(--gold);color:var(--black);border:none;border-radius:6px;font-family:var(--font-b);font-size:15px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:none;transition:all 0.2s;}
-.form-submit:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 8px 30px rgba(201,146,42,0.3);}
-.form-submit:disabled{opacity:0.6;cursor:not-allowed;transform:none;}
+.booking-form-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:3rem;}
+.form-title{font-family:var(--font-h);font-size:1.8rem;font-weight:400;margin-bottom:.5rem;}
+.form-sub{color:var(--muted);font-size:.85rem;margin-bottom:2rem;font-weight:300;}
+.form-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px;}
+.fg{display:flex;flex-direction:column;gap:6px;}
+.fg.full{grid-column:1/-1;}
+.fg label{font-size:10px;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--muted);}
+.fg input,.fg select,.fg textarea{background:var(--black);border:1px solid var(--border);color:var(--white);padding:12px 14px;border-radius:6px;font-family:var(--font-b);font-size:14px;outline:none;transition:border-color .2s;-webkit-appearance:none;}
+.fg input:focus,.fg select:focus,.fg textarea:focus{border-color:var(--gold);}
+.fg input::placeholder,.fg textarea::placeholder{color:rgba(242,237,228,.2);}
+.fg select{background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%23c8922a' d='M6 8L1 3h10z'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 12px center;padding-right:36px;}
+.fg select option{background:var(--card);}
+.fg textarea{resize:vertical;min-height:110px;line-height:1.6;}
+.form-error{color:#e74c3c;font-size:13px;grid-column:1/-1;min-height:18px;}
+.form-submit{width:100%;padding:15px;margin-top:6px;background:var(--gold);color:#000;border:none;border-radius:6px;font-family:var(--font-b);font-size:14px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;transition:all .2s;}
+.form-submit:hover{background:var(--gold2);transform:translateY(-2px);box-shadow:0 10px 40px rgba(200,146,42,.3);}
+.form-submit:disabled{opacity:.6;transform:none;cursor:not-allowed;}
 .form-success{display:none;text-align:center;padding:3rem;}
 .form-success.show{display:block;}
 .success-icon{font-size:3rem;margin-bottom:1rem;}
-.success-title{font-family:var(--font-h);font-size:1.8rem;font-weight:700;color:var(--gold);margin-bottom:0.5rem;}
-.success-sub{color:var(--muted);font-size:0.9rem;}
-.form-error{color:#e74c3c;font-size:13px;margin-top:8px;min-height:18px;grid-column:1/-1;}
-/* INQUIRY */
-#inquiry{background:var(--black);}
-.inquiry-wrap{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;}
-.faq-list{display:flex;flex-direction:column;gap:12px;}
-.faq-item{border:1px solid var(--border);border-radius:8px;overflow:hidden;}
-.faq-q{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:none;font-weight:500;font-size:15px;transition:color 0.2s;}
+.success-title{font-family:var(--font-h);font-size:2rem;font-weight:400;color:var(--gold);margin-bottom:.5rem;}
+.success-sub{color:var(--muted);font-size:.9rem;font-weight:300;}
+
+/* ── INQUIRY ─────────────────────────────────────────────────────────── */
+#inquiry{background:var(--deep);}
+.inquiry-wrap{display:grid;grid-template-columns:1fr 1fr;gap:6rem;align-items:start;}
+.faq-list{display:flex;flex-direction:column;gap:10px;}
+.faq-item{border:1px solid var(--border);border-radius:var(--r);overflow:hidden;}
+.faq-q{padding:16px 20px;display:flex;align-items:center;justify-content:space-between;cursor:pointer;font-size:14px;font-weight:400;transition:color .2s;}
 .faq-q:hover{color:var(--gold);}
-.faq-icon{width:24px;height:24px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:16px;flex-shrink:0;transition:all 0.3s;color:var(--muted);}
+.faq-icon{width:22px;height:22px;border-radius:50%;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;transition:all .3s;color:var(--muted);flex-shrink:0;}
 .faq-item.open .faq-icon{transform:rotate(45deg);border-color:var(--gold);color:var(--gold);}
-.faq-a{max-height:0;overflow:hidden;transition:max-height 0.35s ease,padding 0.35s;color:var(--muted);font-size:0.9rem;line-height:1.75;padding:0 20px;}
+.faq-a{max-height:0;overflow:hidden;transition:max-height .35s ease,padding .35s;color:var(--muted);font-size:.88rem;line-height:1.8;padding:0 20px;font-weight:300;}
 .faq-item.open .faq-a{max-height:200px;padding:0 20px 16px;}
-.inquiry-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;}
+.inq-form{background:var(--surface);border:1px solid var(--border);border-radius:var(--r);padding:2.5rem;}
 .inq-success{display:none;padding:2rem;text-align:center;}
 .inq-success.show{display:block;}
-/* FOOTER */
-footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3rem 2rem;}
-.footer-grid{display:grid;grid-template-columns:1.5fr 1fr 1fr 1fr;gap:3rem;max-width:1300px;margin:0 auto 3rem;}
-.footer-brand{font-family:var(--font-h);font-size:1.3rem;font-weight:700;margin-bottom:1rem;}
+
+/* ── FOOTER ──────────────────────────────────────────────────────────── */
+footer{background:var(--deep);border-top:1px solid var(--border);padding:5rem 4rem 2.5rem;}
+.footer-grid{display:grid;grid-template-columns:1.8fr 1fr 1fr 1fr;gap:3rem;max-width:1400px;margin:0 auto 3rem;}
+.footer-brand{font-family:var(--font-h);font-size:1.4rem;font-weight:400;margin-bottom:1rem;}
 .footer-brand span{color:var(--gold);}
-.footer-tagline{color:var(--muted);font-size:0.88rem;line-height:1.7;margin-bottom:1.5rem;}
-.social-links{display:flex;gap:10px;}
-.social-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:15px;color:var(--muted);text-decoration:none;transition:all 0.2s;cursor:none;}
+.footer-tagline{color:var(--muted);font-size:.85rem;line-height:1.75;margin-bottom:1.8rem;font-weight:300;}
+.social-row{display:flex;gap:10px;}
+.social-btn{width:36px;height:36px;border-radius:8px;border:1px solid var(--border);display:flex;align-items:center;justify-content:center;font-size:14px;color:var(--muted);text-decoration:none;transition:all .2s;}
 .social-btn:hover{border-color:var(--gold);color:var(--gold);}
-.footer-heading{font-size:11px;font-weight:600;letter-spacing:0.15em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
+.footer-heading{font-size:10px;font-weight:600;letter-spacing:.18em;text-transform:uppercase;color:var(--muted);margin-bottom:1.2rem;}
 .footer-links{list-style:none;display:flex;flex-direction:column;gap:10px;}
-.footer-links a{font-size:13px;color:rgba(245,240,232,0.45);text-decoration:none;transition:color 0.2s;}
+.footer-links a{font-size:13px;color:rgba(242,237,228,.4);text-decoration:none;transition:color .2s;font-weight:300;}
 .footer-links a:hover{color:var(--gold);}
-.footer-bottom{max-width:1300px;margin:0 auto;border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
+.footer-bottom{max-width:1400px;margin:0 auto;border-top:1px solid var(--border);padding-top:2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:1rem;}
 .footer-copy{font-size:12px;color:var(--faint);}
 .footer-legal{display:flex;gap:1.5rem;}
 .footer-legal a{font-size:12px;color:var(--faint);text-decoration:none;}
-/* FLOAT BTN */
-.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--gold);color:var(--black);border:none;padding:14px 24px;border-radius:50px;font-family:var(--font-b);font-size:13px;font-weight:700;letter-spacing:0.06em;text-transform:uppercase;cursor:none;box-shadow:0 8px 32px rgba(201,146,42,0.4);transition:all 0.2s;display:flex;align-items:center;gap:8px;text-decoration:none;animation:floatIn 0.5s 1s ease both;}
+
+/* ── FLOAT BUTTON ────────────────────────────────────────────────────── */
+.float-btn{position:fixed;bottom:2rem;right:2rem;z-index:400;background:var(--gold);color:#000;border:none;padding:14px 26px;border-radius:50px;font-family:var(--font-b);font-size:12px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;cursor:pointer;box-shadow:0 8px 32px rgba(200,146,42,.4);transition:all .2s;display:flex;align-items:center;gap:8px;text-decoration:none;animation:floatIn .5s 1.2s var(--ease) both;}
 @keyframes floatIn{from{opacity:0;transform:translateY(20px)}}
 .float-btn:hover{background:var(--gold2);transform:translateY(-3px);}
-.float-dot{width:8px;height:8px;border-radius:50%;background:var(--black);animation:pulse 1.5s ease-in-out infinite;}
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-/* TOAST */
+.float-dot{width:7px;height:7px;border-radius:50%;background:#000;animation:pulse 1.5s ease-in-out infinite;}
+@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.4)}}
+
+/* ── TOAST ───────────────────────────────────────────────────────────── */
 .toast-wrap{position:fixed;bottom:2rem;left:50%;transform:translateX(-50%);z-index:800;}
-.toast{background:var(--surface);border:1px solid var(--border);color:var(--white);padding:14px 24px;border-radius:8px;font-size:14px;box-shadow:0 8px 32px rgba(0,0,0,0.5);animation:toastIn 0.3s ease;border-left:3px solid var(--gold);white-space:nowrap;}
+.toast{background:var(--surface);border:1px solid var(--border2);color:var(--white);padding:14px 24px;border-radius:8px;font-size:13px;box-shadow:0 8px 32px rgba(0,0,0,.5);animation:toastIn .3s ease;border-left:3px solid var(--gold);white-space:nowrap;}
 .toast.success{border-left-color:var(--green);}
-.toast.error{border-left-color:var(--red);}
 @keyframes toastIn{from{opacity:0;transform:translateY(10px)}}
-/* RESPONSIVE */
-@media(max-width:1024px){
+
+/* ── RESPONSIVE ──────────────────────────────────────────────────────── */
+@media(max-width:1100px){
+  .pf-grid{grid-template-columns:1fr 1fr;grid-auto-rows:240px;}
+  .pf-item:nth-child(1){grid-column:1/2;grid-row:1/3;}
+  .pf-item:nth-child(2){grid-column:2/3;grid-row:1/2;}
+  .pf-item:nth-child(3){grid-column:2/3;grid-row:2/3;}
+  .pf-item:nth-child(4){grid-column:1/2;grid-row:3/4;}
+  .pf-item:nth-child(5){grid-column:2/3;grid-row:3/4;}
   .services-grid{grid-template-columns:1fr;}
   .why-grid{grid-template-columns:1fr;gap:3rem;}
   .why-visual{display:none;}
-  .process-steps{grid-template-columns:repeat(2,1fr);gap:3rem;}
-  .process-steps::before{display:none;}
-  .booking-wrap{grid-template-columns:1fr;gap:3rem;}
-  .inquiry-wrap{grid-template-columns:1fr;gap:3rem;}
-  .packages-grid{grid-template-columns:1fr;}
-  .testimonials-grid{grid-template-columns:1fr;}
-  .footer-grid{grid-template-columns:1fr 1fr;gap:2rem;}
-  .portfolio-grid{grid-template-columns:1fr 1fr;grid-template-rows:repeat(3,180px);}
-  .pf-item:nth-child(1){grid-column:1/2;grid-row:1/2;}
-  .pf-item:nth-child(2){grid-column:2/3;grid-row:1/2;}
-  .pf-item:nth-child(3){grid-column:1/3;grid-row:2/3;}
-  .pf-item:nth-child(4){grid-column:1/2;grid-row:3/4;}
-  .pf-item:nth-child(5){grid-column:2/3;grid-row:3/4;}
+  .booking-wrap,.inquiry-wrap{grid-template-columns:1fr;gap:3rem;}
+  .footer-grid{grid-template-columns:1fr 1fr;gap:2.5rem;}
+  .numbers-inner{grid-template-columns:repeat(2,1fr);}
+  .process-grid{grid-template-columns:repeat(2,1fr);gap:3rem;}
+  .process-grid::before{display:none;}
+  .testi-grid{grid-template-columns:1fr;}
+  .pkg-grid{grid-template-columns:1fr;}
 }
 @media(max-width:768px){
   section{padding:5rem 1.5rem;}
   nav{padding:0 1.5rem;}
-  .hero{padding:0 1.5rem;}
-  .hero-stats{left:1.5rem;right:1.5rem;gap:1.5rem;}
-  .nav-links{display:none;}
+  .hero-content{padding:0 1.5rem 5rem;}
+  .hero-stats{display:none;}
+  .nav-links,.nav-book{display:none;}
   .hamburger{display:flex;}
   .float-btn span{display:none;}
-  .float-btn{padding:14px 16px;border-radius:50%;}
-  .booking-form{padding:1.5rem;}
+  .float-btn{padding:14px;border-radius:50%;}
+  .booking-form-card{padding:1.8rem;}
   .footer-grid{grid-template-columns:1fr;}
-  .form-grid{grid-template-columns:1fr;}
-  .hero-stat-num{font-size:1.7rem;}
+  .numbers{padding:3rem 1.5rem;}
+  .numbers-inner{grid-template-columns:1fr 1fr;}
 }
 </style>
 </head>
 <body>
-<div class="cursor" id="cursor"></div>
-<div class="cursor-ring" id="cursorRing"></div>
+
+<div class="cur" id="cur"></div>
+<div class="cur-ring" id="curRing"></div>
 <a class="float-btn" href="#booking"><div class="float-dot"></div><span>Book a Session</span></a>
+
+<!-- NAV -->
 <nav id="navbar">
-  <a class="nav-logo" href="#"><div class="nav-logo-mark">K</div>KENYA<span>045</span></a>
+  <a class="nav-logo" href="#">
+    <div class="nav-logo-mark">K</div>
+    <div class="nav-logo-text">KENYA<span>045</span></div>
+  </a>
   <div class="nav-links">
-    <a href="#services">Services</a><a href="#portfolio">Portfolio</a>
-    <a href="#packages">Packages</a><a href="#inquiry">FAQ</a><a href="#booking">Contact</a>
+    <a href="#services">Services</a>
+    <a href="#portfolio">Portfolio</a>
+    <a href="#packages">Packages</a>
+    <a href="#inquiry">FAQ</a>
+    <a href="#booking">Contact</a>
   </div>
-  <a class="nav-cta" href="#booking">Book Now</a>
+  <a class="nav-book" href="#booking">Book Now</a>
   <button class="hamburger" id="hamburger" aria-label="Menu"><span></span><span></span><span></span></button>
 </nav>
-<div class="mobile-nav" id="mobileNav">
-  <a href="#services" onclick="closeMobileNav()">Services</a>
-  <a href="#portfolio" onclick="closeMobileNav()">Portfolio</a>
-  <a href="#packages" onclick="closeMobileNav()">Packages</a>
-  <a href="#inquiry" onclick="closeMobileNav()">FAQ</a>
-  <a href="#booking" onclick="closeMobileNav()">Book Now</a>
+<div class="mob-nav" id="mobNav">
+  <a href="#services" onclick="closeMob()">Services</a>
+  <a href="#portfolio" onclick="closeMob()">Portfolio</a>
+  <a href="#packages" onclick="closeMob()">Packages</a>
+  <a href="#inquiry" onclick="closeMob()">FAQ</a>
+  <a href="#booking" onclick="closeMob()">Book Now</a>
 </div>
-<!-- HERO -->
+
+<!-- HERO SLIDESHOW -->
 <section class="hero" id="home">
-  <div class="hero-bg"></div>
-  <svg class="hero-aperture" viewBox="0 0 700 700" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="350" cy="350" r="300" stroke="#c9922a" stroke-width="0.5" stroke-dasharray="8 12"/>
-    <circle cx="350" cy="350" r="220" stroke="#c9922a" stroke-width="0.8" stroke-dasharray="4 18"/>
-    <circle cx="350" cy="350" r="140" stroke="#c9922a" stroke-width="1" stroke-dasharray="2 10"/>
-    <circle cx="350" cy="350" r="60" stroke="#c9922a" stroke-width="0.5"/>
-    <line x1="350" y1="50" x2="350" y2="650" stroke="#c9922a" stroke-width="0.3" opacity="0.4"/>
-    <line x1="50" y1="350" x2="650" y2="350" stroke="#c9922a" stroke-width="0.3" opacity="0.4"/>
-    <line x1="138" y1="138" x2="562" y2="562" stroke="#c9922a" stroke-width="0.3" opacity="0.3"/>
-    <line x1="562" y1="138" x2="138" y2="562" stroke="#c9922a" stroke-width="0.3" opacity="0.3"/>
-  </svg>
-  <div class="hero-content">
-    <div class="hero-eyebrow">Professional Media Services · Kenya</div>
-    <h1>We Frame<br><em>Your Story</em><span class="line2">In Every Pixel</span></h1>
-    <p class="hero-sub">Award-winning photography, cinematic videography and precision drone services across all 47 counties in Kenya. Every moment deserves to be immortal.</p>
-    <div class="hero-actions">
-      <a class="btn-gold" href="#booking">Book a Session</a>
-      <a class="btn-outline" href="#services">Our Services</a>
+  <div class="hero-slides" id="heroSlides">
+    <div class="hero-slide active">
+      <img src="https://images.unsplash.com/photo-1519741497674-4b82154ef27f?w=1800&q=85&fit=crop&crop=center" alt="Wedding photography Kenya"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1506905925346-21bda4d32df4?w=1800&q=85&fit=crop&crop=center" alt="Aerial landscape Kenya"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1492691527719-9d1e07e534b4?w=1800&q=85&fit=crop&crop=center" alt="Professional photography"/>
+    </div>
+    <div class="hero-slide">
+      <img src="https://images.unsplash.com/photo-1475721027785-f74eccf877e2?w=1800&q=85&fit=crop&crop=center" alt="Event photography"/>
     </div>
   </div>
-  <div class="hero-stats">
-    <div class="hero-stat"><span class="hero-stat-num" data-count="47">0</span><span class="hero-stat-label">Counties Covered</span></div>
-    <div class="hero-stat"><span class="hero-stat-num" data-count="500">0</span><span class="hero-stat-label">Events Captured</span></div>
-    <div class="hero-stat"><span class="hero-stat-num" data-count="8">0</span><span class="hero-stat-label">Years Experience</span></div>
-    <div class="hero-stat"><span class="hero-stat-num" data-count="350">0</span><span class="hero-stat-label">Happy Clients</span></div>
+
+  <div class="hero-content">
+    <div class="hero-eyebrow">Professional Media Services &nbsp;·&nbsp; All 47 Counties, Kenya</div>
+    <h1 class="hero-h1">
+      We Frame<br>
+      <em>Your Story</em><br>
+      <strong>In Every Pixel</strong>
+    </h1>
+    <p class="hero-sub">Award-winning photography, cinematic videography and precision drone services across Kenya. Every moment deserves to be immortal.</p>
+    <div class="hero-actions">
+      <a class="btn-primary" href="#booking">Book a Session</a>
+      <a class="btn-ghost" href="#portfolio">View Our Work</a>
+    </div>
   </div>
-  <div class="scroll-hint"><span>Scroll</span><div class="scroll-line"></div></div>
+
+  <div class="hero-stats" id="heroStats">
+    <div class="hero-stat">
+      <span class="hero-stat-num" data-count="47">0</span>
+      <span class="hero-stat-label">Counties Covered</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num" data-count="500">0</span>
+      <span class="hero-stat-label">Events Captured</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num" data-count="8">0</span>
+      <span class="hero-stat-label">Years Experience</span>
+    </div>
+    <div class="hero-stat">
+      <span class="hero-stat-num" data-count="350">0</span>
+      <span class="hero-stat-label">Happy Clients</span>
+    </div>
+  </div>
+
+  <div class="hero-indicators" id="heroDots">
+    <div class="hero-dot active" onclick="goSlide(0)"></div>
+    <div class="hero-dot" onclick="goSlide(1)"></div>
+    <div class="hero-dot" onclick="goSlide(2)"></div>
+    <div class="hero-dot" onclick="goSlide(3)"></div>
+  </div>
+
+  <div class="scroll-cue"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
-<div class="divider"></div>
+
+<!-- TICKER -->
+<div class="ticker">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<!-- NUMBERS -->
+<div class="numbers">
+  <div class="numbers-inner">
+    <div class="num-card reveal"><span class="num-val" data-count="47">0</span><div class="num-label">Counties Covered</div></div>
+    <div class="num-card reveal reveal-d1"><span class="num-val" data-count="500">0</span><div class="num-label">Events Captured</div></div>
+    <div class="num-card reveal reveal-d2"><span class="num-val" data-count="8">0</span><div class="num-label">Years of Excellence</div></div>
+    <div class="num-card reveal reveal-d3"><span class="num-val" data-count="350">0</span><div class="num-label">Happy Clients</div></div>
+  </div>
+</div>
+
 <!-- SERVICES -->
 <section id="services">
   <div class="container">
-    <div class="section-eyebrow reveal">What We Do</div>
-    <h2 class="section-title reveal">Professional <em>Services</em><br>Tailored for You</h2>
-    <p class="section-sub reveal">From intimate portraits to sweeping aerial landscapes — we bring technical mastery and artistic vision to every project.</p>
+    <div class="s-eye reveal">What We Do</div>
+    <h2 class="s-title reveal">Professional <em>Services</em><br><strong>Tailored for You</strong></h2>
+    <p class="s-sub reveal">From intimate portraits to sweeping aerial landscapes — technical mastery meets artistic vision on every project.</p>
     <div class="services-grid reveal">
-      <div class="service-card"><div class="service-icon">📷</div><h3 class="service-title">Photography</h3><p class="service-desc">Stunning stills that freeze the moments that matter. Our photographers blend technical precision with a natural eye for light, emotion and composition.</p><ul class="service-features"><li>Wedding & Engagement Sessions</li><li>Corporate & Brand Photography</li><li>Portrait & Fashion Shoots</li><li>Event & Conference Coverage</li><li>Product & Commercial Photography</li><li>Real Estate & Architecture</li></ul><a class="service-cta" href="#booking">Book Photography →</a></div>
-      <div class="service-card"><div class="service-icon">🎬</div><h3 class="service-title">Videography</h3><p class="service-desc">Cinematic storytelling that moves people. We craft compelling video content from emotional wedding films to high-impact brand commercials.</p><ul class="service-features"><li>Wedding & Love Story Films</li><li>Corporate & Brand Videos</li><li>Music Videos & Short Films</li><li>Event Highlight Reels</li><li>Documentary Production</li><li>Social Media Content Creation</li></ul><a class="service-cta" href="#booking">Book Videography →</a></div>
-      <div class="service-card"><div class="service-icon">🚁</div><h3 class="service-title">Drone Services</h3><p class="service-desc">Breathtaking aerial perspectives that ground-level cameras cannot capture. Our licensed drone pilots deliver stunning overhead footage.</p><ul class="service-features"><li>Aerial Photography & 4K Video</li><li>Real Estate Aerial Surveys</li><li>Event Aerial Coverage</li><li>Land & Infrastructure Mapping</li><li>Agricultural Surveys</li><li>Cinematic Drone Sequences</li></ul><a class="service-cta" href="#booking">Book Drone →</a></div>
+
+      <div class="svc-card">
+        <div class="svc-bar"></div>
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1452457807411-4979b707c5be?w=800&q=80&fit=crop&crop=center" alt="Photography services"/>
+          <div class="svc-img-overlay"></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon">📷</div>
+          <h3 class="svc-title">Photography</h3>
+          <p class="svc-desc">Stunning stills that freeze the moments that matter. Technical precision meets a natural eye for light, emotion and composition.</p>
+          <ul class="svc-list">
+            <li>Wedding & Engagement Sessions</li>
+            <li>Corporate & Brand Photography</li>
+            <li>Portrait & Fashion Shoots</li>
+            <li>Event & Conference Coverage</li>
+            <li>Product & Commercial Photography</li>
+            <li>Real Estate & Architecture</li>
+          </ul>
+          <a class="svc-cta" href="#booking">Book Photography →</a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-bar"></div>
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1536240478700-b869ad10e218?w=800&q=80&fit=crop&crop=center" alt="Videography services"/>
+          <div class="svc-img-overlay"></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon">🎬</div>
+          <h3 class="svc-title">Videography</h3>
+          <p class="svc-desc">Cinematic storytelling that moves people. Compelling video content from emotional wedding films to high-impact brand commercials.</p>
+          <ul class="svc-list">
+            <li>Wedding & Love Story Films</li>
+            <li>Corporate & Brand Videos</li>
+            <li>Music Videos & Short Films</li>
+            <li>Event Highlight Reels</li>
+            <li>Documentary Production</li>
+            <li>Social Media Content Creation</li>
+          </ul>
+          <a class="svc-cta" href="#booking">Book Videography →</a>
+        </div>
+      </div>
+
+      <div class="svc-card">
+        <div class="svc-bar"></div>
+        <div class="svc-img">
+          <img src="https://images.unsplash.com/photo-1508739773434-c26b3d09e071?w=800&q=80&fit=crop&crop=center" alt="Drone services Kenya"/>
+          <div class="svc-img-overlay"></div>
+        </div>
+        <div class="svc-body">
+          <div class="svc-icon">🚁</div>
+          <h3 class="svc-title">Drone Services</h3>
+          <p class="svc-desc">Breathtaking aerial perspectives that ground-level cameras cannot capture. KCAA-licensed pilots, cinematic 4K footage.</p>
+          <ul class="svc-list">
+            <li>Aerial Photography & 4K Video</li>
+            <li>Real Estate Aerial Surveys</li>
+            <li>Event Aerial Coverage</li>
+            <li>Land & Infrastructure Mapping</li>
+            <li>Agricultural Surveys</li>
+            <li>Cinematic Drone Sequences</li>
+          </ul>
+          <a class="svc-cta" href="#booking">Book Drone →</a>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
+
 <div class="divider"></div>
+
+<!-- PORTFOLIO -->
+<section id="portfolio">
+  <div class="container">
+    <div class="s-eye reveal">Our Work</div>
+    <h2 class="s-title reveal">A Glimpse of <em>What We Create</em></h2>
+    <div class="pf-filters reveal">
+      <button class="pf-btn active" onclick="filterPf(this,'all')">All Work</button>
+      <button class="pf-btn" onclick="filterPf(this,'wedding')">Weddings</button>
+      <button class="pf-btn" onclick="filterPf(this,'corporate')">Corporate</button>
+      <button class="pf-btn" onclick="filterPf(this,'aerial')">Aerial</button>
+      <button class="pf-btn" onclick="filterPf(this,'portrait')">Portraits</button>
+    </div>
+    <div class="pf-grid reveal">
+
+      <div class="pf-item" data-cat="wedding">
+        <div class="pf-img">
+          <img src="https://images.unsplash.com/photo-1519741497674-4b82154ef27f?w=900&q=80&fit=crop&crop=center" alt="Wedding photography Nairobi"/>
+        </div>
+        <div class="pf-overlay"></div>
+        <div class="pf-info"><div class="pf-cat">Wedding</div><div class="pf-name">Nairobi Garden Ceremony</div></div>
+        <div class="pf-expand">↗</div>
+      </div>
+
+      <div class="pf-item" data-cat="aerial">
+        <div class="pf-img">
+          <img src="https://images.unsplash.com/photo-1547036967-23d11aacaee0?w=700&q=80&fit=crop&crop=center" alt="Aerial photography Kenya"/>
+        </div>
+        <div class="pf-overlay"></div>
+        <div class="pf-info"><div class="pf-cat">Aerial / Drone</div><div class="pf-name">Masai Mara Landscape</div></div>
+        <div class="pf-expand">↗</div>
+      </div>
+
+      <div class="pf-item" data-cat="corporate">
+        <div class="pf-img">
+          <img src="https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=700&q=80&fit=crop&crop=center" alt="Corporate event photography"/>
+        </div>
+        <div class="pf-overlay"></div>
+        <div class="pf-info"><div class="pf-cat">Corporate</div><div class="pf-name">Brand Product Launch</div></div>
+        <div class="pf-expand">↗</div>
+      </div>
+
+      <div class="pf-item" data-cat="portrait">
+        <div class="pf-img">
+          <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=700&q=80&fit=crop&crop=faces" alt="Portrait photography Kenya"/>
+        </div>
+        <div class="pf-overlay"></div>
+        <div class="pf-info"><div class="pf-cat">Portrait</div><div class="pf-name">Studio Portrait Session</div></div>
+        <div class="pf-expand">↗</div>
+      </div>
+
+      <div class="pf-item" data-cat="wedding">
+        <div class="pf-img">
+          <img src="https://images.unsplash.com/photo-1583939003579-730e3918a45a?w=700&q=80&fit=crop&crop=center" alt="Wedding celebration Mombasa"/>
+        </div>
+        <div class="pf-overlay"></div>
+        <div class="pf-info"><div class="pf-cat">Wedding</div><div class="pf-name">Mombasa Beach Wedding</div></div>
+        <div class="pf-expand">↗</div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
 <!-- WHY -->
 <section id="why">
   <div class="container">
     <div class="why-grid">
       <div>
-        <div class="section-eyebrow reveal">Why Kenya045</div>
-        <h2 class="section-title reveal">The Difference Is<br><em>In The Details</em></h2>
-        <p class="section-sub reveal">We don't just take pictures — we create visual legacies.</p>
-        <div class="why-points">
-          <div class="why-point reveal"><span class="why-point-num">01</span><div><div class="why-point-title">Nationwide Reach</div><p class="why-point-desc">We operate in all 47 counties across Kenya. From Mombasa to Mandera — we travel to you.</p></div></div>
-          <div class="why-point reveal reveal-delay-1"><span class="why-point-num">02</span><div><div class="why-point-title">Cinema-Grade Equipment</div><p class="why-point-desc">Sony, Canon and DJI professional systems. Every project receives 4K footage and RAW image capture.</p></div></div>
-          <div class="why-point reveal reveal-delay-2"><span class="why-point-num">03</span><div><div class="why-point-title">Fast Turnaround</div><p class="why-point-desc">Edited photos within 72 hours. Wedding films within 2 weeks. Fast without sacrificing quality.</p></div></div>
-          <div class="why-point reveal reveal-delay-3"><span class="why-point-num">04</span><div><div class="why-point-title">Licensed & Insured</div><p class="why-point-desc">KCAA-licensed drone pilots. Full public liability insurance on every shoot.</p></div></div>
+        <div class="s-eye reveal">Why Kenya045</div>
+        <h2 class="s-title reveal">The Difference Is<br><em>In The Details</em></h2>
+        <p class="s-sub reveal">We don't just take pictures — we create visual legacies.</p>
+        <div class="why-pts">
+          <div class="why-pt reveal">
+            <span class="why-num">01</span>
+            <div><div class="why-pt-title">Nationwide Reach</div><p class="why-pt-desc">We operate in all 47 counties across Kenya. From Mombasa to Mandera — we travel to you, so you never miss a moment.</p></div>
+          </div>
+          <div class="why-pt reveal reveal-d1">
+            <span class="why-num">02</span>
+            <div><div class="why-pt-title">Cinema-Grade Equipment</div><p class="why-pt-desc">Sony, Canon and DJI professional systems. Every project receives 4K footage, RAW image capture and colour-graded deliverables.</p></div>
+          </div>
+          <div class="why-pt reveal reveal-d2">
+            <span class="why-num">03</span>
+            <div><div class="why-pt-title">Fast Turnaround</div><p class="why-pt-desc">Edited photos within 72 hours. Wedding films within 2 weeks. Fast without sacrificing quality.</p></div>
+          </div>
+          <div class="why-pt reveal reveal-d3">
+            <span class="why-num">04</span>
+            <div><div class="why-pt-title">Licensed & Insured</div><p class="why-pt-desc">KCAA-licensed drone pilots, full public liability insurance. Book with total confidence.</p></div>
+          </div>
         </div>
       </div>
       <div class="why-visual reveal">
-        <div class="why-img-stack">
-          <div class="why-img-main"><svg class="camera-art" viewBox="0 0 200 200" fill="none"><rect x="20" y="60" width="160" height="110" rx="10" stroke="#c9922a" stroke-width="1.5"/><rect x="80" y="40" width="40" height="25" rx="5" stroke="#c9922a" stroke-width="1.5"/><circle cx="100" cy="120" r="35" stroke="#c9922a" stroke-width="1.5"/><circle cx="100" cy="120" r="22" stroke="#c9922a" stroke-width="1"/><circle cx="100" cy="120" r="8" fill="#c9922a" opacity="0.5"/><rect x="30" y="75" width="20" height="12" rx="3" stroke="#c9922a" stroke-width="1"/><circle cx="155" cy="75" r="6" stroke="#c9922a" stroke-width="1"/></svg></div>
-          <div class="why-img-accent"><svg class="camera-art-sm" viewBox="0 0 80 80" fill="none"><path d="M40 10 L70 25 L70 55 L40 70 L10 55 L10 25 Z" stroke="#c9922a" stroke-width="1"/><circle cx="40" cy="40" r="15" stroke="#c9922a" stroke-width="1"/><circle cx="40" cy="40" r="6" fill="#c9922a" opacity="0.4"/></svg></div>
-          <div class="why-badge">8+ Years</div>
+        <div class="why-img-main">
+          <img src="https://images.unsplash.com/photo-1471341971476-ae15ff5dd4ea?w=900&q=80&fit=crop&crop=center" alt="Professional photographer Kenya"/>
+        </div>
+        <div class="why-img-accent">
+          <img src="https://images.unsplash.com/photo-1606216794074-735e91aa2c92?w=500&q=80&fit=crop&crop=center" alt="Camera equipment"/>
+        </div>
+        <div class="why-badge">8+ Years</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div style="text-align:center;margin-bottom:5rem;">
+      <div class="s-eye reveal" style="justify-content:center;">How It Works</div>
+      <h2 class="s-title reveal">From Booking to<br><em>Beautiful Memories</em></h2>
+    </div>
+    <div class="process-grid">
+      <div class="process-step reveal"><div class="process-num">01</div><h4 class="process-step-title">Book Online</h4><p class="process-step-desc">Fill in the booking form. Takes 3 minutes. We confirm within 24 hours.</p></div>
+      <div class="process-step reveal reveal-d1"><div class="process-num">02</div><h4 class="process-step-title">Consultation</h4><p class="process-step-desc">Free call to understand your vision, style and specific shots you need.</p></div>
+      <div class="process-step reveal reveal-d2"><div class="process-num">03</div><h4 class="process-step-title">We Show Up</h4><p class="process-step-desc">Our team arrives fully equipped and captures every authentic moment.</p></div>
+      <div class="process-step reveal reveal-d3"><div class="process-num">04</div><h4 class="process-step-title">Receive Files</h4><p class="process-step-desc">Professionally edited files delivered via private gallery link. Yours forever.</p></div>
+    </div>
+  </div>
+</section>
+
+<div class="divider"></div>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="container">
+    <div class="s-eye reveal">Client Love</div>
+    <h2 class="s-title reveal">What Our Clients <em>Say</em></h2>
+    <div class="testi-grid">
+      <div class="testi-card reveal">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">"Kenya045 captured our wedding in Nairobi so beautifully. Every candid moment, every tear — perfectly preserved. The drone footage of our outdoor ceremony was absolutely breathtaking."</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=100&q=80&fit=crop&crop=faces" alt="Amina Wanjiru"/></div>
+          <div><div class="testi-name">Amina & David Wanjiru</div><div class="testi-role">Wedding Clients · Nairobi</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d1">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">"We hired Kenya045 for our product launch in Mombasa. Incredibly professional, photos delivered within 48 hours and exceeded all expectations. Will hire again."</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80&fit=crop&crop=faces" alt="James Mwangi"/></div>
+          <div><div class="testi-name">James Mwangi</div><div class="testi-role">Marketing Director · Mombasa</div></div>
+        </div>
+      </div>
+      <div class="testi-card reveal reveal-d2">
+        <div class="testi-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div>
+        <p class="testi-text">"The aerial drone footage of our farm in Nakuru gave us a completely new perspective. Fast, professional and outstanding quality. Highly recommended!"</p>
+        <div class="testi-author">
+          <div class="testi-avatar"><img src="https://images.unsplash.com/photo-1580489944761-15a19d654956?w=100&q=80&fit=crop&crop=faces" alt="Faith Kipchoge"/></div>
+          <div><div class="testi-name">Faith Kipchoge</div><div class="testi-role">Farm Owner · Nakuru</div></div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <div class="divider"></div>
-<!-- PROCESS -->
-<section id="process">
-  <div class="container">
-    <div style="text-align:center;margin-bottom:4rem;">
-      <div class="section-eyebrow reveal" style="justify-content:center;">How It Works</div>
-      <h2 class="section-title reveal">From Booking to<br><em>Beautiful Memories</em></h2>
-    </div>
-    <div class="process-steps">
-      <div class="process-step reveal"><div class="process-num">01</div><h4 class="process-title">Book Online</h4><p class="process-desc">Fill in the booking form. Takes less than 3 minutes. We confirm within 24 hours.</p></div>
-      <div class="process-step reveal reveal-delay-1"><div class="process-num">02</div><h4 class="process-title">Consultation</h4><p class="process-desc">Free call to understand your vision, style preferences and specific shots you need.</p></div>
-      <div class="process-step reveal reveal-delay-2"><div class="process-num">03</div><h4 class="process-title">We Show Up</h4><p class="process-desc">Our team arrives on time, fully equipped. We capture every authentic moment.</p></div>
-      <div class="process-step reveal reveal-delay-3"><div class="process-num">04</div><h4 class="process-title">Receive Files</h4><p class="process-desc">Professionally edited photos and videos delivered via private gallery link.</p></div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
-<!-- PORTFOLIO -->
-<section id="portfolio">
-  <div class="container">
-    <div class="section-eyebrow reveal">Our Work</div>
-    <h2 class="section-title reveal">A Glimpse of<br><em>What We Create</em></h2>
-    <div class="portfolio-filters reveal">
-      <button class="pf-btn active" onclick="filterPortfolio(this,'all')">All Work</button>
-      <button class="pf-btn" onclick="filterPortfolio(this,'wedding')">Weddings</button>
-      <button class="pf-btn" onclick="filterPortfolio(this,'corporate')">Corporate</button>
-      <button class="pf-btn" onclick="filterPortfolio(this,'aerial')">Aerial</button>
-      <button class="pf-btn" onclick="filterPortfolio(this,'portrait')">Portraits</button>
-    </div>
-    <div class="portfolio-grid reveal">
-      <div class="pf-item" data-cat="wedding"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Wedding</div><div class="pf-label">Nairobi Ceremony</div></div></div></div>
-      <div class="pf-item" data-cat="corporate"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Corporate</div><div class="pf-label">Brand Campaign</div></div></div></div>
-      <div class="pf-item" data-cat="aerial"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Aerial / Drone</div><div class="pf-label">Aerial Landscape</div></div></div></div>
-      <div class="pf-item" data-cat="portrait"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Portrait</div><div class="pf-label">Studio Portrait</div></div></div></div>
-      <div class="pf-item" data-cat="wedding"><div class="pf-inner"><div class="pf-bg"></div><div class="pf-overlay"><div class="pf-tag">Event</div><div class="pf-label">Mombasa Celebration</div></div></div></div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
+
 <!-- COVERAGE -->
 <section id="coverage">
-  <div class="container">
-    <div class="coverage-num reveal">47</div>
-    <div class="section-eyebrow reveal" style="justify-content:center;">Nationwide Coverage</div>
-    <h2 class="section-title reveal" style="text-align:center;">We Serve Every<br><em>County in Kenya</em></h2>
-    <p class="section-sub reveal" style="margin:0 auto 3rem;text-align:center;">Whether you're in coastal Mombasa, the highlands of Nyeri or the north of Turkana — we travel to your event.</p>
+  <div class="coverage-big reveal">47</div>
+  <div class="coverage-sub">
+    <div class="s-eye reveal" style="justify-content:center;">Nationwide Coverage</div>
+    <h2 class="s-title reveal" style="text-align:center;">We Serve Every <em>County in Kenya</em></h2>
+    <p class="s-sub reveal" style="margin:0 auto;text-align:center;">From coastal Mombasa to the highlands of Nyeri and the arid north of Turkana — we travel to your event.</p>
   </div>
-  <div class="counties-marquee"><div class="counties-track" id="marquee1"></div></div>
-  <div class="counties-marquee" style="margin-top:10px"><div class="counties-track counties-track2" id="marquee2"></div></div>
+  <div class="marquee"><div class="marquee-track" id="m1"></div></div>
+  <div class="marquee"><div class="marquee-track marquee-track2" id="m2"></div></div>
 </section>
+
 <div class="divider"></div>
+
 <!-- PACKAGES -->
 <section id="packages">
   <div class="container">
-    <div style="text-align:center;margin-bottom:4rem;">
-      <div class="section-eyebrow reveal" style="justify-content:center;">Pricing</div>
-      <h2 class="section-title reveal">Clear Packages,<br><em>No Hidden Costs</em></h2>
-      <p class="section-sub reveal" style="margin:0 auto;text-align:center;">Custom quotes available. Contact us for bespoke event packages.</p>
+    <div style="text-align:center;margin-bottom:5rem;">
+      <div class="s-eye reveal" style="justify-content:center;">Pricing</div>
+      <h2 class="s-title reveal">Clear Packages, <em>No Hidden Costs</em></h2>
+      <p class="s-sub reveal" style="margin:0 auto;text-align:center;">Custom quotes available. Contact us for bespoke event packages.</p>
     </div>
-    <div class="packages-grid">
-      <div class="package-card reveal"><div class="package-name">Starter</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Perfect for intimate events and short sessions</p><ul class="package-features"><li>2-hour shooting session</li><li>50+ edited photos</li><li>Online gallery delivery</li><li>1 photographer</li><li>72-hour turnaround</li></ul><button class="package-cta" onclick="scrollToBooking('Starter')">Get a Quote</button></div>
-      <div class="package-card featured reveal reveal-delay-1"><div class="package-badge">Most Popular</div><div class="package-name">Professional</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Ideal for weddings, corporate events & full-day coverage</p><ul class="package-features"><li>Full-day coverage (8 hrs)</li><li>300+ edited photos</li><li>Highlight video film</li><li>2 photographers + videographer</li><li>Drone aerial footage</li><li>USB keepsake delivery</li></ul><button class="package-cta" onclick="scrollToBooking('Professional')">Get a Quote</button></div>
-      <div class="package-card reveal reveal-delay-2"><div class="package-name">Premium</div><div class="package-price">Contact <span>for quote</span></div><p class="package-desc">Full cinematic production for large events & campaigns</p><ul class="package-features"><li>Multi-day coverage</li><li>Unlimited edited photos</li><li>Full cinematic film (10-20 min)</li><li>Full crew deployment</li><li>Drone + ground footage</li><li>Same-day preview reel</li></ul><button class="package-cta" onclick="scrollToBooking('Premium')">Get a Quote</button></div>
+    <div class="pkg-grid">
+      <div class="pkg-card reveal">
+        <div class="pkg-name">Starter</div>
+        <div class="pkg-price">Contact for quote</div>
+        <p class="pkg-desc">Perfect for intimate events and short sessions.</p>
+        <ul class="pkg-features"><li>2-hour shooting session</li><li>50+ edited photos</li><li>Online gallery delivery</li><li>1 photographer</li><li>72-hour turnaround</li></ul>
+        <button class="pkg-cta" onclick="scrollBook('Starter')">Get a Quote</button>
+      </div>
+      <div class="pkg-card featured reveal reveal-d1">
+        <div class="pkg-badge">Most Popular</div>
+        <div class="pkg-name">Professional</div>
+        <div class="pkg-price">Contact for quote</div>
+        <p class="pkg-desc">Ideal for weddings, corporate events & full-day coverage.</p>
+        <ul class="pkg-features"><li>Full-day coverage (8 hrs)</li><li>300+ edited photos</li><li>Highlight video film</li><li>2 photographers + videographer</li><li>Drone aerial footage</li><li>USB keepsake delivery</li></ul>
+        <button class="pkg-cta" onclick="scrollBook('Professional')">Get a Quote</button>
+      </div>
+      <div class="pkg-card reveal reveal-d2">
+        <div class="pkg-name">Premium</div>
+        <div class="pkg-price">Contact for quote</div>
+        <p class="pkg-desc">Full cinematic production for large events & campaigns.</p>
+        <ul class="pkg-features"><li>Multi-day coverage</li><li>Unlimited edited photos</li><li>Full cinematic film (10-20 min)</li><li>Full crew deployment</li><li>Drone + ground footage</li><li>Same-day preview reel</li></ul>
+        <button class="pkg-cta" onclick="scrollBook('Premium')">Get a Quote</button>
+      </div>
     </div>
   </div>
 </section>
+
 <div class="divider"></div>
-<!-- TESTIMONIALS -->
-<section id="testimonials">
-  <div class="container">
-    <div class="section-eyebrow reveal">Client Love</div>
-    <h2 class="section-title reveal">What Our Clients<br><em>Say About Us</em></h2>
-    <div class="testimonials-grid">
-      <div class="testimonial-card reveal"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"Kenya045 captured our wedding in Nairobi so beautifully. Every candid moment perfectly preserved. The drone footage of our outdoor ceremony was breathtaking."</p><div class="testimonial-author"><div class="author-avatar">AW</div><div><div class="author-name">Amina & David Wanjiru</div><div class="author-role">Wedding Clients · Nairobi</div></div></div></div>
-      <div class="testimonial-card reveal reveal-delay-1"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"Hired Kenya045 for our product launch in Mombasa. Incredibly professional, photos delivered within 48 hours and exceeded all expectations. Will hire again."</p><div class="testimonial-author"><div class="author-avatar">JM</div><div><div class="author-name">James Mwangi</div><div class="author-role">Marketing Director · Mombasa</div></div></div></div>
-      <div class="testimonial-card reveal reveal-delay-2"><div class="testimonial-stars"><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span><span class="star">★</span></div><p class="testimonial-quote">"The aerial drone footage of our farm in Nakuru gave us a completely new perspective. Fast, professional and outstanding quality. Highly recommended!"</p><div class="testimonial-author"><div class="author-avatar">FK</div><div><div class="author-name">Faith Kipchoge</div><div class="author-role">Farm Owner · Nakuru</div></div></div></div>
-    </div>
-  </div>
-</section>
-<div class="divider"></div>
+
 <!-- BOOKING -->
 <section id="booking">
   <div class="container">
     <div class="booking-wrap">
       <div>
-        <div class="section-eyebrow reveal">Let's Work Together</div>
-        <h2 class="section-title reveal">Book Your<br><em>Session Today</em></h2>
-        <p class="section-sub reveal">Fill in the form and we'll get back to you within 24 hours to confirm your booking.</p>
+        <div class="s-eye reveal">Let's Work Together</div>
+        <h2 class="s-title reveal">Book Your <em>Session Today</em></h2>
+        <p class="s-sub reveal">Fill in the form and we'll get back to you within 24 hours.</p>
         <div class="booking-contact-card reveal">
           <div class="contact-item"><div class="contact-icon">📞</div><div><div class="contact-label">Phone / WhatsApp</div><div class="contact-value"><a href="tel:+254748144066">0748 144 066</a></div></div></div>
-          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email Address</div><div class="contact-value"><a href="mailto:kenya045mediahub@gmail.com">kenya045mediahub@gmail.com</a></div></div></div>
-          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Coverage Area</div><div class="contact-value">All 47 Counties, Kenya</div></div></div>
+          <div class="contact-item"><div class="contact-icon">✉️</div><div><div class="contact-label">Email</div><div class="contact-value"><a href="mailto:kenya045mediahub@gmail.com">kenya045mediahub@gmail.com</a></div></div></div>
+          <div class="contact-item"><div class="contact-icon">📍</div><div><div class="contact-label">Coverage</div><div class="contact-value">All 47 Counties, Kenya</div></div></div>
           <div class="contact-item"><div class="contact-icon">🕐</div><div><div class="contact-label">Response Time</div><div class="contact-value">Within 24 hours</div></div></div>
         </div>
       </div>
       <div>
-        <div class="booking-form">
+        <div class="booking-form-card">
           <div id="bookingFormContent">
             <div class="form-title">Session Booking Form</div>
             <p class="form-sub">Fill in your details and we'll confirm availability for your event.</p>
             <form id="bookingForm" onsubmit="submitBooking(event)">
               <div class="form-grid">
-                <div class="form-group full"><label class="form-label" for="fullName">Full Name *</label><input class="form-input" type="text" id="fullName" name="fullName" placeholder="Your full name" required/></div>
-                <div class="form-group"><label class="form-label" for="email">Email Address *</label><input class="form-input" type="email" id="email" name="email" placeholder="your@email.com" required/></div>
-                <div class="form-group"><label class="form-label" for="phone">Phone Number *</label><input class="form-input" type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required/></div>
-                <div class="form-group"><label class="form-label" for="eventDate">Event Date *</label><input class="form-input" type="date" id="eventDate" name="eventDate" required/></div>
-                <div class="form-group"><label class="form-label" for="eventType">Event Type *</label>
-                  <select class="form-select" id="eventType" name="eventType" required>
+                <div class="fg full"><label for="fullName">Full Name *</label><input type="text" id="fullName" name="fullName" placeholder="Your full name" required/></div>
+                <div class="fg"><label for="email">Email *</label><input type="email" id="email" name="email" placeholder="your@email.com" required/></div>
+                <div class="fg"><label for="phone">Phone *</label><input type="tel" id="phone" name="phone" placeholder="07XX XXX XXX" required/></div>
+                <div class="fg"><label for="eventDate">Event Date *</label><input type="date" id="eventDate" name="eventDate" required/></div>
+                <div class="fg"><label for="eventType">Event Type *</label>
+                  <select id="eventType" name="eventType" required>
                     <option value="" disabled selected>Select event type</option>
                     <optgroup label="Photography"><option>Wedding Photography</option><option>Engagement / Pre-wedding</option><option>Corporate Photography</option><option>Portrait Session</option><option>Product Photography</option><option>Real Estate Photography</option></optgroup>
                     <optgroup label="Videography"><option>Wedding Videography</option><option>Corporate Video</option><option>Music Video</option><option>Event Highlight Film</option><option>Documentary</option></optgroup>
@@ -503,9 +777,9 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3
                     <optgroup label="Combined"><option>Photo + Video Package</option><option>Full Production (Photo + Video + Drone)</option></optgroup>
                   </select>
                 </div>
-                <div class="form-group"><label class="form-label" for="county">County *</label><select class="form-select" id="county" name="county" required><option value="" disabled selected>Select county</option></select></div>
-                <div class="form-group full"><label class="form-label" for="venue">Event Venue / Location *</label><input class="form-input" type="text" id="venue" name="venue" placeholder="Hotel name, estate, town or specific location" required/></div>
-                <div class="form-group full"><label class="form-label" for="additional">Additional Information</label><textarea class="form-textarea" id="additional" name="additional" placeholder="Number of guests, specific shots, budget range, special requirements…"></textarea></div>
+                <div class="fg"><label for="county">County *</label><select id="county" name="county" required><option value="" disabled selected>Select county</option></select></div>
+                <div class="fg full"><label for="venue">Venue / Location *</label><input type="text" id="venue" name="venue" placeholder="Hotel name, estate, town or specific location" required/></div>
+                <div class="fg full"><label for="additional">Additional Information</label><textarea id="additional" name="additional" placeholder="Number of guests, specific shots, budget range, special requirements…"></textarea></div>
                 <div class="form-error" id="bookingError"></div>
               </div>
               <button class="form-submit" type="submit" id="bookingSubmit">Send Booking Request</button>
@@ -513,7 +787,7 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3
           </div>
           <div class="form-success" id="bookingSuccess">
             <div class="success-icon">🎉</div>
-            <div class="success-title">Booking Request Sent!</div>
+            <div class="success-title">Booking Sent!</div>
             <p class="success-sub">Thank you! We've received your booking and will contact you within 24 hours.<br><br>For urgent enquiries call <strong style="color:var(--gold)">0748 144 066</strong></p>
           </div>
         </div>
@@ -521,40 +795,42 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3
     </div>
   </div>
 </section>
+
 <div class="divider"></div>
+
 <!-- INQUIRY / FAQ -->
 <section id="inquiry">
   <div class="container">
     <div class="inquiry-wrap">
       <div>
-        <div class="section-eyebrow reveal">Got Questions?</div>
-        <h2 class="section-title reveal">Frequently Asked<br><em>Questions</em></h2>
+        <div class="s-eye reveal">Got Questions?</div>
+        <h2 class="s-title reveal">Frequently Asked <em>Questions</em></h2>
         <div class="faq-list reveal">
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Do you travel to all counties in Kenya?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes — we cover all 47 counties. Travel costs for distant locations are quoted upfront with full transparency.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How far in advance should I book?</span><div class="faq-icon">+</div></div><div class="faq-a">For weddings, 3–6 months in advance. For corporate events, 2–4 weeks is usually sufficient. Last-minute bookings accommodated where possible.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How long before I receive my photos/videos?</span><div class="faq-icon">+</div></div><div class="faq-a">Edited photos within 72 hours for most events. Wedding photos within 1 week. Highlight films 1–2 weeks. Full wedding films 3–4 weeks.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Are your drone pilots licensed?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes. All operators hold valid KCAA Remote Pilot Licences and we carry full public liability insurance.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What payment methods do you accept?</span><div class="faq-icon">+</div></div><div class="faq-a">M-Pesa, bank transfer and cash. 30% deposit required to secure your date, balance due on event day.</div></div>
-          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I get both photos and video in one package?</span><div class="faq-icon">+</div></div><div class="faq-a">Absolutely. Our combined packages are most popular — a single team handles both seamlessly.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Do you travel to all counties in Kenya?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes — we cover all 47 counties. Travel costs for distant locations are quoted upfront with full transparency. No hidden charges.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How far in advance should I book?</span><div class="faq-icon">+</div></div><div class="faq-a">For weddings, 3–6 months in advance. Corporate events 2–4 weeks. Last-minute bookings accommodated where possible.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>How long before I receive my photos/videos?</span><div class="faq-icon">+</div></div><div class="faq-a">Edited photos within 72 hours. Wedding photos within 1 week. Highlight films 1–2 weeks. Full wedding films 3–4 weeks.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Are your drone pilots licensed?</span><div class="faq-icon">+</div></div><div class="faq-a">Yes. All operators hold valid KCAA Remote Pilot Licences and we carry full public liability insurance for every shoot.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>What payment methods do you accept?</span><div class="faq-icon">+</div></div><div class="faq-a">M-Pesa, bank transfer and cash. 30% deposit required to secure your date, balance due on the event day.</div></div>
+          <div class="faq-item"><div class="faq-q" onclick="toggleFaq(this)"><span>Can I get both photos and video?</span><div class="faq-icon">+</div></div><div class="faq-a">Absolutely. Our combined packages are most popular — a single team handles both seamlessly and cost-effectively.</div></div>
         </div>
       </div>
       <div>
-        <div class="section-eyebrow reveal">Reach Out</div>
-        <h2 class="section-title reveal">Send Us an<br><em>Enquiry</em></h2>
-        <div class="inquiry-form reveal">
+        <div class="s-eye reveal">Reach Out</div>
+        <h2 class="s-title reveal">Send Us an <em>Enquiry</em></h2>
+        <div class="inq-form reveal">
           <div id="inquiryFormContent">
             <form id="inquiryForm" onsubmit="submitInquiry(event)">
               <div style="display:flex;flex-direction:column;gap:14px;">
-                <div class="form-group"><label class="form-label">Your Name *</label><input class="form-input" type="text" name="inqName" placeholder="Full name" required/></div>
-                <div class="form-group"><label class="form-label">Email *</label><input class="form-input" type="email" name="inqEmail" placeholder="your@email.com" required/></div>
-                <div class="form-group"><label class="form-label">Phone Number</label><input class="form-input" type="tel" name="inqPhone" placeholder="07XX XXX XXX"/></div>
-                <div class="form-group"><label class="form-label">Subject *</label>
-                  <select class="form-select" name="inqSubject" required>
+                <div class="fg"><label>Your Name *</label><input type="text" name="inqName" placeholder="Full name" required/></div>
+                <div class="fg"><label>Email *</label><input type="email" name="inqEmail" placeholder="your@email.com" required/></div>
+                <div class="fg"><label>Phone</label><input type="tel" name="inqPhone" placeholder="07XX XXX XXX"/></div>
+                <div class="fg"><label>Subject *</label>
+                  <select name="inqSubject" required>
                     <option value="" disabled selected>What's your enquiry about?</option>
-                    <option>Pricing & Packages</option><option>Availability Check</option><option>Custom Project</option><option>Partnership / Collaboration</option><option>Technical Question</option><option>General Enquiry</option>
+                    <option>Pricing & Packages</option><option>Availability Check</option><option>Custom Project</option><option>Partnership / Collaboration</option><option>General Enquiry</option>
                   </select>
                 </div>
-                <div class="form-group"><label class="form-label">Message *</label><textarea class="form-textarea" name="inqMessage" placeholder="Tell us what you'd like to know…" required></textarea></div>
+                <div class="fg"><label>Message *</label><textarea name="inqMessage" placeholder="Tell us what you'd like to know…" required></textarea></div>
                 <div id="inquiryError" style="color:#e74c3c;font-size:13px;min-height:16px;"></div>
                 <button class="form-submit" type="submit">Send Enquiry</button>
               </div>
@@ -562,204 +838,229 @@ footer{background:var(--black);border-top:1px solid var(--border);padding:4rem 3
           </div>
           <div class="inq-success" id="inquirySuccess">
             <div class="success-icon">✅</div>
-            <div class="success-title" style="font-family:var(--font-h);font-size:1.5rem;color:var(--gold);margin-bottom:8px;">Message Received!</div>
-            <p style="color:var(--muted);font-size:0.9rem;">Thanks for reaching out. We'll reply within 24 hours.</p>
+            <div class="success-title" style="font-family:var(--font-h);font-size:1.8rem;color:var(--gold);margin-bottom:8px;">Message Received!</div>
+            <p style="color:var(--muted);font-size:.9rem;font-weight:300;">We'll reply within 24 hours via email or phone.</p>
           </div>
         </div>
       </div>
     </div>
   </div>
 </section>
+
 <div class="divider"></div>
+
 <!-- FOOTER -->
 <footer>
   <div class="footer-grid">
-    <div><div class="footer-brand">KENYA<span>045</span> MEDIA HUB</div><p class="footer-tagline">Professional photography, videography and drone services across all 47 counties in Kenya.</p><div class="social-links"><a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener">📸</a><a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener">👥</a><a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener">🎬</a><a class="social-btn" href="https://wa.me/254748144066" target="_blank" rel="noopener">💬</a><a class="social-btn" href="https://tiktok.com" target="_blank" rel="noopener">🎵</a></div></div>
-    <div><div class="footer-heading">Services</div><ul class="footer-links"><li><a href="#services">Photography</a></li><li><a href="#services">Videography</a></li><li><a href="#services">Drone Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#booking">Book a Session</a></li></ul></div>
-    <div><div class="footer-heading">Events We Cover</div><ul class="footer-links"><li><a href="#booking">Weddings</a></li><li><a href="#booking">Corporate Events</a></li><li><a href="#booking">Portraits</a></li><li><a href="#booking">Music Videos</a></li><li><a href="#booking">Real Estate</a></li></ul></div>
-    <div><div class="footer-heading">Contact</div><ul class="footer-links"><li><a href="tel:+254748144066">📞 0748 144 066</a></li><li><a href="mailto:kenya045mediahub@gmail.com">✉️ kenya045mediahub@gmail.com</a></li><li><a href="https://wa.me/254748144066">💬 WhatsApp Us</a></li><li><a href="#coverage">📍 All 47 Counties</a></li></ul></div>
+    <div>
+      <div class="footer-brand">KENYA<span>045</span> MEDIA HUB</div>
+      <p class="footer-tagline">Professional photography, videography and drone services across all 47 counties in Kenya. We frame your story — beautifully, authentically, forever.</p>
+      <div class="social-row">
+        <a class="social-btn" href="https://instagram.com" target="_blank" rel="noopener" title="Instagram">📸</a>
+        <a class="social-btn" href="https://facebook.com" target="_blank" rel="noopener" title="Facebook">👥</a>
+        <a class="social-btn" href="https://youtube.com" target="_blank" rel="noopener" title="YouTube">🎬</a>
+        <a class="social-btn" href="https://wa.me/254748144066" target="_blank" rel="noopener" title="WhatsApp">💬</a>
+        <a class="social-btn" href="https://tiktok.com" target="_blank" rel="noopener" title="TikTok">🎵</a>
+      </div>
+    </div>
+    <div>
+      <div class="footer-heading">Services</div>
+      <ul class="footer-links"><li><a href="#services">Photography</a></li><li><a href="#services">Videography</a></li><li><a href="#services">Drone Services</a></li><li><a href="#packages">Packages</a></li><li><a href="#booking">Book a Session</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-heading">Events</div>
+      <ul class="footer-links"><li><a href="#booking">Weddings</a></li><li><a href="#booking">Corporate Events</a></li><li><a href="#booking">Portraits</a></li><li><a href="#booking">Music Videos</a></li><li><a href="#booking">Real Estate</a></li></ul>
+    </div>
+    <div>
+      <div class="footer-heading">Contact</div>
+      <ul class="footer-links"><li><a href="tel:+254748144066">📞 0748 144 066</a></li><li><a href="mailto:kenya045mediahub@gmail.com">✉️ kenya045mediahub@gmail.com</a></li><li><a href="https://wa.me/254748144066">💬 WhatsApp Us</a></li><li><a href="#coverage">📍 All 47 Counties</a></li></ul>
+    </div>
   </div>
-  <div class="footer-bottom"><span class="footer-copy">© 2025 Kenya045 Media Hub. All rights reserved.</span><div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div></div>
+  <div class="footer-bottom">
+    <span class="footer-copy">© 2025 Kenya045 Media Hub. All rights reserved.</span>
+    <div class="footer-legal"><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></div>
+  </div>
 </footer>
+
 <div class="toast-wrap" id="toastWrap"></div>
+
 <script>
 // ── CURSOR
-const cur=document.getElementById('cursor'),ring=document.getElementById('cursorRing');
-let mx=0,my=0,rx=0,ry=0;
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
-function animateRing(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(animateRing);}
-animateRing();
-document.querySelectorAll('a,button,select,input,textarea').forEach(el=>{
-  el.addEventListener('mouseenter',()=>{cur.style.width='20px';cur.style.height='20px';ring.style.width='54px';ring.style.height='54px';ring.style.opacity='0.3';});
-  el.addEventListener('mouseleave',()=>{cur.style.width='10px';cur.style.height='10px';ring.style.width='36px';ring.style.height='36px';ring.style.opacity='0.6';});
-});
+var cx=0,cy=0,rx=0,ry=0;
+var cur=document.getElementById('cur'),ring=document.getElementById('curRing');
+document.addEventListener('mousemove',function(e){cx=e.clientX;cy=e.clientY;cur.style.left=cx+'px';cur.style.top=cy+'px';});
+(function moveRing(){rx+=(cx-rx)*.12;ry+=(cy-ry)*.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(moveRing);})();
+
 // ── NAV
-const navbar=document.getElementById('navbar');
-window.addEventListener('scroll',()=>{navbar.classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+window.addEventListener('scroll',function(){document.getElementById('navbar').classList.toggle('scrolled',window.scrollY>60);},{passive:true});
+
 // ── HAMBURGER
-const hamburger=document.getElementById('hamburger'),mobileNav=document.getElementById('mobileNav');
-hamburger.addEventListener('click',()=>{
-  mobileNav.classList.toggle('open');
-  const spans=hamburger.querySelectorAll('span');
-  if(mobileNav.classList.contains('open')){spans[0].style.transform='rotate(45deg) translate(4px,5px)';spans[1].style.opacity='0';spans[2].style.transform='rotate(-45deg) translate(4px,-5px)';}
-  else{spans.forEach(s=>{s.style.transform='';s.style.opacity='';});}
+document.getElementById('hamburger').addEventListener('click',function(){
+  document.getElementById('mobNav').classList.toggle('open');
+  var ss=this.querySelectorAll('span');
+  var open=document.getElementById('mobNav').classList.contains('open');
+  ss[0].style.transform=open?'rotate(45deg) translate(4px,5px)':'';
+  ss[1].style.opacity=open?'0':'';
+  ss[2].style.transform=open?'rotate(-45deg) translate(4px,-5px)':'';
 });
-function closeMobileNav(){mobileNav.classList.remove('open');hamburger.querySelectorAll('span').forEach(s=>{s.style.transform='';s.style.opacity='';});}
+function closeMob(){document.getElementById('mobNav').classList.remove('open');document.getElementById('hamburger').querySelectorAll('span').forEach(function(s){s.style.transform='';s.style.opacity='';});}
+
+// ── HERO SLIDESHOW
+var slideIdx=0,slides=document.querySelectorAll('.hero-slide'),dots=document.querySelectorAll('.hero-dot');
+function goSlide(n){
+  slides[slideIdx].classList.remove('active');
+  dots[slideIdx].classList.remove('active');
+  slideIdx=n;
+  slides[slideIdx].classList.add('active');
+  dots[slideIdx].classList.add('active');
+}
+setInterval(function(){goSlide((slideIdx+1)%slides.length);},5000);
+
 // ── REVEAL
-const observer=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){e.target.classList.add('visible');observer.unobserve(e.target);}});},{threshold:0.12});
-document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-// ── COUNTERS
+var revealObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');revealObs.unobserve(e.target);}});},{threshold:.1});
+document.querySelectorAll('.reveal').forEach(function(el){revealObs.observe(el);});
+
+// ── COUNTER
 function animateCount(el,target){
-  const duration=2000,start=performance.now();
-  const step=ts=>{const p=Math.min((ts-start)/duration,1),ease=1-Math.pow(1-p,3);el.textContent=Math.round(ease*target)+(target===47?'':'+');if(p<1)requestAnimationFrame(step);};
-  requestAnimationFrame(step);
+  var dur=2000,start=performance.now();
+  (function step(ts){
+    var p=Math.min((ts-start)/dur,1),ease=1-Math.pow(1-p,3);
+    el.textContent=Math.round(ease*target)+(target===47?'':'+');
+    if(p<1)requestAnimationFrame(step);
+  })(performance.now());
 }
-const counterObs=new IntersectionObserver(entries=>{entries.forEach(e=>{if(e.isIntersecting){animateCount(e.target,parseInt(e.target.dataset.count));counterObs.unobserve(e.target);}});},{threshold:0.5});
-document.querySelectorAll('[data-count]').forEach(el=>counterObs.observe(el));
+var countObs=new IntersectionObserver(function(entries){entries.forEach(function(e){if(e.isIntersecting){animateCount(e.target,parseInt(e.target.dataset.count));countObs.unobserve(e.target);}});},{threshold:.5});
+document.querySelectorAll('[data-count]').forEach(function(el){countObs.observe(el);});
+
 // ── COUNTIES
-const COUNTIES=['Mombasa','Kwale','Kilifi','Tana River','Lamu','Taita Taveta','Garissa','Wajir','Mandera','Marsabit','Isiolo','Meru','Tharaka Nithi','Embu','Kitui','Machakos','Makueni','Nyandarua','Nyeri','Kirinyaga',"Murang'a",'Kiambu','Turkana','West Pokot','Samburu','Trans Nzoia','Uasin Gishu','Elgeyo Marakwet','Nandi','Baringo','Laikipia','Nakuru','Narok','Kajiado','Kericho','Bomet','Kakamega','Vihiga','Bungoma','Busia','Siaya','Kisumu','Homa Bay','Migori','Kisii','Nyamira','Nairobi'];
-const countySelect=document.getElementById('county');
-COUNTIES.forEach(c=>{const o=document.createElement('option');o.textContent=c;countySelect.appendChild(o);});
-function buildMarquee(id,counties){const el=document.getElementById(id);el.innerHTML=[...counties,...counties].map(c=>`<span class="county-pill">${c}</span>`).join('');}
-buildMarquee('marquee1',COUNTIES);buildMarquee('marquee2',[...COUNTIES].reverse());
-document.querySelectorAll('.counties-track').forEach(el=>{el.addEventListener('mouseenter',()=>el.style.animationPlayState='paused');el.addEventListener('mouseleave',()=>el.style.animationPlayState='running');});
-// ── PORTFOLIO
-function filterPortfolio(btn,cat){
-  document.querySelectorAll('.pf-btn').forEach(b=>b.classList.remove('active'));btn.classList.add('active');
-  document.querySelectorAll('.pf-item').forEach(item=>{const match=cat==='all'||item.dataset.cat===cat;item.style.opacity=match?'1':'0.2';item.style.transform=match?'':'scale(0.95)';});
+var COUNTIES=['Mombasa','Kwale','Kilifi','Tana River','Lamu','Taita Taveta','Garissa','Wajir','Mandera','Marsabit','Isiolo','Meru','Tharaka Nithi','Embu','Kitui','Machakos','Makueni','Nyandarua','Nyeri','Kirinyaga',"Murang'a",'Kiambu','Turkana','West Pokot','Samburu','Trans Nzoia','Uasin Gishu','Elgeyo Marakwet','Nandi','Baringo','Laikipia','Nakuru','Narok','Kajiado','Kericho','Bomet','Kakamega','Vihiga','Bungoma','Busia','Siaya','Kisumu','Homa Bay','Migori','Kisii','Nyamira','Nairobi'];
+var cs=document.getElementById('county');
+COUNTIES.forEach(function(c){var o=document.createElement('option');o.textContent=c;cs.appendChild(o);});
+function buildMarquee(id,arr){var el=document.getElementById(id);el.innerHTML=[...arr,...arr].map(function(c){return'<span class="county-pill">'+c+'</span>';}).join('');}
+buildMarquee('m1',COUNTIES);buildMarquee('m2',[...COUNTIES].reverse());
+document.querySelectorAll('.marquee-track').forEach(function(el){el.addEventListener('mouseenter',function(){el.style.animationPlayState='paused';});el.addEventListener('mouseleave',function(){el.style.animationPlayState='running';});});
+
+// ── TICKER
+var tickerItems=['Photography','Videography','Drone Services','All 47 Counties','Weddings','Corporate Events','Aerial Surveys','Portraits','Music Videos','Real Estate'];
+var tt=document.getElementById('tickerTrack');
+var tickHtml=[...tickerItems,...tickerItems].map(function(t,i){return'<span class="ticker-item">'+t+'</span>'+(i<tickerItems.length*2-1?'<span class="ticker-dot">◆</span>':'');}).join('');
+tt.innerHTML=tickHtml;
+
+// ── PORTFOLIO FILTER
+function filterPf(btn,cat){
+  document.querySelectorAll('.pf-btn').forEach(function(b){b.classList.remove('active');});
+  btn.classList.add('active');
+  document.querySelectorAll('.pf-item').forEach(function(item){
+    var match=cat==='all'||item.dataset.cat===cat;
+    item.style.opacity=match?'1':'0.15';
+    item.style.transform=match?'':'scale(.97)';
+    item.style.transition='opacity .4s,transform .4s';
+  });
 }
+
 // ── FAQ
-function toggleFaq(btn){const item=btn.closest('.faq-item'),isOpen=item.classList.contains('open');document.querySelectorAll('.faq-item.open').forEach(i=>i.classList.remove('open'));if(!isOpen)item.classList.add('open');}
+function toggleFaq(btn){
+  var item=btn.closest('.faq-item'),open=item.classList.contains('open');
+  document.querySelectorAll('.faq-item.open').forEach(function(i){i.classList.remove('open');});
+  if(!open)item.classList.add('open');
+}
+
 // ── MIN DATE
 document.getElementById('eventDate').min=new Date().toISOString().split('T')[0];
+
 // ── PACKAGES
-function scrollToBooking(pkg){
+function scrollBook(pkg){
   document.getElementById('booking').scrollIntoView({behavior:'smooth'});
-  const et=document.getElementById('eventType');
+  var et=document.getElementById('eventType');
   if(pkg==='Premium')et.value='Full Production (Photo + Video + Drone)';
   if(pkg==='Professional')et.value='Photo + Video Package';
 }
+
 // ── TOAST
-function toast(msg,type='info'){
-  const tw=document.getElementById('toastWrap');const t=document.createElement('div');
-  t.className='toast'+(type==='success'?' success':type==='error'?' error':'');t.textContent=msg;
-  tw.appendChild(t);setTimeout(()=>{t.style.opacity='0';t.style.transition='opacity 0.4s';},3500);setTimeout(()=>t.remove(),4000);
+function toast(msg,type){
+  var tw=document.getElementById('toastWrap');
+  var t=document.createElement('div');
+  t.className='toast'+(type==='success'?' success':'');
+  t.textContent=msg;
+  tw.appendChild(t);
+  setTimeout(function(){t.style.opacity='0';t.style.transition='opacity .4s';},3500);
+  setTimeout(function(){if(t.parentNode)t.parentNode.removeChild(t);},4000);
 }
 
-// ══ BOOKING FORM — XHR (works on all browsers/devices) ═══════════════════
+// ══ BOOKING — XHR ═══════════════════════════════════════════════════════
 function submitBooking(e) {
   e.preventDefault();
-  var btn   = document.getElementById('bookingSubmit');
-  var form  = document.getElementById('bookingForm');
-  var errEl = document.getElementById('bookingError');
-  errEl.textContent = '';
-  btn.disabled    = true;
-  btn.textContent = 'Sending...';
-
-  var data = {
-    fullName  : form.fullName.value,
-    email     : form.email.value,
-    phone     : form.phone.value,
-    eventDate : form.eventDate.value,
-    eventType : form.eventType.value,
-    county    : form.county.value,
-    venue     : form.venue.value,
-    additional: form.additional ? form.additional.value : '',
+  var btn=document.getElementById('bookingSubmit');
+  var form=document.getElementById('bookingForm');
+  var errEl=document.getElementById('bookingError');
+  errEl.textContent='';
+  btn.disabled=true;btn.textContent='Sending...';
+  var data={
+    fullName:form.fullName.value,email:form.email.value,
+    phone:form.phone.value,eventDate:form.eventDate.value,
+    eventType:form.eventType.value,county:form.county.value,
+    venue:form.venue.value,additional:form.additional?form.additional.value:'',
   };
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/booking', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.timeout = 15000;
-
-  xhr.onload = function() {
-    try {
-      var d = JSON.parse(xhr.responseText);
-      if (xhr.status >= 200 && xhr.status < 300 && d.success) {
-        document.getElementById('bookingFormContent').style.display = 'none';
+  var xhr=new XMLHttpRequest();
+  xhr.open('POST','/api/booking',true);
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.timeout=15000;
+  xhr.onload=function(){
+    try{
+      var d=JSON.parse(xhr.responseText);
+      if(xhr.status>=200&&xhr.status<300&&d.success){
+        document.getElementById('bookingFormContent').style.display='none';
         document.getElementById('bookingSuccess').classList.add('show');
-        toast("Booking sent! We\'ll contact you within 24 hours.", 'success');
+        toast("Booking sent! We'll contact you within 24 hours.",'success');
       } else {
-        btn.disabled    = false;
-        btn.textContent = 'Send Booking Request';
-        errEl.textContent = d.error || 'Something went wrong. Please try again.';
+        btn.disabled=false;btn.textContent='Send Booking Request';
+        errEl.textContent=d.error||'Something went wrong. Please try again.';
       }
-    } catch(ex) {
-      btn.disabled    = false;
-      btn.textContent = 'Send Booking Request';
-      errEl.textContent = 'Server error (HTTP ' + xhr.status + '). Please try again.';
+    } catch(ex){
+      btn.disabled=false;btn.textContent='Send Booking Request';
+      errEl.textContent='Server error (HTTP '+xhr.status+'). Please try again.';
     }
   };
-
-  xhr.onerror = function() {
-    btn.disabled    = false;
-    btn.textContent = 'Send Booking Request';
-    errEl.textContent = 'Network error — please check your connection.';
-  };
-
-  xhr.ontimeout = function() {
-    btn.disabled    = false;
-    btn.textContent = 'Send Booking Request';
-    errEl.textContent = 'Request timed out. Please try again.';
-  };
-
+  xhr.onerror=function(){btn.disabled=false;btn.textContent='Send Booking Request';errEl.textContent='Network error — please check your connection.';};
+  xhr.ontimeout=function(){btn.disabled=false;btn.textContent='Send Booking Request';errEl.textContent='Request timed out. Please try again.';};
   xhr.send(JSON.stringify(data));
 }
 
-// ══ INQUIRY FORM — XHR (works on all browsers/devices) ═══════════════════
+// ══ INQUIRY — XHR ═══════════════════════════════════════════════════════
 function submitInquiry(e) {
   e.preventDefault();
-  var btn   = e.target.querySelector('button[type=submit]');
-  var form  = e.target;
-  var errEl = document.getElementById('inquiryError');
-  if (errEl) errEl.textContent = '';
-  btn.disabled    = true;
-  btn.textContent = 'Sending...';
-
-  var data = {
-    inqName   : form.inqName.value,
-    inqEmail  : form.inqEmail.value,
-    inqPhone  : form.inqPhone ? form.inqPhone.value : '',
-    inqSubject: form.inqSubject.value,
-    inqMessage: form.inqMessage.value,
+  var btn=e.target.querySelector('button[type=submit]');
+  var form=e.target;
+  var errEl=document.getElementById('inquiryError');
+  if(errEl)errEl.textContent='';
+  btn.disabled=true;btn.textContent='Sending...';
+  var data={
+    inqName:form.inqName.value,inqEmail:form.inqEmail.value,
+    inqPhone:form.inqPhone?form.inqPhone.value:'',
+    inqSubject:form.inqSubject.value,inqMessage:form.inqMessage.value,
   };
-
-  var xhr = new XMLHttpRequest();
-  xhr.open('POST', '/api/inquiry', true);
-  xhr.setRequestHeader('Content-Type', 'application/json');
-  xhr.timeout = 15000;
-
-  xhr.onload = function() {
-    try {
-      var d = JSON.parse(xhr.responseText);
-      if (xhr.status >= 200 && xhr.status < 300 && d.success) {
-        document.getElementById('inquiryFormContent').style.display = 'none';
+  var xhr=new XMLHttpRequest();
+  xhr.open('POST','/api/inquiry',true);
+  xhr.setRequestHeader('Content-Type','application/json');
+  xhr.timeout=15000;
+  xhr.onload=function(){
+    try{
+      var d=JSON.parse(xhr.responseText);
+      if(xhr.status>=200&&xhr.status<300&&d.success){
+        document.getElementById('inquiryFormContent').style.display='none';
         document.getElementById('inquirySuccess').classList.add('show');
-        toast("Enquiry sent! We\'ll reply within 24 hours.", 'success');
+        toast("Enquiry sent! We'll reply within 24 hours.",'success');
       } else {
-        btn.disabled    = false;
-        btn.textContent = 'Send Enquiry';
-        if (errEl) errEl.textContent = d.error || 'Something went wrong. Please try again.';
+        btn.disabled=false;btn.textContent='Send Enquiry';
+        if(errEl)errEl.textContent=d.error||'Something went wrong. Please try again.';
       }
-    } catch(ex) {
-      btn.disabled    = false;
-      btn.textContent = 'Send Enquiry';
-      if (errEl) errEl.textContent = 'Server error (HTTP ' + xhr.status + '). Please try again.';
+    } catch(ex){
+      btn.disabled=false;btn.textContent='Send Enquiry';
+      if(errEl)errEl.textContent='Server error (HTTP '+xhr.status+'). Please try again.';
     }
   };
-
-  xhr.onerror = function() {
-    btn.disabled    = false;
-    btn.textContent = 'Send Enquiry';
-    if (errEl) errEl.textContent = 'Network error — please check your connection.';
-  };
-
-  xhr.ontimeout = function() {
-    btn.disabled    = false;
-    btn.textContent = 'Send Enquiry';
-    if (errEl) errEl.textContent = 'Request timed out. Please try again.';
-  };
-
+  xhr.onerror=function(){btn.disabled=false;btn.textContent='Send Enquiry';if(errEl)errEl.textContent='Network error — please check connection.';};
+  xhr.ontimeout=function(){btn.disabled=false;btn.textContent='Send Enquiry';if(errEl)errEl.textContent='Request timed out.';};
   xhr.send(JSON.stringify(data));
 }
 </script>
